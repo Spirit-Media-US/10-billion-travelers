@@ -6,7 +6,7 @@ This site: 10 Billion Travelers | Repo: github.com/Spirit-Media-US/10-billion-tr
 
 ## Dev Commands
 
-- `npm run dev` — local preview (port TBD — assign from VPS port table)
+- `npm run dev` — local preview at localhost:4330
 - `npm run build` — production build to dist/
 
 ## Stack
@@ -26,7 +26,7 @@ This site: 10 Billion Travelers | Repo: github.com/Spirit-Media-US/10-billion-tr
 
 ### Next Steps
 - Create Sanity project, replace REPLACE_PROJECT_ID placeholders
-- Assign port in VPS port table
+- Port 4330 assigned in VPS port table
 - Connect domain in Netlify and Cloudflare
 
 ## Rules
