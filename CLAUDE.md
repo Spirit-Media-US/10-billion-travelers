@@ -9,6 +9,15 @@ This site: 10 Billion Travelers | Repo: github.com/Spirit-Media-US/10-billion-tr
 - `npm run dev` — local preview at localhost:4330
 - `npm run build` — production build to dist/
 
+## Mandatory — Before Starting Work
+Always start Claude sessions from inside this directory:
+```
+cd ~/Sites/10-billion-travelers && claude
+```
+Running Claude from ~/ or ~/Sites/ bypasses this project's CLAUDE.md. A pre-edit hook enforces this, but following the workflow prevents warnings and ensures all project rules are loaded.
+
+Then run: `git checkout dev && git pull origin dev`
+
 ## Stack
 
 - Astro 5 + Tailwind CSS v4
