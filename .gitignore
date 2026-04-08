@@ -19,3 +19,15 @@ Thumbs.db
 .vscode/
 .idea/
 .mcp.json
+
+# Media files — never commit to git
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.webp
+*.svg
+*.mp4
+*.mp3
+*.mov
+*.pdf
