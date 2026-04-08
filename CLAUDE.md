@@ -15,7 +15,7 @@ This site: 10 Billion Travelers | Repo: github.com/Spirit-Media-US/10-billion-tr
 ## Mandatory — Before Starting Work
 Always start Claude sessions from inside this directory:
 ```
-cd ~/Sites/10-billion-travelers && claude
+cd /srv/sites/10-billion-travelers && claude
 ```
 Running Claude from ~/ or ~/Sites/ bypasses this project's CLAUDE.md. A pre-edit hook enforces this, but following the workflow prevents warnings and ensures all project rules are loaded.
 
