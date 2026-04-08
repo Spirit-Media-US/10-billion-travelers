@@ -2,7 +2,10 @@
 
 > **CLAUDE.md belongs in version control — NEVER add it to .gitignore. This file is the shared source of truth for all developers and all Claude Code sessions.**
 
-This site: 10 Billion Travelers | Repo: github.com/Spirit-Media-US/10-billion-travelers | Domain: TBD | Sanity ID: TBD
+This site: 10 Billion Travelers | Repo: github.com/Spirit-Media-US/10-billion-travelers | Domain: TBD | Sanity ID: 2voldnur
+
+**Migration protocol:** /home/deploy/bin/tools-api/pipelines/migration/CLAUDE.md
+**Infrastructure:** Deploy webhook wired
 
 ## Dev Commands
 
@@ -21,20 +24,18 @@ Then run: `git checkout dev && git pull origin dev`
 ## Stack
 
 - Astro 5 + Tailwind CSS v4
-- Sanity — not yet initialized (PROJECT-STATUS.md is a template placeholder)
+- Sanity CMS (projectId: 2voldnur, dataset: production)
 - Netlify — domain and deploy not yet configured
 - GHL forms — not yet wired
 
-## Status — as of 2026-03-24
+## Status — as of 2026-04-08
 
 ### In Progress
 - Early build phase — Astro scaffold in place, Lefthook hooks installed
-- PROJECT-STATUS.md contains template placeholders — not yet filled in
-- Sanity project not yet created
+- Sanity project created (ID: 2voldnur), deploy webhook wired
 - Domain not yet assigned or connected
 
 ### Next Steps
-- Create Sanity project, replace REPLACE_PROJECT_ID placeholders
 - Port 4330 assigned in VPS port table
 - Connect domain in Netlify and Cloudflare
 
