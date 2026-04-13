@@ -96,10 +96,19 @@ Then run: `git checkout dev && git pull origin dev`
 - Fixed lefthook biome hook: bunx → npx for Bethel compatibility
 - Dev server running on port 4330, build clean
 
-### Still Pending
+### Completed — Phase 7 (QA)
+- All 8 automated scans PASS: no inline styles, no missing alt text, no missing SEO meta, no leftover dev URLs, no TODOs, sitemap covers 5 pages, all internal links valid, production build clean
+- Lighthouse: Accessibility 100, Best Practices 100, SEO 92, Performance 65 (dev server)
+- Fixed WCAG contrast ratios: footer links/copyright → #007D6C (5:1), logo accent → #007D6C
+- Fixed heading order (footer h4 → p), aria-label mismatch, CTA link text
+- Removed all inline styles across all pages (404, thank-you, about)
+- Build verified on Bethel, 6 pages generate clean
+
+### Still Pending — Phase 8 (Launch)
 - Domain not yet connected in Cloudflare
 - CF Pages build needs verification (first deploy pending)
 - Hero background image needs re-upload to Sanity (original download was corrupt)
+- Merge dev → main for production deploy (Kevin approval needed)
 
 ## Rules
 
