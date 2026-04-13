@@ -85,13 +85,20 @@ Then run: `git checkout dev && git pull origin dev`
 - Migration fidelity: page count matches, nav improved (added Services+Contact), all CTAs present, form works, footer complete
 - Critical fixes applied: removed stale TODO
 
-### In Progress — Phase 6 (Design Refinement)
-- Implement recommended improvements from CAR review
+### Completed — Phase 6 (Design Refinement)
+- Build verified on Bethel — all 6 pages generate successfully
+- Fixed CSS @import order (Google Fonts before Tailwind — eliminates build warning)
+- Added fade-up scroll animations (IntersectionObserver) on features, galleries, CTAs
+- Improved hero gradient (diagonal linear-gradient) + text shadows for readability
+- Added scroll-to-top button (appears after 400px scroll, teal circle with chevron)
+- Removed all inline styles, replaced with proper CSS classes
+- Fixed deps: removed non-existent @portabletext/astro, added react/react-dom for Sanity Studio build
+- Fixed lefthook biome hook: bunx → npx for Bethel compatibility
+- Dev server running on port 4330, build clean
 
 ### Still Pending
 - Domain not yet connected in Cloudflare
 - CF Pages build needs verification (first deploy pending)
-- npm install needed on Bethel (new deps: sanity, sanity-plugin-media, @portabletext/astro)
 - Hero background image needs re-upload to Sanity (original download was corrupt)
 
 ## Rules
