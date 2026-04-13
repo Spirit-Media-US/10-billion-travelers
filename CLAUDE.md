@@ -5,7 +5,7 @@
 This site: 10 Billion Travelers | Repo: github.com/Spirit-Media-US/10-billion-travelers | Domain: 10billiontravelers.com | Sanity ID: 2voldnur | Registry ID: 051de8cc
 
 **Migration protocol:** /home/deploy/bin/tools-api/pipelines/migration/CLAUDE.md
-**Client URL:** https://10billiontravelers.com
+**Client URL:** https://10btravelers.com (original WordPress site on Cloudways)
 **Infrastructure:** Deploy webhook wired | CF Pages: 10-billion-travelers.pages.dev | Dev preview: dev.10-billion-travelers.pages.dev
 
 ## Dev Commands
@@ -40,9 +40,18 @@ Then run: `git checkout dev && git pull origin dev`
 - Registry entry created (ID: 051de8cc), Phase 1 complete
 - Port 4330 assigned in VPS port table
 
-### In Progress — Phase 2 (Content Extraction)
-- Crawl https://10billiontravelers.com — extract content, CSS, media
-- Generate content/site-inventory.md, content/design-tokens.md, content/images.md, content/pages/*.md
+### Completed — Phase 2 (Content Extraction)
+- Crawled https://10btravelers.com (WordPress + Astra + Elementor on Cloudways)
+- Site inventory: 5 pages to migrate (Home, About, Services, Contact, Thank You)
+- Design tokens extracted: Montserrat/Lato fonts, #30C7B5 teal primary, #00AC97 hover
+- 16 images downloaded to /tmp/10-billion-travelers-images/ and cataloged
+- All content files in content/ — site-inventory.md, design-tokens.md, images.md, pages/*.md
+- Note: Services page and Contact page have placeholder content (lorem ipsum, fake phone/email)
+
+### In Progress — Phase 3 (Design + Build)
+- Create Stitch design system from extracted tokens
+- Generate screens for all 5 pages
+- Build Astro pages from designs + content
 
 ### Still Pending
 - Domain not yet connected in Cloudflare
