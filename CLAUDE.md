@@ -62,14 +62,28 @@ Then run: `git checkout dev && git pull origin dev`
 - All pages use design token CSS vars — no hardcoded hex values
 - Note: images currently use Unsplash placeholders — will be replaced with Sanity images in Phase 4
 
-### In Progress — Phase 4 (Wire Sanity CMS)
-- Upload images to Sanity, wire urlFor() references
-- Define schemas for CMS-editable content
-- Set up embedded Sanity Studio at /studio
+### Completed — Phase 4 (Wire Sanity CMS)
+- Production dataset created, CORS origins set (live domain, CF Pages, localhost)
+- Schema deployed: siteSettings, teamMember, service, galleryImage (4 types)
+- 15/16 images uploaded to Sanity (hero bg failed — corrupt download, using Unsplash placeholder)
+- 11 documents created and published: 1 siteSettings, 1 teamMember (Kevin White), 3 services, 6 galleryImages
+- sanity.config.ts + sanity.cli.ts with embedded Studio at /studio, media plugin
+- Build script updated: `sanity build public/studio --yes && astro build`
+- Homepage: gallery images from Sanity (travel + best sections)
+- About: Kevin White bio, photo, tagline from Sanity teamMember
+- Services: titles, descriptions, images from Sanity service documents
+- Contact: business hours, location from Sanity siteSettings
+- Sanity schema decisions: services/team/gallery/settings → Sanity; FAQs/page structure/SEO → static
+
+### In Progress — Phase 5 (CAR Gate)
+- Run automated code scans (8 pre-launch checks)
+- Migration fidelity check against original site
+- Generate Transformation Layer Report
 
 ### Still Pending
 - Domain not yet connected in Cloudflare
 - CF Pages build needs verification (first deploy pending)
+- npm install needed on Bethel (new deps: sanity, sanity-plugin-media, @portabletext/astro)
 
 ## Rules
 
