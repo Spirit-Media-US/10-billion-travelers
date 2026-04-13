@@ -104,7 +104,13 @@ const navLinks = [
       </div>
     </footer>
 
+    <!-- Scroll-to-top button -->
+    <button class="scroll-top" aria-label="Scroll to top">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
     <script>
+      // Mobile nav toggle
       const toggle = document.querySelector('.mobile-toggle');
       const nav = document.querySelector('.main-nav');
       if (toggle && nav) {
@@ -114,6 +120,23 @@ const navLinks = [
           nav.classList.toggle('open');
         });
       }
+
+      // Scroll-to-top
+      const scrollBtn = document.querySelector('.scroll-top');
+      if (scrollBtn) {
+        window.addEventListener('scroll', () => {
+          scrollBtn.classList.toggle('show', window.scrollY > 400);
+        });
+        scrollBtn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+
+      // Fade-up on scroll
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
     </script>
   </body>
 </html>

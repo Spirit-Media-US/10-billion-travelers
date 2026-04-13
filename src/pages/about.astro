@@ -27,7 +27,7 @@ const member = await sanityClient.fetch(
 
   <section class="bio-section">
     <div class="container">
-      <div class="bio-grid">
+      <div class="bio-grid fade-up">
         <div class="bio-photo">
           {member?.photo && (
             <img
@@ -48,11 +48,11 @@ const member = await sanityClient.fetch(
     </div>
   </section>
 
-  <section class="about-cta">
-    <div class="container" style="text-align: center;">
+  <section class="about-cta fade-up">
+    <div class="container about-cta-inner">
       <h2>Have a Question?</h2>
       <h3>We'd Love to Hear From You</h3>
-      <a href="/contact/" class="btn" style="margin-top: 24px;">Email Us</a>
+      <a href="/contact/" class="btn about-cta-btn">Email Us</a>
     </div>
   </section>
 </Layout>
@@ -71,8 +71,10 @@ const member = await sanityClient.fetch(
   .bio-text h2 { text-transform: uppercase; margin-bottom: 20px; }
   .bio-text p { margin-bottom: 16px; line-height: 1.7; }
   .about-cta { padding: 60px 0 80px; background: var(--color-white); }
+  .about-cta-inner { text-align: center; }
   .about-cta h2 { text-transform: uppercase; margin-bottom: 8px; }
   .about-cta h3 { color: var(--color-text-secondary); font-weight: 500; }
+  .about-cta-btn { margin-top: 24px; }
   @media (max-width: 768px) {
     .bio-grid { grid-template-columns: 1fr; text-align: center; }
     .bio-photo { max-width: 250px; margin: 0 auto; }
