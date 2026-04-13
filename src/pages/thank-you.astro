@@ -8,11 +8,11 @@ import '../styles/global.css';
   description="Thank you for contacting 10 Billion Travelers."
 >
   <section class="thank-you">
-    <div class="container" style="text-align: center;">
+    <div class="container thank-you-inner">
       <div class="check-icon">✓</div>
       <h1>Thank You!</h1>
       <p>We will contact you soon!!</p>
-      <a href="/" class="btn" style="margin-top: 32px;">Back to Home</a>
+      <a href="/" class="btn thank-you-btn">Back to Home</a>
     </div>
   </section>
 </Layout>
@@ -43,5 +43,11 @@ import '../styles/global.css';
   .thank-you p {
     font-size: 18px;
     color: var(--color-text-secondary);
+  }
+  .thank-you-inner {
+    text-align: center;
+  }
+  .thank-you-btn {
+    margin-top: 32px;
   }
 </style>

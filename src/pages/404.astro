@@ -7,12 +7,35 @@ import '../styles/global.css';
   <Fragment slot="head">
     <meta name="robots" content="noindex, nofollow" />
   </Fragment>
-  <section style="padding: 120px 0; text-align: center; min-height: 50vh; display: flex; align-items: center; justify-content: center;">
-    <div class="container">
-      <h1 style="font-size: 64px; color: var(--color-primary); margin-bottom: 16px;">404</h1>
-      <h2 style="margin-bottom: 12px;">Page Not Found</h2>
-      <p style="color: var(--color-text-secondary); margin-bottom: 32px;">The page you're looking for doesn't exist or has been moved.</p>
+  <section class="error-section">
+    <div class="container error-content">
+      <h1 class="error-code">404</h1>
+      <h2 class="error-heading">Page Not Found</h2>
+      <p class="error-text">The page you're looking for doesn't exist or has been moved.</p>
       <a href="/" class="btn">Back to Home</a>
     </div>
   </section>
 </Layout>
+
+<style>
+  .error-section {
+    padding: 120px 0;
+    text-align: center;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .error-code {
+    font-size: 64px;
+    color: var(--color-primary);
+    margin-bottom: 16px;
+  }
+  .error-heading {
+    margin-bottom: 12px;
+  }
+  .error-text {
+    color: var(--color-text-secondary);
+    margin-bottom: 32px;
+  }
+</style>

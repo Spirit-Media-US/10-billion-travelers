@@ -19,7 +19,7 @@ const member = await sanityClient.fetch(
   </div>
 
   <section class="story-section">
-    <div class="container" style="text-align: center;">
+    <div class="container story-inner">
       <h1>Our Story</h1>
       {member?.tagline && <p class="story-tagline">{member.tagline}</p>}
     </div>
@@ -62,6 +62,7 @@ const member = await sanityClient.fetch(
   .breadcrumb a { color: var(--color-primary); text-decoration: none; }
   .breadcrumb span { margin: 0 6px; }
   .story-section { padding: 80px 0 40px; }
+  .story-inner { text-align: center; }
   .story-section h1 { text-transform: uppercase; margin-bottom: 24px; }
   .story-tagline { font-size: 20px; max-width: 700px; margin: 0 auto; line-height: 1.6; font-style: italic; }
   .bio-section { padding: 40px 0 80px; }
