@@ -1,7 +1,6 @@
 import { createClient } from '@sanity/client';
 import { createImageUrlBuilder } from '@sanity/image-url';
 
-// TODO: Replace with actual 10 Billion Travelers Sanity project ID when created
 export const sanityClient = createClient({
   projectId: '2voldnur',
   dataset: 'production',

@@ -75,15 +75,24 @@ Then run: `git checkout dev && git pull origin dev`
 - Contact: business hours, location from Sanity siteSettings
 - Sanity schema decisions: services/team/gallery/settings → Sanity; FAQs/page structure/SEO → static
 
-### In Progress — Phase 5 (CAR Gate)
-- Run automated code scans (8 pre-launch checks)
-- Migration fidelity check against original site
-- Generate Transformation Layer Report
+### Completed — Phase 5 (CAR Gate)
+- 7/8 automated scans PASS (build test pending — needs Bethel)
+- Removed TODO comment in sanity.ts
+- No hardcoded colors in markup (only rgba in CSS shadows — acceptable)
+- All images have alt text, all pages have SEO meta
+- No leftover WordPress/dev URLs in source
+- All 5 pages match site inventory, all internal links valid
+- Migration fidelity: page count matches, nav improved (added Services+Contact), all CTAs present, form works, footer complete
+- Critical fixes applied: removed stale TODO
+
+### In Progress — Phase 6 (Design Refinement)
+- Implement recommended improvements from CAR review
 
 ### Still Pending
 - Domain not yet connected in Cloudflare
 - CF Pages build needs verification (first deploy pending)
 - npm install needed on Bethel (new deps: sanity, sanity-plugin-media, @portabletext/astro)
+- Hero background image needs re-upload to Sanity (original download was corrupt)
 
 ## Rules
 
