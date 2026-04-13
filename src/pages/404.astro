@@ -2,11 +2,17 @@
 import Layout from '../layouts/Layout.astro';
 import '../styles/global.css';
 ---
-<Layout title="Page Not Found">
-  <Fragment slot="head"><meta name="robots" content="noindex, nofollow" /></Fragment>
-  <main class="flex min-h-screen flex-col items-center justify-center px-6 text-center">
-    <h1 class="text-4xl font-bold mb-4">404</h1>
-    <p class="text-lg mb-8">Page not found.</p>
-    <a href="/" class="underline">Go home</a>
-  </main>
+
+<Layout title="Page Not Found | 10 Billion Travelers">
+  <Fragment slot="head">
+    <meta name="robots" content="noindex, nofollow" />
+  </Fragment>
+  <section style="padding: 120px 0; text-align: center; min-height: 50vh; display: flex; align-items: center; justify-content: center;">
+    <div class="container">
+      <h1 style="font-size: 64px; color: var(--color-primary); margin-bottom: 16px;">404</h1>
+      <h2 style="margin-bottom: 12px;">Page Not Found</h2>
+      <p style="color: var(--color-text-secondary); margin-bottom: 32px;">The page you're looking for doesn't exist or has been moved.</p>
+      <a href="/" class="btn">Back to Home</a>
+    </div>
+  </section>
 </Layout>

@@ -1,20 +1,253 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import '../styles/global.css';
-
-// Example Sanity fetch — replace with real query for this site
-// import { sanityClient } from '../lib/sanity.ts';
-// const items = await sanityClient.fetch(`*[_type == "post"] | order(_createdAt desc)`);
 ---
 
-<Layout title="10 Billion Travelers">
-  <main class="flex min-h-screen flex-col items-center justify-center px-6 text-center">
-    <h1 class="text-4xl font-bold mb-4">
-      Site Name
-    </h1>
-    <p class="text-lg max-w-lg">
-      Replace this page with your site content. Connect to Sanity via
-      <code>src/lib/sanity.ts</code> and update the project ID.
-    </p>
-  </main>
+<Layout
+  title="Travel Agencies in Raleigh | 10 Billion Travelers"
+  description="Looking for the best travel agencies in Raleigh? Choose 10 Billion Travelers for expertly crafted tours and personalized travel experiences."
+>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content container">
+      <h1 class="hero-heading">New 10 Billion Travelers</h1>
+      <p class="hero-sub">Amazing places around the globe to see</p>
+      <a href="/about/" class="btn btn-filled">Learn More</a>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🌍</div>
+          <h2>Amazing Destinations</h2>
+          <p>Amazing places around the globe to see</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏨</div>
+          <h2>Great Accommodations</h2>
+          <p>Type of convenience and easily accessible</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h2>Super Fast Booking</h2>
+          <p>Schedules, rates and reserve your ticket</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🧭</div>
+          <h2>Friendly Tour Guide</h2>
+          <p>A perfect guide will be attentive and respectful</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="gallery">
+    <div class="container">
+      <h2 class="section-heading">Let's Join and Prove It</h2>
+      <div class="gallery-grid-3">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80" alt="Beautiful beach destination" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&q=80" alt="Tropical travel destination" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?w=800&q=80" alt="Beach paradise" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Best Travel -->
+  <section class="best-travel">
+    <div class="container">
+      <h2 class="section-heading">Best Travel</h2>
+      <div class="gallery-grid-3">
+        <div class="gallery-item square">
+          <img src="https://images.unsplash.com/photo-1488085061387-422e29b40080?w=600&q=80" alt="Travel adventure" loading="lazy" />
+        </div>
+        <div class="gallery-item square">
+          <img src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=600&q=80" alt="World travel" loading="lazy" />
+        </div>
+        <div class="gallery-item square">
+          <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600&q=80" alt="Travel road trip" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container" style="text-align: center;">
+      <h2>Ready to Explore?</h2>
+      <p>Let us help you plan your next adventure.</p>
+      <a href="/contact/" class="btn" style="margin-top: 24px;">Get in Touch</a>
+    </div>
+  </section>
 </Layout>
+
+<style>
+  /* Hero */
+  .hero {
+    position: relative;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1600&q=80') center/cover no-repeat;
+    overflow: hidden;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(0, 0, 0, 0.6), rgba(48, 199, 181, 0.5));
+  }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 120px 24px;
+  }
+  .hero-heading {
+    font-size: 64px;
+    font-weight: 700;
+    color: var(--color-accent-green);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .hero-sub {
+    font-size: 20px;
+    color: var(--color-white);
+    margin-bottom: 32px;
+  }
+  @media (max-width: 768px) {
+    .hero {
+      min-height: 420px;
+    }
+    .hero-content {
+      padding: 80px 16px;
+    }
+    .hero-heading {
+      font-size: 36px;
+    }
+    .hero-sub {
+      font-size: 16px;
+    }
+  }
+
+  /* Features */
+  .features {
+    padding: 80px 0;
+    background: var(--color-bg);
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .feature-card {
+    background: var(--color-white);
+    border-radius: var(--radius-card);
+    border-bottom: 10px solid var(--color-black);
+    box-shadow: var(--shadow-card);
+    padding: 32px 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0px 8px 20px -2px rgba(0, 0, 0, 0.3);
+  }
+  .feature-icon {
+    font-size: 40px;
+    margin-bottom: 16px;
+  }
+  .feature-card h2 {
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .feature-card p {
+    font-size: 15px;
+    color: var(--color-text-secondary);
+  }
+  @media (max-width: 768px) {
+    .features-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 480px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Section headings */
+  .section-heading {
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+
+  /* Gallery */
+  .gallery {
+    padding: 80px 0;
+  }
+  .gallery-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .gallery-item {
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    transition: transform 0.4s ease, opacity 0.3s ease;
+    opacity: 0.9;
+  }
+  .gallery-item img:hover {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  .gallery-item.square img {
+    height: 300px;
+  }
+  @media (max-width: 768px) {
+    .gallery-grid-3 {
+      grid-template-columns: 1fr;
+    }
+    .gallery-item img,
+    .gallery-item.square img {
+      height: 220px;
+    }
+  }
+
+  /* Best Travel */
+  .best-travel {
+    padding: 80px 0;
+    background: var(--color-white);
+  }
+
+  /* CTA */
+  .cta-section {
+    padding: 80px 0;
+    background: var(--color-bg);
+  }
+  .cta-section h2 {
+    margin-bottom: 12px;
+  }
+  .cta-section p {
+    font-size: 18px;
+    color: var(--color-text-secondary);
+  }
+</style>

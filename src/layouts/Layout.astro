@@ -6,11 +6,20 @@ interface Props {
 }
 const {
   title,
-  description = '10 Billion Travelers',
+  description = '10 Billion Travelers — expertly crafted tours and personalized travel experiences',
   ogImage = '/favicon.svg',
 } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site || 'https://10billiontravelers.com').href;
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/about/', label: 'About' },
+  { href: '/services/', label: 'Services' },
+  { href: '/contact/', label: 'Contact' },
+];
 ---
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -29,9 +38,255 @@ const canonical = new URL(Astro.url.pathname, Astro.site || 'https://10billiontr
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "10 Billion Travelers",
+      "url": "https://10billiontravelers.com",
+      "description": "Travel consulting by Kevin White — 1 million miles, 26 countries"
+    })} />
     <slot name="head" />
   </head>
-  <body style="background-color: var(--color-bg); color: var(--color-text);">
-    <slot />
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="header-inner container">
+        <a href="/" class="logo-link" aria-label="10 Billion Travelers Home">
+          <span class="logo-text">10B<span class="logo-accent">Travelers</span></span>
+        </a>
+
+        <button class="mobile-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+
+        <nav class="main-nav" aria-label="Main navigation">
+          {navLinks.map(link => (
+            <a
+              href={link.href}
+              class:list={['nav-link', { active: currentPath === link.href }]}
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-inner container">
+        <div class="footer-brand">
+          <span class="logo-text footer-logo">10B<span class="logo-accent">Travelers</span></span>
+          <p class="footer-tagline">Inspiring travelers around the world</p>
+        </div>
+        <div class="footer-nav">
+          <h4 class="footer-heading">Quick Links</h4>
+          {navLinks.map(link => (
+            <a href={link.href} class="footer-link">{link.label}</a>
+          ))}
+        </div>
+        <div class="footer-contact">
+          <h4 class="footer-heading">Get in Touch</h4>
+          <p>Raleigh, NC</p>
+          <a href="/contact/" class="footer-link">Contact Us</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container">
+          <p>&copy; {new Date().getFullYear()} 10 Billion Travelers. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const toggle = document.querySelector('.mobile-toggle');
+      const nav = document.querySelector('.main-nav');
+      if (toggle && nav) {
+        toggle.addEventListener('click', () => {
+          const expanded = toggle.getAttribute('aria-expanded') === 'true';
+          toggle.setAttribute('aria-expanded', String(!expanded));
+          nav.classList.toggle('open');
+        });
+      }
+    </script>
   </body>
 </html>
+
+<style>
+  /* Header */
+  .header {
+    background: var(--color-white);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+
+  /* Logo */
+  .logo-link {
+    text-decoration: none;
+  }
+  .logo-text {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--color-heading);
+  }
+  .logo-accent {
+    color: var(--color-primary);
+  }
+
+  /* Nav */
+  .main-nav {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+  .nav-link {
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-heading);
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 4px;
+    transition: color 0.2s ease;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transition: width 0.3s ease;
+  }
+  .nav-link:hover,
+  .nav-link.active {
+    color: var(--color-primary);
+  }
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    width: 100%;
+  }
+
+  /* Mobile toggle */
+  .mobile-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: var(--color-accent-cyan);
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .mobile-toggle .bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--color-white);
+    transition: transform 0.3s ease;
+  }
+
+  @media (max-width: 768px) {
+    .mobile-toggle {
+      display: flex;
+    }
+    .main-nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--color-white);
+      flex-direction: column;
+      padding: 24px;
+      gap: 16px;
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .main-nav.open {
+      display: flex;
+    }
+  }
+
+  /* Footer */
+  .footer {
+    background: var(--color-white);
+    border-top: 1px solid var(--color-footer-border);
+    margin-top: 80px;
+  }
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 48px;
+    padding-top: 48px;
+    padding-bottom: 48px;
+    max-width: var(--footer-max);
+  }
+  .footer-heading {
+    font-size: 16px;
+    margin-bottom: 16px;
+    color: var(--color-heading);
+  }
+  .footer-brand p {
+    margin-top: 8px;
+    font-size: 15px;
+    color: var(--color-text-secondary);
+  }
+  .footer-logo {
+    font-size: 20px;
+  }
+  .footer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .footer-link {
+    color: var(--color-primary-hover);
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.2s ease;
+  }
+  .footer-link:hover {
+    color: var(--color-primary);
+  }
+  .footer-contact p {
+    font-size: 15px;
+    margin-bottom: 8px;
+    color: var(--color-text-secondary);
+  }
+  .footer-bottom {
+    border-top: 1px solid var(--color-footer-border);
+    padding: 20px 0;
+    text-align: center;
+  }
+  .footer-bottom p {
+    font-size: 14px;
+    color: var(--color-primary);
+  }
+
+  @media (max-width: 768px) {
+    .footer-inner {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding-top: 32px;
+      padding-bottom: 32px;
+    }
+  }
+</style>
