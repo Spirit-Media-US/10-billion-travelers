@@ -48,13 +48,28 @@ Then run: `git checkout dev && git pull origin dev`
 - All content files in content/ — site-inventory.md, design-tokens.md, images.md, pages/*.md
 - Note: Services page and Contact page have placeholder content (lorem ipsum, fake phone/email)
 
-### In Progress — Phase 3 (Design + Build)
-- Create Stitch design system from extracted tokens
-- Generate screens for all 5 pages
-- Build Astro pages from designs + content
+### Completed — Phase 3 (Design + Build)
+- Stitch project + design system created (project: 4987241788991962414, asset: 1896031033961124489)
+- Stitch screen generation timed out — built directly from extracted design tokens
+- global.css: Tailwind v4 @theme with all design tokens, Google Fonts (Montserrat + Lato), responsive
+- Layout.astro: sticky header with nav (Home, About, Services, Contact), hamburger mobile menu (#0DCDC2), 3-col footer
+- Homepage: hero with gradient overlay, 4 feature cards (20px radius, black bottom border, box-shadow), photo galleries, CTA
+- About: breadcrumb, Our Story intro, Kevin White 2-col bio with portrait, Email Us CTA
+- Services: 3 alternating image/text service rows, FAQ accordion (replaced placeholder lorem ipsum with real content)
+- Contact: form (name, phone, email, message) + business hours/location sidebar
+- Thank You: confirmation page with checkmark icon
+- 404: styled to match design system
+- All pages use design token CSS vars — no hardcoded hex values
+- Note: images currently use Unsplash placeholders — will be replaced with Sanity images in Phase 4
+
+### In Progress — Phase 4 (Wire Sanity CMS)
+- Upload images to Sanity, wire urlFor() references
+- Define schemas for CMS-editable content
+- Set up embedded Sanity Studio at /studio
 
 ### Still Pending
 - Domain not yet connected in Cloudflare
+- CF Pages build needs verification (first deploy pending)
 
 ## Rules
 
