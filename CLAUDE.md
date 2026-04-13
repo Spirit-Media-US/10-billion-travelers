@@ -2,10 +2,11 @@
 
 > **CLAUDE.md belongs in version control — NEVER add it to .gitignore. This file is the shared source of truth for all developers and all Claude Code sessions.**
 
-This site: 10 Billion Travelers | Repo: github.com/Spirit-Media-US/10-billion-travelers | Domain: TBD | Sanity ID: 2voldnur
+This site: 10 Billion Travelers | Repo: github.com/Spirit-Media-US/10-billion-travelers | Domain: 10billiontravelers.com | Sanity ID: 2voldnur | Registry ID: 051de8cc
 
 **Migration protocol:** /home/deploy/bin/tools-api/pipelines/migration/CLAUDE.md
-**Infrastructure:** Deploy webhook wired
+**Client URL:** https://10billiontravelers.com
+**Infrastructure:** Deploy webhook wired | CF Pages: 10-billion-travelers.pages.dev | Dev preview: dev.10-billion-travelers.pages.dev
 
 ## Dev Commands
 
@@ -25,19 +26,26 @@ Then run: `git checkout dev && git pull origin dev`
 
 - Astro 5 + Tailwind CSS v4
 - Sanity CMS (projectId: 2voldnur, dataset: production)
-- Netlify — domain and deploy not yet configured
+- Cloudflare Pages (project: 10-billion-travelers, auto-deploys main + dev)
 - GHL forms — not yet wired
 
-## Status — as of 2026-04-08
+## Status — as of 2026-04-13
 
-### In Progress
-- Early build phase — Astro scaffold in place, Lefthook hooks installed
+### Completed — Phase 1 (Infrastructure)
+- GitHub repo created: github.com/Spirit-Media-US/10-billion-travelers
+- Astro 5 + Tailwind v4 scaffold with Lefthook hooks
 - Sanity project created (ID: 2voldnur), deploy webhook wired
-- Domain not yet assigned or connected
-
-### Next Steps
+- Cloudflare Pages project connected (auto-deploys main + dev)
+- Portal dashboard card added and live
+- Registry entry created (ID: 051de8cc), Phase 1 complete
 - Port 4330 assigned in VPS port table
-- Connect domain in Netlify and Cloudflare
+
+### In Progress — Phase 2 (Content Extraction)
+- Crawl https://10billiontravelers.com — extract content, CSS, media
+- Generate content/site-inventory.md, content/design-tokens.md, content/images.md, content/pages/*.md
+
+### Still Pending
+- Domain not yet connected in Cloudflare
 
 ## Rules
 
