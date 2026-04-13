@@ -9,7 +9,7 @@ const {
   description = '10 Billion Travelers — expertly crafted tours and personalized travel experiences',
   ogImage = '/favicon.svg',
 } = Astro.props;
-const canonical = new URL(Astro.url.pathname, Astro.site || 'https://10billiontravelers.com').href;
+const canonical = new URL(Astro.url.pathname, Astro.site || 'https://10btravelers.com').href;
 const currentPath = Astro.url.pathname;
 
 const navLinks = [
@@ -42,7 +42,7 @@ const navLinks = [
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "10 Billion Travelers",
-      "url": "https://10billiontravelers.com",
+      "url": "https://10btravelers.com",
       "description": "Travel consulting by Kevin White — 1 million miles, 26 countries"
     })} />
     <slot name="head" />

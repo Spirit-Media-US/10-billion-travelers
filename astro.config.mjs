@@ -3,7 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://10billiontravelers.com',
+  site: 'https://10btravelers.com',
   server: { port: 4330, host: true },
   integrations: [sitemap()],
   vite: {

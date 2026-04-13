@@ -2,7 +2,7 @@
 
 > **CLAUDE.md belongs in version control — NEVER add it to .gitignore. This file is the shared source of truth for all developers and all Claude Code sessions.**
 
-This site: 10 Billion Travelers | Repo: github.com/Spirit-Media-US/10-billion-travelers | Domain: 10billiontravelers.com | Sanity ID: 2voldnur | Registry ID: 051de8cc
+This site: 10 Billion Travelers | Repo: github.com/Spirit-Media-US/10-billion-travelers | Domain: 10btravelers.com | Sanity ID: 2voldnur | Registry ID: 051de8cc
 
 **Migration protocol:** /home/deploy/bin/tools-api/pipelines/migration/CLAUDE.md
 **Client URL:** https://10btravelers.com (original WordPress site on Cloudways)
@@ -105,10 +105,18 @@ Then run: `git checkout dev && git pull origin dev`
 - Build verified on Bethel, 6 pages generate clean
 
 ### Still Pending — Phase 8 (Launch)
-- Domain not yet connected in Cloudflare
+- **Visual comparison required:** Open old site (https://10btravelers.com) side-by-side with dev preview (dev.10-billion-travelers.pages.dev) — page by page, verify layout/content/images match
+- Hero background image needs re-upload to Sanity (original download was corrupt — currently Unsplash placeholder)
 - CF Pages build needs verification (first deploy pending)
-- Hero background image needs re-upload to Sanity (original download was corrupt)
+- Domain cutover: GoDaddy nameservers → Cloudflare (Kevin approval needed — old site stays live until then)
 - Merge dev → main for production deploy (Kevin approval needed)
+
+### Notes for Jona
+- **Domain is `10btravelers.com`** (NOT 10billiontravelers.com — that domain expired in 2023)
+- Old site is WordPress + Astra + Elementor on Cloudways (IP: 161.35.131.217)
+- Old site is LIVE — do not touch DNS until Kevin approves cutover
+- The old Services page and Contact page had placeholder content (lorem ipsum, fake phone/email) — new site already has real content, which is correct
+- GoDaddy API creds are in /home/deploy/.secrets if domain DNS work is needed later
 
 ## Rules
 

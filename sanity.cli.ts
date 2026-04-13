@@ -5,5 +5,5 @@ export default defineCliConfig({
     projectId: '2voldnur',
     dataset: 'production',
   },
-  studioHost: '10billiontravelers',
+  studioHost: '10btravelers',
 });
