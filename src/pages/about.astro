@@ -1,58 +1,53 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import '../styles/global.css';
+import { sanityClient, urlFor } from '../lib/sanity';
+
+const member = await sanityClient.fetch(
+  `*[_type == "teamMember"][0] { name, role, photo, photoCaption, tagline, bio }`
+);
 ---
 
 <Layout
   title="Experienced Travel Consultants | 10 Billion Travelers"
   description="Discover how our travel consultants at 10 Billion Travelers can tailor your dream vacations."
 >
-  <!-- Breadcrumb -->
   <div class="breadcrumb">
     <div class="container">
       <a href="/">Home</a> <span>/</span> <span>About</span>
     </div>
   </div>
 
-  <!-- Story Section -->
   <section class="story-section">
     <div class="container" style="text-align: center;">
       <h1>Our Story</h1>
-      <p class="story-tagline">
-        I was born to travel! I've logged over 1 million miles. Before I'm 100 years old there will be 10 Billion people alive. I'll inspire as many travelers as possible!
-      </p>
+      {member?.tagline && <p class="story-tagline">{member.tagline}</p>}
     </div>
   </section>
 
-  <!-- Kevin White Bio -->
   <section class="bio-section">
     <div class="container">
       <div class="bio-grid">
         <div class="bio-photo">
-          <img
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80"
-            alt="Kevin White — founder of 10 Billion Travelers"
-            loading="lazy"
-          />
-          <p class="photo-caption">Having fun on the Great Wall</p>
+          {member?.photo && (
+            <img
+              src={urlFor(member.photo).width(400).auto('format').url()}
+              alt={member.name}
+              loading="lazy"
+            />
+          )}
+          {member?.photoCaption && <p class="photo-caption">{member.photoCaption}</p>}
         </div>
         <div class="bio-text">
-          <h2>Kevin White</h2>
-          <p>
-            Born in a poor family in Western North Carolina, I had only traveled outside of NC for a few days until I went to college in South Carolina. I didn't even have a passport until I was 30 years old. Today, I've logged over 1 million miles and have traveled to 26 different countries around the world.
-          </p>
-          <p>
-            I love to travel. I love adventure. I love to travel to popular destinations but love even more to sleep under the stars where very few people have ever gone. I know how to travel. I know what makes airlines, hotels, restaurants, and attractions great! I'm blessed with a ton of practical travel experience and would love to share it with you.
-          </p>
-          <p>
-            Check out our Vlogs, Blogs, Reviews, and Travel Services. We will inspire &amp; facilitate your travel dreams. Let us consult with you to make your hotel, restaurant, or attraction more profitable. Are your bags packed yet?
-          </p>
+          <h2>{member?.name || 'Kevin White'}</h2>
+          {member?.bio?.map((block: any) => (
+            <p>{block.children?.map((child: any) => child.text).join('')}</p>
+          ))}
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
   <section class="about-cta">
     <div class="container" style="text-align: center;">
       <h2>Have a Question?</h2>
@@ -63,93 +58,25 @@ import '../styles/global.css';
 </Layout>
 
 <style>
-  .breadcrumb {
-    padding: 16px 0;
-    font-size: 14px;
-    color: var(--color-text-secondary);
-  }
-  .breadcrumb a {
-    color: var(--color-primary);
-    text-decoration: none;
-  }
-  .breadcrumb span {
-    margin: 0 6px;
-  }
-
-  .story-section {
-    padding: 80px 0 40px;
-  }
-  .story-section h1 {
-    text-transform: uppercase;
-    margin-bottom: 24px;
-  }
-  .story-tagline {
-    font-size: 20px;
-    max-width: 700px;
-    margin: 0 auto;
-    color: var(--color-text);
-    line-height: 1.6;
-    font-style: italic;
-  }
-
-  .bio-section {
-    padding: 40px 0 80px;
-  }
-  .bio-grid {
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: 48px;
-    align-items: start;
-  }
-  .bio-photo img {
-    width: 100%;
-    border-radius: 71px;
-    aspect-ratio: 283/300;
-    object-fit: cover;
-  }
-  .photo-caption {
-    text-align: center;
-    font-size: 14px;
-    color: var(--color-text-secondary);
-    margin-top: 12px;
-    font-style: italic;
-  }
-  .bio-text h2 {
-    text-transform: uppercase;
-    margin-bottom: 20px;
-  }
-  .bio-text p {
-    margin-bottom: 16px;
-    line-height: 1.7;
-  }
-
-  .about-cta {
-    padding: 60px 0 80px;
-    background: var(--color-white);
-  }
-  .about-cta h2 {
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-  .about-cta h3 {
-    color: var(--color-text-secondary);
-    font-weight: 500;
-  }
-
+  .breadcrumb { padding: 16px 0; font-size: 14px; color: var(--color-text-secondary); }
+  .breadcrumb a { color: var(--color-primary); text-decoration: none; }
+  .breadcrumb span { margin: 0 6px; }
+  .story-section { padding: 80px 0 40px; }
+  .story-section h1 { text-transform: uppercase; margin-bottom: 24px; }
+  .story-tagline { font-size: 20px; max-width: 700px; margin: 0 auto; line-height: 1.6; font-style: italic; }
+  .bio-section { padding: 40px 0 80px; }
+  .bio-grid { display: grid; grid-template-columns: 300px 1fr; gap: 48px; align-items: start; }
+  .bio-photo img { width: 100%; border-radius: 71px; aspect-ratio: 283/300; object-fit: cover; }
+  .photo-caption { text-align: center; font-size: 14px; color: var(--color-text-secondary); margin-top: 12px; font-style: italic; }
+  .bio-text h2 { text-transform: uppercase; margin-bottom: 20px; }
+  .bio-text p { margin-bottom: 16px; line-height: 1.7; }
+  .about-cta { padding: 60px 0 80px; background: var(--color-white); }
+  .about-cta h2 { text-transform: uppercase; margin-bottom: 8px; }
+  .about-cta h3 { color: var(--color-text-secondary); font-weight: 500; }
   @media (max-width: 768px) {
-    .bio-grid {
-      grid-template-columns: 1fr;
-      text-align: center;
-    }
-    .bio-photo {
-      max-width: 250px;
-      margin: 0 auto;
-    }
-    .bio-text {
-      text-align: left;
-    }
-    .story-tagline {
-      font-size: 18px;
-    }
+    .bio-grid { grid-template-columns: 1fr; text-align: center; }
+    .bio-photo { max-width: 250px; margin: 0 auto; }
+    .bio-text { text-align: left; }
+    .story-tagline { font-size: 18px; }
   }
 </style>
