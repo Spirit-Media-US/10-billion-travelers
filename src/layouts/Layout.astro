@@ -51,7 +51,7 @@ const navLinks = [
     <!-- Header -->
     <header class="header">
       <div class="header-inner container">
-        <a href="/" class="logo-link" aria-label="10 Billion Travelers Home">
+        <a href="/" class="logo-link" aria-label="10BTravelers Home">
           <span class="logo-text">10B<span class="logo-accent">Travelers</span></span>
         </a>
 
@@ -86,13 +86,13 @@ const navLinks = [
           <p class="footer-tagline">Inspiring travelers around the world</p>
         </div>
         <div class="footer-nav">
-          <h4 class="footer-heading">Quick Links</h4>
+          <p class="footer-heading">Quick Links</h4>
           {navLinks.map(link => (
             <a href={link.href} class="footer-link">{link.label}</a>
           ))}
         </div>
         <div class="footer-contact">
-          <h4 class="footer-heading">Get in Touch</h4>
+          <p class="footer-heading">Get in Touch</h4>
           <p>Raleigh, NC</p>
           <a href="/contact/" class="footer-link">Contact Us</a>
         </div>
@@ -169,7 +169,7 @@ const navLinks = [
     color: var(--color-heading);
   }
   .logo-accent {
-    color: var(--color-primary);
+    color: #007D6C;
   }
 
   /* Nav */
@@ -281,13 +281,13 @@ const navLinks = [
     gap: 8px;
   }
   .footer-link {
-    color: var(--color-primary-hover);
+    color: #007D6C;
     text-decoration: none;
     font-size: 15px;
     transition: color 0.2s ease;
   }
   .footer-link:hover {
-    color: var(--color-primary);
+    color: var(--color-heading);
   }
   .footer-contact p {
     font-size: 15px;
@@ -301,7 +301,7 @@ const navLinks = [
   }
   .footer-bottom p {
     font-size: 14px;
-    color: var(--color-primary);
+    color: var(--color-text-secondary);
   }
 
   @media (max-width: 768px) {

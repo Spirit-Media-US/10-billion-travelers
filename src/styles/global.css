@@ -93,8 +93,8 @@ img {
 }
 
 .btn-filled {
-  background: var(--color-accent-green);
-  border-color: var(--color-accent-green);
+  background: #007D6C;
+  border-color: #007D6C;
   color: var(--color-white);
   border-radius: var(--radius-button-cta);
 }
