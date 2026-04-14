@@ -1,0 +1,114 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
+---
+
+<Layout
+  title="About | 10 Billion Travelers"
+  description="Meet Kevin White — over 1 million miles traveled across 26 countries. Learn the story behind 10 Billion Travelers."
+>
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Our Story</h1>
+    </div>
+  </section>
+
+  <!-- Bio Section -->
+  <section class="bio-section">
+    <div class="container">
+      <div class="bio-grid">
+        <div class="bio-image">
+          <div class="image-placeholder">Kevin White portrait — will be loaded from Sanity</div>
+          <p class="image-caption">Having fun on the Great Wall</p>
+        </div>
+        <div class="bio-content">
+          <p class="bio-quote">"I was born to travel! I've logged over 1 million miles. Before I'm 100 years old there will be 10 Billion people alive. I'll inspire as many travelers as possible!"</p>
+          <p>Kevin White was born into a modest family in Western North Carolina with limited early travel experience. His first passport didn't come until age 30.</p>
+          <p>Since then, he has accumulated over 1 million miles across 26 countries — exploring both mainstream destinations and remote, off-the-beaten-path locations.</p>
+          <p>Kevin is passionate about sharing his knowledge of the travel industry. Explore our vlogs, blogs, reviews, and consulting services to plan your next adventure.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Have a Question?</h2>
+      <p class="cta-sub">We'd Love to Hear From You</p>
+      <a href="mailto:info@10btravelers.com" class="btn">Email Us</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header {
+    background: var(--color-white);
+    padding: 60px 0;
+    text-align: center;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .page-header h1 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .bio-section {
+    padding: 60px 0;
+  }
+  .bio-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .image-placeholder {
+    background: var(--color-bg-light);
+    padding: 80px 20px;
+    text-align: center;
+    color: var(--color-text-secondary);
+    font-style: italic;
+  }
+  .image-caption {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    text-align: center;
+    margin-top: 8px;
+    font-style: italic;
+  }
+  .bio-quote {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-heading);
+    font-family: var(--font-heading);
+    line-height: 1.4;
+    margin-bottom: 24px;
+  }
+  .bio-content p {
+    margin-bottom: 16px;
+  }
+
+  .cta-section {
+    padding: 80px 0;
+    text-align: center;
+    background: var(--color-white);
+  }
+  .cta-section h2 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  .cta-sub {
+    font-size: 17px;
+    color: var(--color-text-secondary);
+    margin-bottom: 32px;
+  }
+
+  @media (max-width: 768px) {
+    .bio-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+</style>

@@ -1,13 +1,171 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import '../styles/global.css';
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
 ---
 
-<Layout title="10 Billion Travelers">
-  <main class="flex items-center justify-center min-h-screen bg-gray-50">
-    <div class="text-center">
-      <h1 class="text-4xl font-bold text-gray-900">10 Billion Travelers</h1>
-      <p class="mt-4 text-lg text-gray-600">Site coming soon.</p>
+<Layout
+  title="Travel Agencies in Raleigh | 10 Billion Travelers"
+  description="Looking for the best travel agencies in Raleigh? Choose 10 Billion Travelers for expertly crafted tours and personalized travel experiences."
+>
+  <Fragment slot="head">
+    <meta name="keywords" content="travel agencies in raleigh" />
+  </Fragment>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content container">
+      <h1>Amazing Destinations</h1>
+      <p class="hero-sub">Amazing places around the globe to see</p>
     </div>
-  </main>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🌍</div>
+          <h2>Amazing Destinations</h2>
+          <p>Amazing places around the globe to see</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏨</div>
+          <h2>Great Accommodations</h2>
+          <p>Type of convenience and easily accessible</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h2>Super Fast Booking</h2>
+          <p>Schedules, rates and reserve your ticket</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🧭</div>
+          <h2>Friendly Tour Guide</h2>
+          <p>A perfect guide will be attentive and respectful</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Travel Photos Gallery -->
+  <section class="gallery-section">
+    <div class="container">
+      <div class="gallery-row" id="travel-gallery">
+        <div class="gallery-placeholder">Travel photos — images will be loaded from Sanity</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Let's Join and Prove It</h2>
+      <p class="cta-sub">Best Travel</p>
+      <a href="/about/" class="btn">Learn More</a>
+    </div>
+  </section>
+
+  <!-- Best Travel Gallery -->
+  <section class="gallery-section">
+    <div class="container">
+      <div class="gallery-grid" id="best-gallery">
+        <div class="gallery-placeholder">Best travel photos — images will be loaded from Sanity</div>
+      </div>
+    </div>
+  </section>
 </Layout>
+
+<style>
+  .hero {
+    background: #eeeeee;
+    padding: 80px 0;
+    text-align: center;
+  }
+  .hero h1 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .hero-sub {
+    font-size: 17px;
+    color: var(--color-text);
+    margin-top: 16px;
+  }
+
+  .features {
+    padding: 60px 0;
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .feature-card {
+    text-align: center;
+    padding: 32px 16px;
+  }
+  .feature-icon {
+    font-size: 40px;
+    margin-bottom: 16px;
+  }
+  .feature-card h2 {
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+  .feature-card p {
+    font-size: 15px;
+    color: var(--color-text-secondary);
+  }
+
+  .gallery-section {
+    padding: 40px 0;
+  }
+  .gallery-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .gallery-placeholder {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--color-bg-light);
+    color: var(--color-text-secondary);
+    font-style: italic;
+  }
+
+  .cta-section {
+    padding: 80px 0;
+    text-align: center;
+    background: var(--color-white);
+  }
+  .cta-section h2 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  .cta-sub {
+    font-size: 20px;
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 32px;
+  }
+
+  @media (max-width: 768px) {
+    .features-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-row, .gallery-grid { grid-template-columns: 1fr; }
+    .hero { padding: 60px 0; }
+  }
+  @media (max-width: 480px) {
+    .features-grid { grid-template-columns: 1fr; }
+  }
+</style>
