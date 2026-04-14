@@ -112,29 +112,29 @@ import "../styles/global.css";
 	}
 	.bio-image-col {
 		position: relative;
-		padding: 50px;
+		min-height: 360px;
 	}
 	.bio-image-col::before {
 		content: '';
 		position: absolute;
 		top: 0;
 		left: 0;
-		right: 30px;
-		bottom: 30px;
+		width: calc(9 * 24px);
+		height: calc(11 * 24px);
 		background-image: radial-gradient(#ADD8E6 2px, transparent 2px);
 		background-size: 24px 24px;
 		z-index: 0;
 	}
 	.bio-photo {
 		position: relative;
-		z-index: 1;
+		z-index: 10;
 		width: 100%;
 		max-width: 283px;
 		display: block;
-		margin-top: 20px;
-		margin-left: 20px;
-		border-radius: 4px;
-		box-shadow: 4px 4px 15px rgba(0,0,0,0.2);
+		margin-top: 40px;
+		margin-left: 40px;
+		border-radius: 0;
+		box-shadow: none;
 	}
 	.bio-text-col {
 		padding: 0;
