@@ -56,18 +56,16 @@ const heroImg = settings?.heroImage
 						<img src={urlFor(travelPhotos[0].image).width(1200).url()} alt={travelPhotos[0].image?.alt || travelPhotos[0].title} loading="lazy" />
 					</div>
 				)}
-				<div class="gallery-right">
-					{travelPhotos[1] && (
-						<div class="gallery-right-img">
-							<img src={urlFor(travelPhotos[1].image).width(600).url()} alt={travelPhotos[1].image?.alt || travelPhotos[1].title} loading="lazy" />
-						</div>
-					)}
-					{travelPhotos[2] && (
-						<div class="gallery-right-img">
-							<img src={urlFor(travelPhotos[2].image).width(600).url()} alt={travelPhotos[2].image?.alt || travelPhotos[2].title} loading="lazy" />
-						</div>
-					)}
-				</div>
+				{travelPhotos[1] && (
+					<div class="gallery-right-img">
+						<img src={urlFor(travelPhotos[1].image).width(600).url()} alt={travelPhotos[1].image?.alt || travelPhotos[1].title} loading="lazy" />
+					</div>
+				)}
+				{travelPhotos[2] && (
+					<div class="gallery-right-img">
+						<img src={urlFor(travelPhotos[2].image).width(600).url()} alt={travelPhotos[2].image?.alt || travelPhotos[2].title} loading="lazy" />
+					</div>
+				)}
 			</div>
 		</div>
 	</section>
@@ -299,43 +297,34 @@ const heroImg = settings?.heroImage
 		padding: 20px 0;
 	}
 	.gallery-asymmetric {
-		display: flex;
-		gap: 0;
-		align-items: stretch;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr 1fr;
+		gap: 16px;
 		height: 500px;
 	}
 	.gallery-big {
-		flex: 0 0 57%;
-		overflow: visible;
-		z-index: 1;
+		grid-row: 1 / 3;
+		border-radius: 10px;
+		overflow: hidden;
+		box-shadow: 4px 0 10px 0 rgba(0,0,0,0.5);
 	}
 	.gallery-big img {
-		width: 119.5%;
+		width: 100%;
 		height: 100%;
 		object-fit: cover;
 		display: block;
-		border-radius: 10px;
-		box-shadow: 4px 0 10px 0 rgba(0,0,0,0.5);
-	}
-	.gallery-right {
-		flex: 0 0 50%;
-		display: flex;
-		flex-direction: column;
-		gap: 0;
-		padding: 0;
 	}
 	.gallery-right-img {
-		flex: 1;
-		display: flex;
-		justify-content: flex-end;
+		border-radius: 10px;
+		overflow: hidden;
+		box-shadow: 4px 0 10px 0 rgba(0,0,0,0.5);
 	}
 	.gallery-right-img img {
-		width: 64%;
+		width: 100%;
 		height: 100%;
 		object-fit: cover;
 		display: block;
-		border-radius: 10px;
-		box-shadow: 4px 0 10px 0 rgba(0,0,0,0.5);
 	}
 
 	/* ===== 4. GALLERY — 3 equal columns ===== */
@@ -359,15 +348,11 @@ const heroImg = settings?.heroImage
 
 	@media (max-width: 767px) {
 		.gallery-asymmetric {
-			flex-direction: column;
+			grid-template-columns: 1fr;
+			grid-template-rows: auto;
 			height: auto;
-			overflow: hidden;
 		}
-		.gallery-big { flex: 0 0 auto; }
-		.gallery-big img { width: 100%; }
-		.gallery-right { flex: 0 0 auto; gap: 16px; }
-		.gallery-right-img { min-height: 200px; }
-		.gallery-right-img img { width: 100%; }
+		.gallery-big { grid-row: auto; }
 		.gallery-three { flex-direction: column; gap: 16px; }
 	}
 
