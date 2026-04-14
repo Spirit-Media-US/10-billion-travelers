@@ -105,23 +105,26 @@ import "../styles/global.css";
 		</div>
 	</section>
 
-	<!-- 6. Associations logo slider -->
+	<!-- 6. Associations carousel — shows 3 at a time, loops -->
 	<section class="associations">
 		<div class="container">
 			<h2>Associations</h2>
 			<div class="assoc-slider" id="assoc-slider">
 				<button class="assoc-arrow assoc-prev" id="assoc-prev" aria-label="Previous">
-					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
 				</button>
 				<div class="assoc-viewport">
 					<div class="assoc-track" id="assoc-track">
 						<div class="assoc-slide"><img src="https://10btravelers.com/wp-content/uploads/2024/01/accredit.webp" alt="Accredited Media" /></div>
 						<div class="assoc-slide"><img src="https://10btravelers.com/wp-content/uploads/2024/01/world-foodtravel-association.webp" alt="World Food Travel Association" /></div>
 						<div class="assoc-slide"><img src="https://10btravelers.com/wp-content/uploads/2024/01/unwto.webp" alt="UNWTO" /></div>
+						<div class="assoc-slide"><img src="https://10btravelers.com/wp-content/uploads/2024/01/accredit.webp" alt="Accredited Media" /></div>
+						<div class="assoc-slide"><img src="https://10btravelers.com/wp-content/uploads/2024/01/world-foodtravel-association.webp" alt="World Food Travel Association" /></div>
+						<div class="assoc-slide"><img src="https://10btravelers.com/wp-content/uploads/2024/01/unwto.webp" alt="UNWTO" /></div>
 					</div>
 				</div>
 				<button class="assoc-arrow assoc-next" id="assoc-next" aria-label="Next">
-					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
 				</button>
 			</div>
 			<div class="assoc-dots" id="assoc-dots">
@@ -134,38 +137,32 @@ import "../styles/global.css";
 
 	<script>
 	(function() {
-		const dots = document.querySelectorAll('.assoc-dot');
-		const slides = document.querySelectorAll('.assoc-slide');
-		const prev = document.getElementById('assoc-prev');
-		const next = document.getElementById('assoc-next');
-		if (!slides.length) return;
+		var track = document.getElementById('assoc-track');
+		var dots = document.querySelectorAll('.assoc-dot');
+		var prev = document.getElementById('assoc-prev');
+		var next = document.getElementById('assoc-next');
+		if (!track) return;
 
-		let current = 0;
-		const total = slides.length;
+		var current = 0;
+		var pages = 3;
 
-		function highlight(i) {
-			current = ((i % total) + total) % total;
+		function goTo(i) {
+			current = ((i % pages) + pages) % pages;
+			track.style.transition = 'transform 0.5s ease';
+			track.style.transform = 'translateX(-' + (current * 33.333) + '%)';
 			dots.forEach(function(d, idx) { d.classList.toggle('active', idx === current); });
-			slides.forEach(function(s, idx) {
-				s.style.opacity = idx === current ? '1' : '0.5';
-				s.style.transform = idx === current ? 'scale(1.05)' : 'scale(1)';
-			});
 		}
 
-		slides.forEach(function(s) { s.style.transition = 'opacity 0.4s, transform 0.4s'; });
-		highlight(0);
-
-		prev.addEventListener('click', function() { highlight(current - 1); });
-		next.addEventListener('click', function() { highlight(current + 1); });
+		prev.addEventListener('click', function() { goTo(current - 1); });
+		next.addEventListener('click', function() { goTo(current + 1); });
 		dots.forEach(function(d) {
-			d.addEventListener('click', function() { highlight(Number(d.dataset.index)); });
+			d.addEventListener('click', function() { goTo(Number(d.dataset.index)); });
 		});
 
-		let interval = setInterval(function() { highlight(current + 1); }, 5000);
-		var slider = document.getElementById('assoc-slider');
-		slider.addEventListener('mouseenter', function() { clearInterval(interval); });
-		slider.addEventListener('mouseleave', function() {
-			interval = setInterval(function() { highlight(current + 1); }, 5000);
+		var interval = setInterval(function() { goTo(current + 1); }, 5000);
+		document.getElementById('assoc-slider').addEventListener('mouseenter', function() { clearInterval(interval); });
+		document.getElementById('assoc-slider').addEventListener('mouseleave', function() {
+			interval = setInterval(function() { goTo(current + 1); }, 5000);
 		});
 	})();
 	</script>
@@ -434,19 +431,20 @@ import "../styles/global.css";
 	}
 	.assoc-track {
 		display: flex;
-		width: 100%;
+		width: 200%;
+		transition: transform 0.5s ease;
 	}
 	.assoc-slide {
-		flex: 0 0 33.333%;
+		flex: 0 0 calc(100% / 6);
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: 0 20px;
-		height: 100px;
+		padding: 0 30px;
+		height: 110px;
 	}
 	.assoc-slide img {
 		max-width: 100%;
-		max-height: 90px;
+		max-height: 100px;
 		height: auto;
 		object-fit: contain;
 	}
