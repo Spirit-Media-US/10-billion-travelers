@@ -7,39 +7,42 @@ import "../styles/global.css";
 	title="About | 10 Billion Travelers"
 	description="Meet Kevin White — over 1 million miles traveled across 26 countries. Learn the story behind 10 Billion Travelers."
 >
-	<!-- Page Header -->
 	<section class="page-header">
 		<div class="container">
 			<h1>Our Story</h1>
 		</div>
 	</section>
 
-	<!-- Bio Section -->
+	<!-- Bio: image left, text right (matches original Elementor layout) -->
 	<section class="bio-section">
 		<div class="container">
 			<div class="bio-grid">
 				<div class="bio-image-wrap">
-					<div class="bio-image-placeholder" aria-label="Kevin White portrait">
-						<span>Kevin White</span>
-					</div>
-					<p class="image-caption">Having fun on the Great Wall</p>
+					<img
+						src="https://10btravelers.com/wp-content/uploads/2023/11/Kevin-White-1-283x300.jpeg"
+						alt="Kevin White"
+						width="283"
+						height="300"
+						class="bio-photo"
+					/>
 				</div>
 				<div class="bio-content">
-					<p class="bio-lead">"I was born to travel! I've logged over 1 million miles. Before I'm 100 years old there will be 10 Billion people alive. I'll inspire as many travelers as possible!"</p>
+					<p>I was born to travel! I've logged over 1 million miles. Before I'm 100 years old there will be 10 Billion people alive. I'll inspire as many travelers as possible!</p>
 
-					<p>I was born into a modest family in Western North Carolina. Travel outside of North Carolina was minimal. When I did travel, it was only to South Carolina and Virginia. Travel outside the US&mdash;forget about it! That was for the privileged.</p>
+					<p>Born in a poor family in Western North Carolina, I had only traveled outside of NC for a few days until I went to college in South Carolina. I didn't even have a passport until I was 30 years old. Today, I've logged over 1 million miles and have traveled to 26 different countries around the world.</p>
 
-					<p>I didn't receive my first passport until I was 30 years old. I have now logged over 1 million miles and traveled to 26 different countries. That's not 26 trips to the Bahamas. I have been to many of the major destinations and I have also gone off the beaten path to places most people don't even know exist.</p>
+					<p>I love to travel. I love adventure. I love to travel to popular destinations but love even more to sleep under the stars where very few people have ever gone. I know how to travel. I know what makes airlines, hotels, restaurants, and attractions great! I'm blessed with a ton of practical travel experience and would love to share it with you.</p>
 
-					<p>I have traveled enough to know the inner workings of airlines, hotels, restaurants, and attractions. I look forward to sharing all of this with you through our Vlogs, Blogs, Reviews, and Travel Services. Your new experience begins now!</p>
+					<p>Check out our Vlogs, Blogs, Reviews, and Travel Services. We will inspire &amp; facilitate your travel dreams. Let us consult with you to make your hotel, restaurant, or attraction more profitable. Are your bags packed yet?</p>
 
-					<p class="bio-author">Kevin White</p>
+					<h3 class="bio-name">Kevin White</h3>
+					<p class="bio-caption">Having fun on the Great Wall</p>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<!-- CTA -->
+	<!-- CTA: "Have a Question" -->
 	<section class="cta-section">
 		<div class="container">
 			<h2>Have a Question?</h2>
@@ -66,48 +69,28 @@ import "../styles/global.css";
 	}
 	.bio-grid {
 		display: grid;
-		grid-template-columns: 300px 1fr;
+		grid-template-columns: 283px 1fr;
 		gap: 48px;
 		align-items: start;
 	}
-	.bio-image-placeholder {
+	.bio-photo {
 		width: 283px;
-		height: 300px;
-		background: var(--color-bg-light);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		color: var(--color-text-secondary);
-		font-style: italic;
-		font-size: 14px;
-	}
-	.image-caption {
-		font-size: 13px;
-		color: var(--color-text-secondary);
-		text-align: center;
-		margin-top: 8px;
-		font-style: italic;
-	}
-	.bio-lead {
-		font-size: 18px;
-		font-weight: 700;
-		color: var(--color-heading);
-		font-family: var(--font-heading);
-		line-height: 1.5;
-		margin-bottom: 24px;
+		height: auto;
 	}
 	.bio-content p {
 		margin-bottom: 16px;
 		line-height: 1.7;
 	}
-	.bio-author {
-		font-family: var(--font-heading);
-		font-weight: 600;
-		font-size: 16px;
-		color: var(--color-heading);
+	.bio-name {
+		font-size: 18px;
 		text-transform: uppercase;
-		letter-spacing: 1px;
+		letter-spacing: 2px;
 		margin-top: 24px;
+		margin-bottom: 8px;
+	}
+	.bio-caption {
+		font-size: 16px;
+		color: var(--color-text);
 	}
 
 	.cta-section {
@@ -121,12 +104,11 @@ import "../styles/global.css";
 		margin-bottom: 8px;
 	}
 	.cta-sub {
-		font-size: 17px;
+		font-size: 14px;
 		color: var(--color-text-secondary);
 		margin-bottom: 32px;
 		text-transform: uppercase;
 		letter-spacing: 1px;
-		font-size: 14px;
 	}
 
 	@media (max-width: 768px) {
@@ -134,7 +116,7 @@ import "../styles/global.css";
 			grid-template-columns: 1fr;
 			gap: 32px;
 		}
-		.bio-image-placeholder {
+		.bio-photo {
 			width: 100%;
 			max-width: 283px;
 			margin: 0 auto;

@@ -11,45 +11,67 @@ import "../styles/global.css";
 		<meta name="keywords" content="travel agencies in raleigh" />
 	</Fragment>
 
-	<!-- Hero with background image -->
+	<!-- Hero: logo + heading + subtitle (matches original Elementor hero) -->
 	<section class="hero">
 		<div class="hero-overlay"></div>
 		<div class="hero-content container">
-			<h1>Amazing Destinations</h1>
+			<img
+				src="https://10btravelers.com/wp-content/uploads/2024/02/ezgif.com-optiwebp-6-150x150.webp"
+				alt="10 Billion Travelers logo"
+				width="150"
+				height="150"
+				class="hero-logo"
+			/>
+			<h1>Amazing<br />Destinations</h1>
 			<p class="hero-sub">Amazing places around the globe to see</p>
-			<a href="/about/" class="btn btn-hero">Learn More</a>
 		</div>
 	</section>
 
-	<!-- Features (4 cards with icons) -->
+	<!-- Features: 4 columns with icon images -->
 	<section class="features">
 		<div class="container">
 			<div class="features-grid">
 				<div class="feature-card">
-					<div class="feature-icon">
-						<img src="https://cdn.sanity.io/images/2voldnur/production/placeholder-icon.webp" alt="Amazing Destinations icon" width="80" height="80" class="feature-icon-img" />
-					</div>
+					<img
+						src="https://10btravelers.com/wp-content/uploads/2024/01/icon2-150x150.webp"
+						alt="Amazing Destinations icon"
+						width="150"
+						height="150"
+						class="feature-icon"
+					/>
 					<h3>Amazing Destinations</h3>
 					<p>Amazing places around the globe to see</p>
 				</div>
 				<div class="feature-card">
-					<div class="feature-icon">
-						<img src="https://cdn.sanity.io/images/2voldnur/production/placeholder-icon.webp" alt="Great Accommodations icon" width="80" height="80" class="feature-icon-img" />
-					</div>
+					<img
+						src="https://10btravelers.com/wp-content/uploads/2024/01/icon2-150x150.webp"
+						alt="Great Accommodations icon"
+						width="150"
+						height="150"
+						class="feature-icon"
+					/>
 					<h3>Great Accommodations</h3>
 					<p>Type of convenience and easily accessible</p>
 				</div>
 				<div class="feature-card">
-					<div class="feature-icon">
-						<img src="https://cdn.sanity.io/images/2voldnur/production/placeholder-icon.webp" alt="Super Fast Booking icon" width="80" height="80" class="feature-icon-img" />
-					</div>
+					<img
+						src="https://10btravelers.com/wp-content/uploads/2024/01/icon3-150x150.webp"
+						alt="Super Fast Booking icon"
+						width="150"
+						height="150"
+						class="feature-icon"
+					/>
 					<h3>Super Fast Booking</h3>
 					<p>Schedules, rates and reserve your ticket</p>
 				</div>
 				<div class="feature-card">
-					<div class="feature-icon">
-						<img src="https://cdn.sanity.io/images/2voldnur/production/placeholder-icon.webp" alt="Friendly Tour Guide icon" width="80" height="80" class="feature-icon-img" />
-					</div>
+					<img
+						src="https://10btravelers.com/wp-content/uploads/2024/01/icon2-150x150.webp"
+						alt="Friendly Tour Guide icon"
+						width="150"
+						height="150"
+						class="feature-icon"
+					/>
 					<h3>Friendly Tour Guide</h3>
 					<p>A perfect guide will be attentive and respectful</p>
 				</div>
@@ -57,85 +79,149 @@ import "../styles/global.css";
 		</div>
 	</section>
 
-	<!-- Travel Photos Gallery (3 across) -->
+	<!-- Gallery 1: large image left, two stacked right (matches original layout) -->
 	<section class="gallery-section">
 		<div class="container">
-			<div class="gallery-row">
-				<div class="gallery-item"><div class="gallery-placeholder-img"></div></div>
-				<div class="gallery-item"><div class="gallery-placeholder-img"></div></div>
-				<div class="gallery-item"><div class="gallery-placeholder-img"></div></div>
+			<div class="gallery-layout-1">
+				<div class="gallery-large">
+					<img
+						src="https://10btravelers.com/wp-content/uploads/2024/01/beach.webp"
+						alt="Beach destination"
+						width="1200"
+						height="1200"
+						loading="lazy"
+					/>
+				</div>
+				<div class="gallery-stack">
+					<img
+						src="https://10btravelers.com/wp-content/uploads/2024/01/beach3.webp"
+						alt="Beach travel photo"
+						width="1204"
+						height="1204"
+						loading="lazy"
+					/>
+					<img
+						src="https://10btravelers.com/wp-content/uploads/2024/01/beach2.webp"
+						alt="Beach destination photo"
+						width="1200"
+						height="1200"
+						loading="lazy"
+					/>
+				</div>
 			</div>
 		</div>
 	</section>
 
-	<!-- CTA -->
-	<section class="cta-section">
+	<!-- Gallery 2: 3 square images (pic1, pic2, pic3) -->
+	<section class="gallery-section">
 		<div class="container">
-			<p class="cta-label">Let's Join and Prove It</p>
-			<h2>Best Travel</h2>
+			<div class="gallery-grid-3">
+				<img
+					src="https://10btravelers.com/wp-content/uploads/2024/01/pic1-1024x1024.webp"
+					alt="Travel destination"
+					width="1024"
+					height="1024"
+					loading="lazy"
+				/>
+				<img
+					src="https://10btravelers.com/wp-content/uploads/2024/01/pic2-1024x1024.webp"
+					alt="Travel destination"
+					width="1024"
+					height="1024"
+					loading="lazy"
+				/>
+				<img
+					src="https://10btravelers.com/wp-content/uploads/2024/01/pic3-1024x1024.webp"
+					alt="Travel destination"
+					width="1024"
+					height="1024"
+					loading="lazy"
+				/>
+			</div>
 		</div>
 	</section>
 
-	<!-- Best Travel Gallery (3 square grid) -->
-	<section class="gallery-section gallery-best">
+	<!-- CTA with badges -->
+	<section class="cta-section">
 		<div class="container">
-			<div class="gallery-row">
-				<div class="gallery-item square"><div class="gallery-placeholder-img"></div></div>
-				<div class="gallery-item square"><div class="gallery-placeholder-img"></div></div>
-				<div class="gallery-item square"><div class="gallery-placeholder-img"></div></div>
+			<div class="cta-grid">
+				<div class="cta-text">
+					<p class="cta-label">Let's Join and Prove It</p>
+					<h2>Best Travel</h2>
+				</div>
+				<div class="cta-badges">
+					<div class="badge">
+						<img
+							src="https://10btravelers.com/wp-content/uploads/2023/10/630604fa0a1d0d335693c0d2-150x150.png"
+							alt="Google Maps + Local Guide"
+							width="60"
+							height="60"
+							loading="lazy"
+						/>
+						<div>
+							<strong>Google Maps + Local Guide</strong>
+							<p>Over 500,000 impacts!</p>
+						</div>
+					</div>
+					<div class="badge">
+						<img
+							src="https://10btravelers.com/wp-content/uploads/2023/10/6306053e4548ae342af15010-150x150.png"
+							alt="TripAdvisor Top 3%"
+							width="60"
+							height="60"
+							loading="lazy"
+						/>
+						<div>
+							<strong>Top 3%</strong>
+							<p>On Tripadvisor.com</p>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
 </Layout>
 
 <style>
-	/* Hero */
+	/* Hero — matches original Elementor hero with bg overlay */
 	.hero {
 		position: relative;
-		min-height: 500px;
+		min-height: 480px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		text-align: center;
-		background: url("https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1600&q=80") center/cover no-repeat;
-		background-color: #eeeeee;
+		background: var(--color-bg);
 	}
 	.hero-overlay {
 		position: absolute;
 		inset: 0;
-		background: rgba(0, 0, 0, 0.35);
+		background: rgba(0, 0, 0, 0.05);
 	}
 	.hero-content {
 		position: relative;
 		z-index: 1;
-		padding: 80px 24px;
+		padding: 60px 24px;
+	}
+	.hero-logo {
+		width: 150px;
+		height: 150px;
+		margin: 0 auto 24px;
+		border-radius: 50%;
 	}
 	.hero h1 {
-		color: #ffffff;
 		text-transform: uppercase;
-		letter-spacing: 3px;
-		font-size: 48px;
-		text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+		letter-spacing: 2px;
+		font-size: 36px;
+		color: var(--color-heading);
 	}
 	.hero-sub {
-		color: rgba(255,255,255,0.9);
-		font-size: 18px;
-		margin-top: 16px;
-		text-shadow: 0 1px 4px rgba(0,0,0,0.3);
-	}
-	.btn-hero {
-		margin-top: 32px;
-		background: transparent;
-		color: #ffffff;
-		border-color: #ffffff;
-	}
-	.btn-hero:hover {
-		background: var(--color-primary);
-		border-color: var(--color-primary);
-		color: #ffffff;
+		color: var(--color-text);
+		font-size: 17px;
+		margin-top: 12px;
 	}
 
-	/* Features */
+	/* Features — 4 columns with circular icon images */
 	.features {
 		padding: 60px 0;
 		background: var(--color-white);
@@ -143,24 +229,18 @@ import "../styles/global.css";
 	.features-grid {
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
-		gap: 32px;
+		gap: 24px;
 		text-align: center;
 	}
 	.feature-card {
 		padding: 24px 16px;
 	}
 	.feature-icon {
-		margin-bottom: 20px;
-		display: flex;
-		justify-content: center;
-	}
-	.feature-icon-img {
 		width: 80px;
 		height: 80px;
-		object-fit: contain;
+		margin: 0 auto 20px;
 		border-radius: 50%;
-		background: var(--color-bg);
-		padding: 16px;
+		object-fit: cover;
 	}
 	.feature-card h3 {
 		font-size: 16px;
@@ -171,37 +251,57 @@ import "../styles/global.css";
 	}
 	.feature-card p {
 		font-size: 15px;
-		color: var(--color-text-secondary);
+		color: var(--color-text);
 		line-height: 1.6;
 	}
 
-	/* Gallery */
+	/* Gallery layout 1: large left, two stacked right */
 	.gallery-section {
-		padding: 40px 0;
+		padding: 24px 0;
 	}
-	.gallery-row {
+	.gallery-layout-1 {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 16px;
+	}
+	.gallery-large img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	.gallery-stack {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+	.gallery-stack img {
+		width: 100%;
+		flex: 1;
+		object-fit: cover;
+	}
+
+	/* Gallery grid: 3 equal squares */
+	.gallery-grid-3 {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		gap: 16px;
 	}
-	.gallery-item {
-		overflow: hidden;
-	}
-	.gallery-placeholder-img {
+	.gallery-grid-3 img {
 		width: 100%;
-		padding-bottom: 75%;
-		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
-		opacity: 0.15;
-	}
-	.gallery-item.square .gallery-placeholder-img {
-		padding-bottom: 100%;
+		aspect-ratio: 1;
+		object-fit: cover;
 	}
 
-	/* CTA */
+	/* CTA with badges */
 	.cta-section {
 		padding: 60px 0;
-		text-align: left;
 		background: var(--color-bg);
+	}
+	.cta-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 48px;
+		align-items: center;
 	}
 	.cta-label {
 		font-family: var(--font-heading);
@@ -218,13 +318,41 @@ import "../styles/global.css";
 		letter-spacing: 2px;
 		color: var(--color-primary);
 	}
+	.cta-badges {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+	}
+	.badge {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+	}
+	.badge img {
+		width: 60px;
+		height: 60px;
+		border-radius: 50%;
+		flex-shrink: 0;
+	}
+	.badge strong {
+		display: block;
+		font-family: var(--font-heading);
+		font-size: 16px;
+		color: var(--color-heading);
+	}
+	.badge p {
+		font-size: 14px;
+		color: var(--color-text-secondary);
+		margin: 0;
+	}
 
 	@media (max-width: 768px) {
 		.hero { min-height: 350px; }
-		.hero h1 { font-size: 32px; }
+		.hero h1 { font-size: 28px; }
 		.features-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-		.gallery-row { grid-template-columns: 1fr; }
-		.cta-section { text-align: center; }
+		.gallery-layout-1 { grid-template-columns: 1fr; }
+		.gallery-grid-3 { grid-template-columns: 1fr; }
+		.cta-grid { grid-template-columns: 1fr; gap: 32px; }
 	}
 	@media (max-width: 480px) {
 		.features-grid { grid-template-columns: 1fr; }

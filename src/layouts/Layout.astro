@@ -53,7 +53,8 @@ const navLinks = [
     <header class="header">
       <div class="header-inner container">
         <a href="/" class="logo" aria-label="10 Billion Travelers Home">
-          <span class="logo-text">NEW 10 BILLION<br />TRAVELERS</span>
+          <img src="https://10btravelers.com/wp-content/uploads/2023/11/ezgif.com-optiwebp-7.webp" alt="10 Billion Travelers" width="40" height="40" class="logo-img" />
+          <span class="logo-text">NEW 10 BILLION TRAVELERS</span>
         </a>
         <button class="mobile-toggle" aria-label="Toggle menu" aria-expanded="false">
           <span class="bar"></span>
@@ -136,11 +137,19 @@ const navLinks = [
   }
   .logo {
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .logo-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
   }
   .logo-text {
     font-family: var(--font-heading);
     font-weight: 700;
-    font-size: 18px;
+    font-size: 16px;
     color: var(--color-heading);
     line-height: 1.2;
   }
