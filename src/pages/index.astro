@@ -300,44 +300,42 @@ const heroImg = settings?.heroImage
 	}
 	.gallery-asymmetric {
 		display: flex;
-		gap: 30px;
+		gap: 0;
 		align-items: stretch;
-		aspect-ratio: 16 / 9;
-		max-height: 550px;
-		margin-right: auto;
-		max-width: 90%;
+		height: 500px;
 	}
 	.gallery-big {
-		flex: 0 0 50%;
-		border-radius: 10px;
-		overflow: hidden;
-		box-shadow: 4px 0 10px 0 rgba(0,0,0,0.5);
+		flex: 0 0 57%;
+		overflow: visible;
+		z-index: 1;
 	}
 	.gallery-big img {
-		width: 100%;
+		width: 119.5%;
 		height: 100%;
 		object-fit: cover;
 		display: block;
-	}
-	.gallery-right {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		gap: 24px;
-		align-items: flex-end;
-	}
-	.gallery-right-img {
-		width: 65%;
-		flex: 1;
 		border-radius: 10px;
-		overflow: hidden;
 		box-shadow: 4px 0 10px 0 rgba(0,0,0,0.5);
 	}
+	.gallery-right {
+		flex: 0 0 50%;
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+		padding: 0;
+	}
+	.gallery-right-img {
+		flex: 1;
+		display: flex;
+		justify-content: flex-end;
+	}
 	.gallery-right-img img {
-		width: 100%;
+		width: 64%;
 		height: 100%;
 		object-fit: cover;
 		display: block;
+		border-radius: 10px;
+		box-shadow: 4px 0 10px 0 rgba(0,0,0,0.5);
 	}
 
 	/* ===== 4. GALLERY — 3 equal columns ===== */
@@ -363,9 +361,13 @@ const heroImg = settings?.heroImage
 		.gallery-asymmetric {
 			flex-direction: column;
 			height: auto;
+			overflow: hidden;
 		}
 		.gallery-big { flex: 0 0 auto; }
+		.gallery-big img { width: 100%; }
+		.gallery-right { flex: 0 0 auto; gap: 16px; }
 		.gallery-right-img { min-height: 200px; }
+		.gallery-right-img img { width: 100%; }
 		.gallery-three { flex-direction: column; gap: 16px; }
 	}
 
