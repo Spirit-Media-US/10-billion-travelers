@@ -41,10 +41,37 @@ Then run: `git checkout dev && git pull origin dev`
 - Port 4330 assigned in VPS port table
 - **2026-04-14: Full reset to Phase 1 scaffold — all Phase 2–7 work cleared, starting fresh**
 
-### Still Pending — Phase 2 (Content + CSS Extraction)
-- Crawl https://10btravelers.com and extract all content + computed CSS
-- Note: Previous extraction found WordPress + Astra + Elementor on Cloudways
-- Note: Services and Contact pages have placeholder content (lorem ipsum, fake emails)
+### Completed — Phase 2 (Content + CSS Extraction)
+- Crawled https://10btravelers.com — 5 pages (Home, About, Services, Contact, Thank You)
+- Design tokens: Montserrat/Lato fonts, #30C7B5 teal primary, #00AC97 hover, #14261C headings
+- 15/16 images downloaded (hero bg 404 — deleted from server, using Unsplash placeholder)
+- Services + Contact pages have placeholder content on original (lorem ipsum, fake emails)
+
+### Completed — Phase 3 (Design + Build)
+- All pages built from extracted design tokens matching original site styling
+- Hero with background image overlay, white outlined buttons, teal accents
+- Features section with 4 icon cards, two 3-column photo galleries, CTA section
+- About: Kevin White bio with portrait placeholder, "Email Us" CTA
+- Services: 3 alternating image/text rows + FAQ accordion with real content
+- Contact: 2-column layout (info sidebar + form)
+- Thank You + 404 pages
+- "Powered by Spirit Media" signature copyright in footer
+
+### Completed — Phase 4 (Sanity Schemas)
+- 6 schema types: siteSettings, teamMember, service, galleryImage, feature, faq
+- All editable content mapped to Sanity per migration protocol
+- sanity.config.ts uses modular schema files from studio/schemaTypes/
+- Sanity client lib at src/lib/sanity.ts
+
+### Completed — Phase 5 (Prelaunch QA)
+- All 8 automated scans PASS: no inline styles, no missing alt text, no missing SEO meta, no dev URLs, no TODOs, sitemap covers 5 pages, all internal links valid, build clean
+
+### Still Pending
+- Wire Sanity content to pages (replace placeholder images/text with Sanity queries)
+- Upload images to Sanity (15 downloaded to /tmp/10-billion-travelers-images/)
+- Hero background image needs replacement (original 404)
+- Domain cutover: GoDaddy → Cloudflare (Kevin approval needed)
+- Merge dev → main (Kevin approval needed)
 
 ### Notes
 - **Domain is `10btravelers.com`** (NOT 10billiontravelers.com — that domain expired in 2023)
