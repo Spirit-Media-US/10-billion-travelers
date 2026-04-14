@@ -48,6 +48,7 @@ const navLinks = [
     <slot name="head" />
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
     <header class="header">
       <div class="header-inner container">
         <a href="/" class="logo" aria-label="10 Billion Travelers Home">
@@ -72,7 +73,7 @@ const navLinks = [
       </div>
     </header>
 
-    <main>
+    <main id="main-content">
       <slot />
     </main>
 
@@ -144,6 +145,19 @@ const navLinks = [
 </html>
 
 <style>
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: var(--color-primary);
+    color: #fff;
+    padding: 12px 24px;
+    z-index: 200;
+    font-weight: 600;
+  }
+  .skip-link:focus {
+    top: 0;
+  }
   .header {
     background: #ffffff;
     position: sticky;
@@ -212,9 +226,13 @@ const navLinks = [
     gap: 5px;
     background: var(--color-primary-hover);
     border: none;
-    padding: 10px;
+    padding: 12px;
     border-radius: 4px;
     cursor: pointer;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
   }
   .mobile-toggle .bar {
     display: block;
@@ -327,7 +345,7 @@ const navLinks = [
     margin: 0 0 6px;
   }
   .footer-bottom {
-    background: var(--color-primary);
+    background: #1a8a7d;
     padding: 16px 0;
   }
   .footer-bottom-inner {
