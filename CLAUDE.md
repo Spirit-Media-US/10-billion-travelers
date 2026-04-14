@@ -42,43 +42,41 @@ Then run: `git checkout dev && git pull origin dev`
 - **2026-04-14: Full reset to Phase 1 scaffold — all Phase 2–7 work cleared, starting fresh**
 
 ### Completed — Phase 2 (Content + CSS Extraction)
-- Crawled https://10btravelers.com — 5 pages (Home, About, Services, Contact, Thank You)
-- Design tokens: Montserrat/Lato fonts, #30C7B5 teal primary, #00AC97 hover, #14261C headings
-- 15/16 images downloaded (hero bg 404 — deleted from server, using Unsplash placeholder)
-- Services + Contact pages have placeholder content on original (lorem ipsum, fake emails)
+- Crawled https://10btravelers.com — downloaded raw HTML + Elementor CSS (post-30.css, post-31.css, post-573.css)
+- Design tokens: Montserrat/Lato fonts, #30C7B5 teal, #00AC97 hover, #14261C headings
+- 25 images downloaded including hero bg (correct URL: /2024/02/bg-homepage.webp)
+- Original site has only Home + About pages (Services/Contact have placeholder content)
 
-### Completed — Phase 3 (Design + Build)
-- All pages built from extracted design tokens matching original site styling
-- Hero with background image overlay, white outlined buttons, teal accents
-- Features section with 4 icon cards, two 3-column photo galleries, CTA section
-- About: Kevin White bio with portrait placeholder, "Email Us" CTA
-- Services: 3 alternating image/text rows + FAQ accordion with real content
-- Contact: 2-column layout (info sidebar + form)
-- Thank You + 404 pages
-- "Powered by Spirit Media" signature copyright in footer
+### Completed — Phase 3 (Design + Build) — Pixel-matched from original HTML/CSS
+- **Homepage**: Hero (bg-homepage.webp + radial gradient overlay), 4 feature cards (20px radius, black bottom border, box-shadow, overlapping hero), gallery (2/3 + 1/3 layout with two stacked), 3-col square gallery, Best Travel CTA (bg-beach.jpg, badges), associations slider (3 logos, arrows, dots, autoplay loop), adventure CTA (island-bg.webp)
+- **About**: Hero (about.jpeg, fixed attachment), bio section (dot grid accent 12x11 dots behind photo, 50/50 grid), CTA (10-Billion-Travelers-button-pic bg)
+- **Footer**: 4 columns (About Us with round avatar, Connect with 4 social SVGs, Gallery 3x3 thumbnails, BIC office image), teal copyright bar ("Design by Spirit Media" → spiritmedia.us)
+- **Header**: Logo image + teal title, Home + About nav, underline hover
+- Only 2 pages: Home + About (matching original site)
 
-### Completed — Phase 4 (Sanity Schemas)
+### Completed — Phase 4 (Sanity CMS)
 - 6 schema types: siteSettings, teamMember, service, galleryImage, feature, faq
-- All editable content mapped to Sanity per migration protocol
-- sanity.config.ts uses modular schema files from studio/schemaTypes/
-- Sanity client lib at src/lib/sanity.ts
+- 25 images uploaded to Sanity, 14 documents created (settings, Kevin White, 4 features, 6 gallery, 3 FAQs)
+- Homepage wired: hero bg, features, travel gallery, best gallery all from Sanity queries
+- About page wired: Kevin White photo from Sanity
+- sanity.config.ts uses modular schemas from studio/schemaTypes/
+- Upload script at scripts/upload-to-sanity.mjs
 
 ### Completed — Phase 5 (Prelaunch QA)
-- All 8 automated scans PASS: no inline styles, no missing alt text, no missing SEO meta, no dev URLs, no TODOs, sitemap covers 5 pages, all internal links valid, build clean
+- All 8 automated scans PASS
+- Remaining wp-content URLs are fallbacks for CSS backgrounds and footer static images — functional while original site is live, will be migrated to Sanity CDN before domain cutover
 
-### Still Pending
-- Wire Sanity content to pages (replace placeholder images/text with Sanity queries)
-- Upload images to Sanity (15 downloaded to /tmp/10-billion-travelers-images/)
-- Hero background image needs replacement (original 404)
+### Still Pending — Phase 8 (Launch)
+- Replace remaining wp-content fallback URLs with Sanity CDN URLs
 - Domain cutover: GoDaddy → Cloudflare (Kevin approval needed)
-- Merge dev → main (Kevin approval needed)
+- Merge dev → main for production deploy (Kevin approval needed)
 
 ### Notes
 - **Domain is `10btravelers.com`** (NOT 10billiontravelers.com — that domain expired in 2023)
 - Old site is WordPress + Astra + Elementor on Cloudways (IP: 161.35.131.217)
 - Old site is LIVE — do not touch DNS until Kevin approves cutover
 - GoDaddy API creds are in /home/deploy/.secrets if domain DNS work is needed later
-- Sanity project (2voldnur) still has previous content/schemas — may need cleanup before Phase 4
+- Hero bg correct URL: /2024/02/bg-homepage.webp (not /2024/01/ which was 404)
 
 ## Rules
 
