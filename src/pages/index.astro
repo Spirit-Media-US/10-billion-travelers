@@ -118,6 +118,9 @@ import "../styles/global.css";
 						<div class="assoc-slide"><img src="https://10btravelers.com/wp-content/uploads/2024/01/accredit.webp" alt="Accredited Media" /></div>
 						<div class="assoc-slide"><img src="https://10btravelers.com/wp-content/uploads/2024/01/world-foodtravel-association.webp" alt="World Food Travel Association" /></div>
 						<div class="assoc-slide"><img src="https://10btravelers.com/wp-content/uploads/2024/01/unwto.webp" alt="UNWTO" /></div>
+						<div class="assoc-slide"><img src="https://10btravelers.com/wp-content/uploads/2024/01/accredit.webp" alt="Accredited Media" aria-hidden="true" /></div>
+						<div class="assoc-slide"><img src="https://10btravelers.com/wp-content/uploads/2024/01/world-foodtravel-association.webp" alt="World Food Travel Association" aria-hidden="true" /></div>
+						<div class="assoc-slide"><img src="https://10btravelers.com/wp-content/uploads/2024/01/unwto.webp" alt="UNWTO" aria-hidden="true" /></div>
 					</div>
 				</div>
 				<button class="assoc-arrow assoc-next" id="assoc-next" aria-label="Next">
@@ -139,22 +142,46 @@ import "../styles/global.css";
 		var prev = document.getElementById('assoc-prev');
 		var next = document.getElementById('assoc-next');
 		if (!track) return;
-		var current = 0;
-		var total = 3;
-		function goTo(i) {
-			current = ((i % total) + total) % total;
-			track.style.transform = 'translateX(-' + (current * 100) + '%)';
-			dots.forEach(function(d, idx) { d.classList.toggle('active', idx === current); });
+
+		var pos = 0;
+		var slideWidth = 100 / 6;
+
+		function slideTo(p) {
+			pos = p;
+			track.style.transition = 'transform 0.5s ease';
+			track.style.transform = 'translateX(-' + (pos * slideWidth) + '%)';
+			dots.forEach(function(d, i) { d.classList.toggle('active', i === (pos % 3)); });
 		}
-		prev.addEventListener('click', function() { goTo(current - 1); });
-		next.addEventListener('click', function() { goTo(current + 1); });
-		dots.forEach(function(d) {
-			d.addEventListener('click', function() { goTo(Number(d.dataset.index)); });
+
+		track.addEventListener('transitionend', function() {
+			if (pos >= 3) {
+				track.style.transition = 'none';
+				pos = 0;
+				track.style.transform = 'translateX(0%)';
+			}
 		});
-		var interval = setInterval(function() { goTo(current + 1); }, 5000);
+
+		prev.addEventListener('click', function() {
+			if (pos <= 0) {
+				track.style.transition = 'none';
+				pos = 3;
+				track.style.transform = 'translateX(-' + (pos * slideWidth) + '%)';
+				requestAnimationFrame(function() {
+					requestAnimationFrame(function() { slideTo(pos - 1); });
+				});
+			} else {
+				slideTo(pos - 1);
+			}
+		});
+		next.addEventListener('click', function() { slideTo(pos + 1); });
+		dots.forEach(function(d) {
+			d.addEventListener('click', function() { slideTo(Number(d.dataset.index)); });
+		});
+
+		var interval = setInterval(function() { slideTo(pos + 1); }, 5000);
 		document.getElementById('assoc-slider').addEventListener('mouseenter', function() { clearInterval(interval); });
 		document.getElementById('assoc-slider').addEventListener('mouseleave', function() {
-			interval = setInterval(function() { goTo(current + 1); }, 5000);
+			interval = setInterval(function() { slideTo(pos + 1); }, 5000);
 		});
 	})();
 	</script>
@@ -420,7 +447,6 @@ import "../styles/global.css";
 	}
 	.assoc-track {
 		display: flex;
-		width: 300%;
 		transition: transform 0.5s ease;
 	}
 	.assoc-slide {
