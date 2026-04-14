@@ -19,13 +19,15 @@ import "../styles/global.css";
 		<div class="container">
 			<div class="bio-grid">
 				<div class="bio-image-col">
-					<img
-						src="https://10btravelers.com/wp-content/uploads/2023/11/Kevin-White-1-283x300.jpeg"
-						alt="Kevin White"
-						width="283"
-						height="300"
-						class="bio-photo"
-					/>
+					<div class="bio-image-wrap">
+						<img
+							src="https://10btravelers.com/wp-content/uploads/2023/11/Kevin-White-1-283x300.jpeg"
+							alt="Kevin White"
+							width="283"
+							height="300"
+							class="bio-photo"
+						/>
+					</div>
 				</div>
 				<div class="bio-text-col">
 					<p>I was born to travel! I've logged over 1 million miles. Before I'm 100 years old there will be 10 Billion people alive. I'll inspire as many travelers as possible!</p>
@@ -110,13 +112,18 @@ import "../styles/global.css";
 	}
 	.bio-image-col {
 		flex: 0 0 50%;
-		position: relative;
+		display: flex;
+		justify-content: center;
 	}
-	.bio-image-col::before {
+	.bio-image-wrap {
+		position: relative;
+		display: inline-block;
+	}
+	.bio-image-wrap::before {
 		content: '';
 		position: absolute;
-		top: 0;
-		left: 0;
+		top: -24px;
+		left: -48px;
 		width: calc(12 * 24px);
 		height: calc(11 * 24px);
 		background-image: radial-gradient(#ADD8E6 2px, transparent 2px);
@@ -129,8 +136,6 @@ import "../styles/global.css";
 		width: 283px;
 		height: auto;
 		display: block;
-		margin-top: calc(1 * 24px);
-		margin-left: auto;
 	}
 	.bio-text-col {
 		flex: 0 0 50%;
