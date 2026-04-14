@@ -105,67 +105,22 @@ import "../styles/global.css";
 		</div>
 	</section>
 
-	<!-- 6. Associations carousel — shows 3 at a time, loops -->
+	<!-- 6. Associations — continuous infinite slider -->
 	<section class="associations">
 		<div class="container">
 			<h2>Associations</h2>
-			<div class="assoc-slider" id="assoc-slider">
-				<button class="assoc-arrow assoc-prev" id="assoc-prev" aria-label="Previous">
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-				</button>
-				<div class="assoc-viewport">
-					<div class="assoc-track" id="assoc-track">
-						<div class="assoc-slide"><img src="https://10btravelers.com/wp-content/uploads/2024/01/accredit.webp" alt="Accredited Media" /></div>
-						<div class="assoc-slide"><img src="https://10btravelers.com/wp-content/uploads/2024/01/world-foodtravel-association.webp" alt="World Food Travel Association" /></div>
-						<div class="assoc-slide"><img src="https://10btravelers.com/wp-content/uploads/2024/01/unwto.webp" alt="UNWTO" /></div>
-						<div class="assoc-slide"><img src="https://10btravelers.com/wp-content/uploads/2024/01/accredit.webp" alt="Accredited Media" /></div>
-						<div class="assoc-slide"><img src="https://10btravelers.com/wp-content/uploads/2024/01/world-foodtravel-association.webp" alt="World Food Travel Association" /></div>
-						<div class="assoc-slide"><img src="https://10btravelers.com/wp-content/uploads/2024/01/unwto.webp" alt="UNWTO" /></div>
-					</div>
+			<div class="assoc-slider">
+				<div class="assoc-track">
+					<img src="https://10btravelers.com/wp-content/uploads/2024/01/accredit.webp" alt="Accredited Media" />
+					<img src="https://10btravelers.com/wp-content/uploads/2024/01/world-foodtravel-association.webp" alt="World Food Travel Association" />
+					<img src="https://10btravelers.com/wp-content/uploads/2024/01/unwto.webp" alt="UNWTO" />
+					<img src="https://10btravelers.com/wp-content/uploads/2024/01/accredit.webp" alt="Accredited Media" aria-hidden="true" />
+					<img src="https://10btravelers.com/wp-content/uploads/2024/01/world-foodtravel-association.webp" alt="World Food Travel Association" aria-hidden="true" />
+					<img src="https://10btravelers.com/wp-content/uploads/2024/01/unwto.webp" alt="UNWTO" aria-hidden="true" />
 				</div>
-				<button class="assoc-arrow assoc-next" id="assoc-next" aria-label="Next">
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-				</button>
-			</div>
-			<div class="assoc-dots" id="assoc-dots">
-				<button class="assoc-dot active" data-index="0" aria-label="Slide 1"></button>
-				<button class="assoc-dot" data-index="1" aria-label="Slide 2"></button>
-				<button class="assoc-dot" data-index="2" aria-label="Slide 3"></button>
 			</div>
 		</div>
 	</section>
-
-	<script>
-	(function() {
-		var track = document.getElementById('assoc-track');
-		var dots = document.querySelectorAll('.assoc-dot');
-		var prev = document.getElementById('assoc-prev');
-		var next = document.getElementById('assoc-next');
-		if (!track) return;
-
-		var current = 0;
-		var pages = 3;
-
-		function goTo(i) {
-			current = ((i % pages) + pages) % pages;
-			track.style.transition = 'transform 0.5s ease';
-			track.style.transform = 'translateX(-' + (current * 33.333) + '%)';
-			dots.forEach(function(d, idx) { d.classList.toggle('active', idx === current); });
-		}
-
-		prev.addEventListener('click', function() { goTo(current - 1); });
-		next.addEventListener('click', function() { goTo(current + 1); });
-		dots.forEach(function(d) {
-			d.addEventListener('click', function() { goTo(Number(d.dataset.index)); });
-		});
-
-		var interval = setInterval(function() { goTo(current + 1); }, 5000);
-		document.getElementById('assoc-slider').addEventListener('mouseenter', function() { clearInterval(interval); });
-		document.getElementById('assoc-slider').addEventListener('mouseleave', function() {
-			interval = setInterval(function() { goTo(current + 1); }, 5000);
-		});
-	})();
-	</script>
 
 	<!-- 7. Bottom CTA — "TIME FOR ADVENTURE?" with island bg -->
 	<section class="adventure-cta">
@@ -397,7 +352,6 @@ import "../styles/global.css";
 	.associations {
 		padding: 80px 0;
 		text-align: center;
-		background: #f9f9f9;
 	}
 	.associations h2 {
 		font-size: 56px;
@@ -407,73 +361,35 @@ import "../styles/global.css";
 		mix-blend-mode: darken;
 	}
 	.assoc-slider {
-		display: flex;
-		align-items: center;
-		gap: 16px;
-		max-width: 800px;
-		margin: 0 auto;
-	}
-	.assoc-arrow {
-		flex-shrink: 0;
-		background: none;
-		border: none;
-		cursor: pointer;
-		color: #ccc;
-		padding: 8px;
-		transition: color 0.2s;
-	}
-	.assoc-arrow:hover {
-		color: #999;
-	}
-	.assoc-viewport {
-		flex: 1;
 		overflow: hidden;
 	}
 	.assoc-track {
 		display: flex;
-		width: 200%;
-		transition: transform 0.5s ease;
-	}
-	.assoc-slide {
-		flex: 0 0 calc(100% / 6);
-		display: flex;
 		align-items: center;
-		justify-content: center;
-		padding: 0 30px;
-		height: 110px;
+		width: max-content;
+		animation: assoc-scroll 12s linear infinite;
 	}
-	.assoc-slide img {
-		max-width: 100%;
-		max-height: 100px;
-		height: auto;
+	.assoc-track:hover {
+		animation-play-state: paused;
+	}
+	.assoc-track img {
+		height: 120px;
+		width: auto;
 		object-fit: contain;
+		margin: 0 50px;
+		flex-shrink: 0;
 	}
-	.assoc-dots {
-		display: flex;
-		justify-content: center;
-		gap: 10px;
-		margin-top: 28px;
+	@keyframes assoc-scroll {
+		0% { transform: translateX(0); }
+		100% { transform: translateX(-50%); }
 	}
-	.assoc-dot {
-		width: 10px;
-		height: 10px;
-		border-radius: 50%;
-		border: none;
-		background: #d4d4d4;
-		cursor: pointer;
-		padding: 0;
-		transition: background 0.3s;
-	}
-	.assoc-dot.active {
-		background: #333333;
+	@media (max-width: 1024px) {
+		.associations h2 { font-size: 52px; }
+		.assoc-track img { height: 100px; margin: 0 40px; }
 	}
 	@media (max-width: 767px) {
 		.associations h2 { font-size: 31px; }
-		.assoc-slider { max-width: 100%; }
-		.assoc-slide { padding: 0 16px; }
-	}
-	@media (max-width: 1024px) and (min-width: 768px) {
-		.associations h2 { font-size: 52px; }
+		.assoc-track img { height: 80px; margin: 0 30px; }
 	}
 
 	/* ===== 7. ADVENTURE CTA ===== */
