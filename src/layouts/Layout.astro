@@ -246,58 +246,59 @@ const navLinks = [
   }
   .footer-inner {
     display: grid;
-    grid-template-columns: 30% 23.33% 23.33% 23.33%;
-    gap: 3rem;
-    min-height: 246px;
-    max-width: 80%;
+    grid-template-columns: 1.3fr 1fr 1fr 1fr;
+    gap: 2.5rem;
+    max-width: 1240px;
     margin: 0 auto;
-    padding: 4rem 2rem;
+    padding: 4rem 3rem;
+    align-items: start;
   }
   .footer-heading {
     font-family: var(--font-heading);
     font-weight: 600;
-    font-size: 24px;
+    font-size: 20px;
     color: var(--color-primary-hover);
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
   .footer-about {
     display: flex;
     align-items: flex-start;
-    gap: 16px;
+    gap: 12px;
   }
   .footer-avatar {
-    width: 70px;
-    height: 70px;
+    width: 65px;
+    height: 65px;
     flex-shrink: 0;
-    border-radius: 71px;
+    border-radius: 50%;
     object-fit: cover;
   }
   .footer-about p {
-    font-size: 15px;
+    font-size: 14px;
     color: var(--color-text);
     line-height: 1.6;
     margin: 0;
   }
   .footer-social {
     display: flex;
-    gap: 5px;
-    justify-content: center;
+    gap: 8px;
+    justify-content: left;
   }
   .social-icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 45px;
-    height: 45px;
+    width: 42px;
+    height: 42px;
     background: rgba(255,255,255,0.14);
     border-radius: 10%;
     transition: opacity 0.2s;
   }
   .social-icon:hover { opacity: 0.8; }
   .social-icon svg {
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     fill: var(--color-text);
   }
   .footer-gallery-grid {
@@ -319,11 +320,12 @@ const navLinks = [
   .footer-bic-img {
     width: 100%;
     border-radius: 4px;
+    margin-top: 12px;
   }
   .footer-col p {
-    font-size: 15px;
+    font-size: 14px;
     color: var(--color-text);
-    margin: 0 0 8px;
+    margin: 0 0 6px;
   }
   .footer-bottom {
     background: var(--color-primary);
@@ -333,9 +335,12 @@ const navLinks = [
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 3rem;
   }
   .footer-bottom p {
-    font-size: 19px;
+    font-size: 16px;
     color: #ffffff;
     margin: 0;
   }
@@ -351,16 +356,14 @@ const navLinks = [
     .footer-inner {
       grid-template-columns: 1fr 1fr;
       gap: 2rem;
-      max-width: 100%;
-      padding: 3rem 1.5rem;
+      padding: 3rem 2rem;
     }
   }
   @media (max-width: 768px) {
     .footer-inner {
       grid-template-columns: 1fr;
       gap: 2rem;
-      padding: 2rem 1rem;
-      max-width: 100%;
+      padding: 2rem 1.5rem;
     }
     .footer-about { flex-direction: column; align-items: center; text-align: center; }
     .footer-bottom-inner { flex-direction: column; gap: 8px; text-align: center; }
