@@ -11,7 +11,7 @@ const travelPhotos = await sanityClient.fetch(
 	`*[_type == "galleryImage" && section == "travel"] | order(order asc)`,
 );
 const bestPhotos = await sanityClient.fetch(
-	`*[_type == "galleryImage" && section == "best"] | order(order asc)`,
+	`*[_type == "galleryImage" && section == "best"] | order(order asc) [0...3]`,
 );
 
 const heroImg = settings?.heroImage
