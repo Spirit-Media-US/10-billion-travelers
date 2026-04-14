@@ -61,6 +61,27 @@ Then run: `git checkout dev && git pull origin dev`
 - About page wired: Kevin White photo from Sanity
 - sanity.config.ts uses modular schemas from studio/schemaTypes/
 - Upload script at scripts/upload-to-sanity.mjs
+- Sanity Studio embedded at /studio (build: sanity build public/studio --yes && astro build)
+- Schema deployed to Sanity cloud
+- Sanity → CF Pages auto-rebuild webhook configured (hook: be94898f → main branch)
+- CORS origins set: 10btravelers.com, dev preview, CF Pages, localhost
+
+#### Sanity Content Audit
+| Content | Type | Sanity? | Rationale |
+|---------|------|---------|-----------|
+| Hero background image | Image | Yes (siteSettings.heroImage) | Client may change hero photo |
+| Feature cards (4) | Repeating list | Yes (feature) | Client adds/removes/reorders features |
+| Travel gallery (3 photos) | Repeating list | Yes (galleryImage section:travel) | Client swaps travel photos |
+| Best travel gallery (3 photos) | Repeating list | Yes (galleryImage section:best) | Client swaps destination photos |
+| Kevin White bio + photo | Team member | Yes (teamMember) | Bio text and photo editable |
+| FAQs (3) | Repeating list | Yes (faq) | Client adds/removes/reorders FAQs |
+| Site settings (name, location, hours) | Settings | Yes (siteSettings) | Business info changes |
+| Best Travel CTA text/badges | Static | No | Structural — unlikely to change |
+| Associations logos | Static | No | Rarely changes, developer updates |
+| Adventure CTA text/button | Static | No | Structural — unlikely to change |
+| Footer social links | Static | No | Structural — developer updates |
+| Navigation | Static | No | Only 2 pages, structural |
+| JSON-LD | Static | No | Technical SEO |
 
 ### Completed — Phase 5 (Prelaunch QA)
 - All 8 automated scans PASS
