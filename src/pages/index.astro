@@ -105,57 +105,63 @@ import "../styles/global.css";
 		</div>
 	</section>
 
-	<!-- 6. Associations slider -->
+	<!-- 6. Associations logo slider -->
 	<section class="associations">
 		<div class="container">
 			<h2>Associations</h2>
-			<div class="associations-slider" id="assoc-slider">
-				<div class="associations-track" id="assoc-track">
-					<div class="associations-slide">
-						<img src="https://10btravelers.com/wp-content/uploads/2024/01/accredit.webp" alt="Accredited" width="405" height="153" />
-					</div>
-					<div class="associations-slide">
-						<img src="https://10btravelers.com/wp-content/uploads/2024/01/world-foodtravel-association.webp" alt="World Food Travel Association" width="405" height="155" />
-					</div>
-					<div class="associations-slide">
-						<img src="https://10btravelers.com/wp-content/uploads/2024/01/unwto.webp" alt="UNWTO" width="404" height="154" />
+			<div class="assoc-slider" id="assoc-slider">
+				<button class="assoc-arrow assoc-prev" id="assoc-prev" aria-label="Previous">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+				</button>
+				<div class="assoc-viewport">
+					<div class="assoc-track" id="assoc-track">
+						<div class="assoc-slide"><img src="https://10btravelers.com/wp-content/uploads/2024/01/accredit.webp" alt="Accredited Media" /></div>
+						<div class="assoc-slide"><img src="https://10btravelers.com/wp-content/uploads/2024/01/world-foodtravel-association.webp" alt="World Food Travel Association" /></div>
+						<div class="assoc-slide"><img src="https://10btravelers.com/wp-content/uploads/2024/01/unwto.webp" alt="UNWTO" /></div>
 					</div>
 				</div>
-				<div class="associations-dots" id="assoc-dots"></div>
+				<button class="assoc-arrow assoc-next" id="assoc-next" aria-label="Next">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+				</button>
+			</div>
+			<div class="assoc-dots" id="assoc-dots">
+				<button class="assoc-dot active" data-index="0" aria-label="Slide 1"></button>
+				<button class="assoc-dot" data-index="1" aria-label="Slide 2"></button>
+				<button class="assoc-dot" data-index="2" aria-label="Slide 3"></button>
 			</div>
 		</div>
 	</section>
 
 	<script>
+	(function() {
 		const track = document.getElementById('assoc-track');
-		const dotsContainer = document.getElementById('assoc-dots');
-		const slides = track?.querySelectorAll('.associations-slide');
-		if (track && slides && dotsContainer) {
-			let current = 0;
-			const total = slides.length;
+		const dots = document.querySelectorAll('.assoc-dot');
+		const prev = document.getElementById('assoc-prev');
+		const next = document.getElementById('assoc-next');
+		if (!track) return;
 
-			for (let i = 0; i < total; i++) {
-				const dot = document.createElement('button');
-				dot.classList.add('assoc-dot');
-				if (i === 0) dot.classList.add('active');
-				dot.addEventListener('click', () => goTo(i));
-				dotsContainer.appendChild(dot);
-			}
-			const dots = dotsContainer.querySelectorAll('.assoc-dot');
+		let current = 0;
+		const total = 3;
 
-			function goTo(index) {
-				current = index;
-				track.style.transform = `translateX(-${current * 100}%)`;
-				dots.forEach((d, i) => d.classList.toggle('active', i === current));
-			}
-
-			let interval = setInterval(() => goTo((current + 1) % total), 5000);
-
-			track.parentElement?.addEventListener('mouseenter', () => clearInterval(interval));
-			track.parentElement?.addEventListener('mouseleave', () => {
-				interval = setInterval(() => goTo((current + 1) % total), 5000);
-			});
+		function goTo(i) {
+			current = ((i % total) + total) % total;
+			track.style.transform = 'translateX(-' + (current * 33.333) + '%)';
+			dots.forEach(function(d, idx) { d.classList.toggle('active', idx === current); });
 		}
+
+		prev.addEventListener('click', function() { goTo(current - 1); });
+		next.addEventListener('click', function() { goTo(current + 1); });
+		dots.forEach(function(d) {
+			d.addEventListener('click', function() { goTo(Number(d.dataset.index)); });
+		});
+
+		let interval = setInterval(function() { goTo(current + 1); }, 5000);
+		var slider = document.getElementById('assoc-slider');
+		slider.addEventListener('mouseenter', function() { clearInterval(interval); });
+		slider.addEventListener('mouseleave', function() {
+			interval = setInterval(function() { goTo(current + 1); }, 5000);
+		});
+	})();
 	</script>
 
 	<!-- 7. Bottom CTA — "TIME FOR ADVENTURE?" with island bg -->
@@ -386,61 +392,82 @@ import "../styles/global.css";
 
 	/* ===== 6. ASSOCIATIONS ===== */
 	.associations {
-		padding: 50px 0 60px;
+		padding: 80px 0;
 		text-align: center;
+		background: #f9f9f9;
 	}
 	.associations h2 {
 		font-size: 56px;
 		color: var(--color-primary-hover);
 		text-transform: uppercase;
-		margin-bottom: 32px;
+		margin-bottom: 40px;
 		mix-blend-mode: darken;
 	}
-	.associations-slider {
-		overflow: hidden;
-		position: relative;
-		max-width: 500px;
+	.assoc-slider {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		max-width: 800px;
 		margin: 0 auto;
 	}
-	.associations-track {
+	.assoc-arrow {
+		flex-shrink: 0;
+		background: none;
+		border: none;
+		cursor: pointer;
+		color: #ccc;
+		padding: 8px;
+		transition: color 0.2s;
+	}
+	.assoc-arrow:hover {
+		color: #999;
+	}
+	.assoc-viewport {
+		flex: 1;
+		overflow: hidden;
+	}
+	.assoc-track {
 		display: flex;
 		transition: transform 0.5s ease;
+		width: 300%;
 	}
-	.associations-slide {
-		flex: 0 0 100%;
+	.assoc-slide {
+		flex: 0 0 33.333%;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: 10px 40px;
+		padding: 0 24px;
+		height: 80px;
 	}
-	.associations-slide img {
+	.assoc-slide img {
 		max-width: 100%;
-		height: auto;
 		max-height: 60px;
+		height: auto;
 		object-fit: contain;
 	}
-	.associations-dots {
+	.assoc-dots {
 		display: flex;
 		justify-content: center;
-		gap: 8px;
-		margin-top: 24px;
+		gap: 10px;
+		margin-top: 28px;
 	}
 	.assoc-dot {
 		width: 10px;
 		height: 10px;
 		border-radius: 50%;
 		border: none;
-		background: var(--color-border);
+		background: #d4d4d4;
 		cursor: pointer;
 		padding: 0;
 		transition: background 0.3s;
 	}
 	.assoc-dot.active {
-		background: var(--color-primary);
+		background: #333333;
 	}
 	@media (max-width: 767px) {
 		.associations h2 { font-size: 31px; }
-		.associations-slider { max-width: 300px; }
+		.assoc-slider { max-width: 100%; }
+		.assoc-slide { padding: 0 16px; }
 	}
 	@media (max-width: 1024px) and (min-width: 768px) {
 		.associations h2 { font-size: 52px; }
