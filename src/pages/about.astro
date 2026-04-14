@@ -111,7 +111,6 @@ import "../styles/global.css";
 	.bio-image-col {
 		flex: 0 0 50%;
 		position: relative;
-		min-height: 350px;
 	}
 	.bio-image-col::before {
 		content: '';
@@ -125,12 +124,13 @@ import "../styles/global.css";
 		z-index: 0;
 	}
 	.bio-photo {
-		position: absolute;
-		top: calc(1 * 24px);
-		left: calc(9 * 24px);
+		position: relative;
 		z-index: 10;
 		width: 283px;
 		height: auto;
+		display: block;
+		margin-top: calc(1 * 24px);
+		margin-left: auto;
 	}
 	.bio-text-col {
 		flex: 0 0 50%;
