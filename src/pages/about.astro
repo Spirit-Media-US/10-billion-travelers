@@ -111,19 +111,28 @@ import "../styles/global.css";
 		padding: 50px;
 	}
 	.bio-image-col {
+		position: relative;
+		padding: 50px;
+	}
+	.bio-image-col::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 30px;
+		bottom: 30px;
 		background-image: radial-gradient(#ADD8E6 2px, transparent 2px);
 		background-size: 20px 20px;
-		padding: 40px;
-		display: flex;
-		justify-content: center;
-		align-items: flex-start;
-		min-height: 400px;
+		z-index: 0;
 	}
 	.bio-photo {
-		width: 100%;
-		max-width: 283px;
 		position: relative;
 		z-index: 1;
+		width: 100%;
+		max-width: 283px;
+		display: block;
+		margin-top: 20px;
+		margin-left: 20px;
 		border-radius: 4px;
 		box-shadow: 4px 4px 15px rgba(0,0,0,0.2);
 	}
@@ -150,13 +159,13 @@ import "../styles/global.css";
 	}
 	@media (max-width: 1024px) {
 		.bio-grid { grid-template-columns: 1fr; padding: 30px; gap: 32px; }
-		.bio-image-col { min-height: 300px; }
+		.bio-image-col { padding: 40px; }
 	}
 	@media (max-width: 767px) {
 		.bio-grid { padding: 20px; max-width: 100%; }
 		.bio-text-col p { font-size: 14px; }
 		.bio-caption { font-size: 14px; }
-		.bio-image-col { padding: 24px; min-height: auto; }
+		.bio-image-col { padding: 30px; }
 	}
 
 	/* About CTA */
