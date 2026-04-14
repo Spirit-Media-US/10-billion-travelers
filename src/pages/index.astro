@@ -227,26 +227,24 @@ import "../styles/global.css";
 		flex-direction: row;
 		gap: 0;
 		align-items: stretch;
-		overflow: hidden;
 	}
 	.gallery-big {
-		flex: 0 0 57%;
-		overflow: visible;
+		flex: 0 0 68%;
 		z-index: 1;
 	}
 	.gallery-big img {
-		width: 119.5%;
+		width: 100%;
 		height: 100%;
 		object-fit: cover;
 		border-radius: 10px;
 		box-shadow: 4px 0 10px 0 rgba(0,0,0,0.5);
 	}
 	.gallery-side {
-		flex: 0 0 50%;
+		flex: 1;
 		display: flex;
 		flex-direction: column;
 		gap: 20px;
-		padding: 0;
+		padding-left: 20px;
 	}
 	.gallery-side-item {
 		flex: 1;
@@ -255,7 +253,7 @@ import "../styles/global.css";
 		align-items: stretch;
 	}
 	.gallery-side-item img {
-		width: 64%;
+		width: 100%;
 		object-fit: cover;
 		border-radius: 10px;
 		box-shadow: 4px 0 10px 0 rgba(0,0,0,0.5);
