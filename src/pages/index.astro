@@ -47,7 +47,7 @@ const heroImg = settings?.heroImage
 		</div>
 	</section>
 
-	<!-- 3. Gallery — large left, two right from Sanity -->
+	<!-- 3. Gallery — large left, two stacked right -->
 	<section class="gallery-row">
 		<div class="container">
 			<div class="gallery-asymmetric">
@@ -56,16 +56,18 @@ const heroImg = settings?.heroImage
 						<img src={urlFor(travelPhotos[0].image).width(1200).url()} alt={travelPhotos[0].image?.alt || travelPhotos[0].title} loading="lazy" />
 					</div>
 				)}
-				{travelPhotos[1] && (
-					<div class="gallery-side">
-						<img src={urlFor(travelPhotos[1].image).width(800).url()} alt={travelPhotos[1].image?.alt || travelPhotos[1].title} loading="lazy" />
-					</div>
-				)}
-				{travelPhotos[2] && (
-					<div class="gallery-side">
-						<img src={urlFor(travelPhotos[2].image).width(800).url()} alt={travelPhotos[2].image?.alt || travelPhotos[2].title} loading="lazy" />
-					</div>
-				)}
+				<div class="gallery-right">
+					{travelPhotos[1] && (
+						<div class="gallery-right-img">
+							<img src={urlFor(travelPhotos[1].image).width(600).url()} alt={travelPhotos[1].image?.alt || travelPhotos[1].title} loading="lazy" />
+						</div>
+					)}
+					{travelPhotos[2] && (
+						<div class="gallery-right-img">
+							<img src={urlFor(travelPhotos[2].image).width(600).url()} alt={travelPhotos[2].image?.alt || travelPhotos[2].title} loading="lazy" />
+						</div>
+					)}
+				</div>
 			</div>
 		</div>
 	</section>
@@ -292,32 +294,43 @@ const heroImg = settings?.heroImage
 		.feature-card { width: 45%; }
 	}
 
-	/* ===== 3. GALLERY — large left overflows, two small right-aligned ===== */
+	/* ===== 3. GALLERY — large left, two stacked right ===== */
 	.gallery-row {
 		padding: 20px 0;
 	}
 	.gallery-asymmetric {
-		display: grid;
-		grid-template-columns: 2fr 1fr;
-		grid-template-rows: 1fr 1fr;
+		display: flex;
 		gap: 20px;
+		align-items: stretch;
+		height: 500px;
 	}
 	.gallery-big {
-		grid-row: 1 / 3;
+		flex: 0 0 60%;
+		overflow: hidden;
+		border-radius: 10px;
+		box-shadow: 4px 0 10px 0 rgba(0,0,0,0.5);
 	}
 	.gallery-big img {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
+	}
+	.gallery-right {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+	.gallery-right-img {
+		flex: 1;
+		overflow: hidden;
 		border-radius: 10px;
 		box-shadow: 4px 0 10px 0 rgba(0,0,0,0.5);
 	}
-	.gallery-side img {
+	.gallery-right-img img {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		border-radius: 10px;
-		box-shadow: 4px 0 10px 0 rgba(0,0,0,0.5);
 	}
 
 	/* ===== 4. GALLERY — 3 equal columns ===== */
@@ -341,10 +354,11 @@ const heroImg = settings?.heroImage
 
 	@media (max-width: 767px) {
 		.gallery-asymmetric {
-			grid-template-columns: 1fr;
-			grid-template-rows: auto;
+			flex-direction: column;
+			height: auto;
 		}
-		.gallery-big { grid-row: auto; }
+		.gallery-big { flex: 0 0 auto; }
+		.gallery-right-img { min-height: 200px; }
 		.gallery-three { flex-direction: column; gap: 16px; }
 	}
 
