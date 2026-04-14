@@ -1,0 +1,247 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
+import { sanityClient, urlFor } from "../lib/sanity";
+
+const kevin = await sanityClient.fetch(
+	`*[_type == "teamMember" && name == "Kevin White"][0]`,
+);
+const photoUrl = kevin?.photo
+	? urlFor(kevin.photo).width(283).height(300).url()
+	: "https://10btravelers.com/wp-content/uploads/2023/11/Kevin-White-1-283x300.jpeg";
+const footerPhotoUrl = kevin?.photo
+	? urlFor(kevin.photo).width(140).height(140).url()
+	: "https://10btravelers.com/wp-content/uploads/2023/11/Kevin-White.jpeg";
+---
+
+<Layout
+	title="About | 10 Billion Travelers"
+	description="Meet Kevin White — over 1 million miles traveled across 26 countries. Learn the story behind 10 Billion Travelers."
+>
+	<!-- Hero banner with about.jpeg background, fixed attachment -->
+	<section class="about-hero">
+		<div class="about-hero-inner">
+			<h1 class="about-hero-title">Our Story</h1>
+		</div>
+	</section>
+
+	<!-- Bio section: image left, text right -->
+	<section class="bio-section">
+		<div class="container">
+			<div class="bio-grid">
+				<div class="bio-image-col">
+					<div class="bio-image-wrap">
+						<img
+							src={photoUrl}
+							alt={kevin?.name || "Kevin White"}
+							width="283"
+							height="300"
+							class="bio-photo"
+						/>
+					</div>
+				</div>
+				<div class="bio-text-col">
+					<p>I was born to travel! I've logged over 1 million miles. Before I'm 100 years old there will be 10 Billion people alive. I'll inspire as many travelers as possible!</p>
+
+					<p>Born in a poor family in Western North Carolina, I had only traveled outside of NC for a few days until I went to college in South Carolina. I didn't even have a passport until I was 30 years old. Today, I've logged over 1 million miles and have traveled to 26 different countries around the world.</p>
+
+					<p>I love to travel. I love adventure. I love to travel to popular destinations but love even more to sleep under the stars where very few people have ever gone. I know how to travel. I know what makes airlines, hotels, restaurants, and attractions great! I'm blessed with a ton of practical travel experience and would love to share it with you.</p>
+
+					<p>Check out our Vlogs, Blogs, Reviews, and Travel Services. We will inspire &amp; facilitate your travel dreams. Let us consult with you to make your hotel, restaurant, or attraction more profitable. Are your bags packed yet?</p>
+
+					<h3 class="bio-name">Kevin White</h3>
+					<p class="bio-caption">Having fun on the Great Wall</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- CTA with background image -->
+	<section class="about-cta">
+		<div class="about-cta-box">
+			<div class="about-cta-overlay"></div>
+			<div class="about-cta-inner">
+				<div class="about-cta-text">
+					<h2>HAVE A QUESTION</h2>
+					<p>WE'D LOVE TO HEAR FROM YOU</p>
+				</div>
+				<div class="about-cta-action">
+					<a href="mailto:info@10btravelers.com" class="btn btn-cta">EMAIL US</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	/* About hero — background image with fixed attachment */
+	.about-hero {
+		position: relative;
+		min-height: 400px;
+		background: url("https://10btravelers.com/wp-content/uploads/2023/11/about.jpeg") bottom center / cover no-repeat;
+		background-attachment: fixed;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.about-hero-inner {
+		text-align: center;
+		padding: 100px 0;
+	}
+	.about-hero-img-wrap {
+		width: 214px;
+		margin: 0 auto 24px;
+	}
+	.about-hero-portrait {
+		width: 100%;
+		height: auto;
+	}
+	.about-hero-title {
+		color: #ffffff;
+		font-size: 40px;
+		text-align: center;
+		letter-spacing: 2.5px;
+		text-transform: uppercase;
+	}
+	@media (max-width: 767px) {
+		.about-hero { min-height: 300px; }
+		.about-hero-title { font-size: 30px; }
+		.about-hero-inner { padding: 60px 20px; }
+	}
+
+	/* Bio section */
+	.bio-section {
+		padding: 0;
+		background: #ffffff;
+	}
+	.bio-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 40px;
+		max-width: 90%;
+		margin: 0 auto;
+		padding: 60px 50px;
+		align-items: start;
+	}
+	.bio-image-col {
+		padding-left: 60px;
+		padding-top: 30px;
+	}
+	.bio-image-wrap {
+		position: relative;
+		display: inline-block;
+	}
+	.bio-image-wrap::before {
+		content: '';
+		position: absolute;
+		top: -24px;
+		left: calc(-9 * 24px);
+		width: calc(12 * 24px);
+		height: calc(11 * 24px);
+		background-image: radial-gradient(#ADD8E6 2px, transparent 2px);
+		background-size: 24px 24px;
+		z-index: 0;
+	}
+	.bio-photo {
+		position: relative;
+		z-index: 10;
+		width: 283px;
+		height: auto;
+		display: block;
+	}
+	.bio-text-col {
+		padding-top: 0;
+	}
+	.bio-text-col p {
+		font-size: 16px;
+		line-height: 1.7;
+		margin-bottom: 16px;
+		color: var(--color-text);
+	}
+	.bio-name {
+		color: var(--color-primary);
+		font-size: 23px;
+		font-weight: 700;
+		text-transform: capitalize;
+		margin-top: 20px;
+		margin-bottom: 8px;
+	}
+	.bio-caption {
+		font-size: 16px;
+		color: var(--color-text);
+	}
+	@media (max-width: 1024px) {
+		.bio-grid { grid-template-columns: 1fr; padding: 50px 30px; }
+		.bio-image-col { padding-left: 50px; }
+	}
+	@media (max-width: 767px) {
+		.bio-grid { padding: 30px 20px; max-width: 100%; }
+		.bio-image-col { padding-left: 50px; }
+		.bio-text-col p { font-size: 14px; }
+		.bio-caption { font-size: 14px; }
+	}
+
+	/* About CTA */
+	.about-cta {
+		padding: 0 24px 40px;
+	}
+	.about-cta-box {
+		position: relative;
+		border-radius: 15px;
+		overflow: hidden;
+		max-width: var(--container-max);
+		margin: 0 auto;
+		background: url("https://10btravelers.com/wp-content/uploads/2023/11/10-Billion-Travelers-button-pic-1024x677.jpeg") bottom center / cover no-repeat;
+	}
+	.about-cta-overlay {
+		position: absolute;
+		inset: 0;
+		background: #000000;
+		opacity: 0.49;
+	}
+	.about-cta-inner {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 50px;
+		gap: 32px;
+	}
+	.about-cta-text {
+		flex: 1;
+	}
+	.about-cta-text h2 {
+		color: var(--color-primary-hover);
+		font-size: 55px;
+		text-transform: uppercase;
+		line-height: 1.1;
+	}
+	.about-cta-text p {
+		color: #ffffff;
+		font-size: 20px;
+		margin-top: 8px;
+	}
+	.about-cta-action {
+		flex-shrink: 0;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+	}
+	.btn-cta {
+		background: var(--color-primary-hover);
+		color: #ffffff;
+		border-color: var(--color-primary-hover);
+		border-radius: 5px;
+		font-size: 15px;
+	}
+	.btn-cta:hover {
+		background: var(--color-primary);
+		border-color: var(--color-primary);
+	}
+	@media (max-width: 767px) {
+		.about-cta-inner { flex-direction: column; text-align: center; padding: 30px; }
+		.about-cta-text h2 { font-size: 25px; }
+		.about-cta-text p { font-size: 14px; }
+	}
+</style>

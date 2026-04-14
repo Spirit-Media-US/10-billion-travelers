@@ -30,9 +30,19 @@
 [context.branch-deploy]
   command = "npm run build"
 
-# TODO: Update domain before going live
+# TODO: Update domain before going live — replace REPLACE_DOMAIN with actual domain when assigned
 [[redirects]]
   from = "https://www.REPLACE_DOMAIN.com/*"
   to = "https://REPLACE_DOMAIN.com/:splat"
   status = 301
   force = true
+
+# Security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://cdn.sanity.io; font-src 'self'; connect-src 'self' https://*.sanity.io; frame-ancestors 'none'"

@@ -4,7 +4,7 @@ dist/
 .astro/
 
 # Sanity studio build artifacts
-.sanity/runtime/
+.sanity/
 
 # Environment
 .env
@@ -18,3 +18,16 @@ Thumbs.db
 # Editor
 .vscode/
 .idea/
+.mcp.json
+
+# Media files — never commit to git
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.webp
+*.svg
+*.mp4
+*.mp3
+*.mov
+*.pdf
