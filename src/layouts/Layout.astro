@@ -102,9 +102,12 @@ const navLinks = [
             </a>
           </div>
         </div>
-        <div class="footer-col">
+        <div class="footer-col footer-col-gallery">
           <h2 class="footer-heading">Gallery</h2>
           <img src="https://10btravelers.com/wp-content/uploads/2023/11/footer1.webp" alt="Travel gallery" class="footer-gallery-img" loading="lazy" />
+        </div>
+        <div class="footer-col footer-col-gallery">
+          <img src="https://10btravelers.com/wp-content/uploads/2023/11/bic-office-2-768x420.jpg" alt="BIC Office" class="footer-gallery-img" loading="lazy" />
         </div>
       </div>
       <div class="footer-bottom">
@@ -231,9 +234,11 @@ const navLinks = [
   }
   .footer-inner {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 48px;
+    grid-template-columns: 30% 23.33% 23.33% 23.33%;
+    gap: 0;
     min-height: 246px;
+    max-width: 80%;
+    margin: 0 auto;
     padding-top: 40px;
     padding-bottom: 40px;
   }
@@ -314,12 +319,20 @@ const navLinks = [
     color: #ffffff;
     opacity: 0.8;
   }
+  @media (max-width: 1024px) {
+    .footer-inner {
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 100%;
+    }
+  }
   @media (max-width: 768px) {
     .footer-inner {
       grid-template-columns: 1fr;
       gap: 32px;
       padding-top: 32px;
       padding-bottom: 32px;
+      max-width: 100%;
     }
     .footer-about { flex-direction: column; align-items: center; text-align: center; }
     .footer-bottom-inner { flex-direction: column; gap: 8px; text-align: center; }
