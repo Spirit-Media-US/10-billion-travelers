@@ -17,7 +17,7 @@ pre-commit:
   commands:
     behind-remote:
       run: |
-        git fetch --quiet
+        timeout 10 git fetch --quiet 2>/dev/null || true
         LOCAL=$(git rev-parse @)
         REMOTE=$(git rev-parse @{u} 2>/dev/null || echo "")
         if [ -n "$REMOTE" ] && [ "$LOCAL" != "$REMOTE" ]; then
