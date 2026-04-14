@@ -83,9 +83,10 @@ Then run: `git checkout dev && git pull origin dev`
 | Navigation | Static | No | Only 2 pages, structural |
 | JSON-LD | Static | No | Technical SEO |
 
-### Completed — Phase 5 (Prelaunch QA)
-- All 8 automated scans PASS
-- Remaining wp-content URLs are fallbacks for CSS backgrounds and footer static images — functional while original site is live, will be migrated to Sanity CDN before domain cutover
+### Completed — Phase 5 (CAR Gate)
+- All 8 automated QA scans PASS
+- All 7 migration fidelity items PASS (page count, nav, CTAs, footer, images, Studio)
+- Remaining wp-content URLs are fallbacks — functional while original site is live
 
 ### Still Pending — Phase 8 (Launch)
 - Replace remaining wp-content fallback URLs with Sanity CDN URLs
