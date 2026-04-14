@@ -105,17 +105,58 @@ import "../styles/global.css";
 		</div>
 	</section>
 
-	<!-- 6. Associations carousel -->
+	<!-- 6. Associations slider -->
 	<section class="associations">
 		<div class="container">
 			<h2>Associations</h2>
-			<div class="associations-row">
-				<img src="https://10btravelers.com/wp-content/uploads/2024/01/accredit.webp" alt="Accredited" width="405" height="153" loading="lazy" />
-				<img src="https://10btravelers.com/wp-content/uploads/2024/01/world-foodtravel-association.webp" alt="World Food Travel Association" width="405" height="155" loading="lazy" />
-				<img src="https://10btravelers.com/wp-content/uploads/2024/01/unwto.webp" alt="UNWTO" width="404" height="154" loading="lazy" />
+			<div class="associations-slider" id="assoc-slider">
+				<div class="associations-track" id="assoc-track">
+					<div class="associations-slide">
+						<img src="https://10btravelers.com/wp-content/uploads/2024/01/accredit.webp" alt="Accredited" width="405" height="153" />
+					</div>
+					<div class="associations-slide">
+						<img src="https://10btravelers.com/wp-content/uploads/2024/01/world-foodtravel-association.webp" alt="World Food Travel Association" width="405" height="155" />
+					</div>
+					<div class="associations-slide">
+						<img src="https://10btravelers.com/wp-content/uploads/2024/01/unwto.webp" alt="UNWTO" width="404" height="154" />
+					</div>
+				</div>
+				<div class="associations-dots" id="assoc-dots"></div>
 			</div>
 		</div>
 	</section>
+
+	<script>
+		const track = document.getElementById('assoc-track');
+		const dotsContainer = document.getElementById('assoc-dots');
+		const slides = track?.querySelectorAll('.associations-slide');
+		if (track && slides && dotsContainer) {
+			let current = 0;
+			const total = slides.length;
+
+			for (let i = 0; i < total; i++) {
+				const dot = document.createElement('button');
+				dot.classList.add('assoc-dot');
+				if (i === 0) dot.classList.add('active');
+				dot.addEventListener('click', () => goTo(i));
+				dotsContainer.appendChild(dot);
+			}
+			const dots = dotsContainer.querySelectorAll('.assoc-dot');
+
+			function goTo(index) {
+				current = index;
+				track.style.transform = `translateX(-${current * 100}%)`;
+				dots.forEach((d, i) => d.classList.toggle('active', i === current));
+			}
+
+			let interval = setInterval(() => goTo((current + 1) % total), 5000);
+
+			track.parentElement?.addEventListener('mouseenter', () => clearInterval(interval));
+			track.parentElement?.addEventListener('mouseleave', () => {
+				interval = setInterval(() => goTo((current + 1) % total), 5000);
+			});
+		}
+	</script>
 
 	<!-- 7. Bottom CTA — "TIME FOR ADVENTURE?" with island bg -->
 	<section class="adventure-cta">
@@ -345,7 +386,7 @@ import "../styles/global.css";
 
 	/* ===== 6. ASSOCIATIONS ===== */
 	.associations {
-		padding: 40px 0;
+		padding: 50px 0 60px;
 		text-align: center;
 	}
 	.associations h2 {
@@ -355,20 +396,54 @@ import "../styles/global.css";
 		margin-bottom: 32px;
 		mix-blend-mode: darken;
 	}
-	.associations-row {
+	.associations-slider {
+		overflow: hidden;
+		position: relative;
+		max-width: 500px;
+		margin: 0 auto;
+	}
+	.associations-track {
+		display: flex;
+		transition: transform 0.5s ease;
+	}
+	.associations-slide {
+		flex: 0 0 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 10px 40px;
+	}
+	.associations-slide img {
+		max-width: 100%;
+		height: auto;
+		max-height: 60px;
+		object-fit: contain;
+	}
+	.associations-dots {
 		display: flex;
 		justify-content: center;
-		align-items: center;
-		gap: 40px;
-		flex-wrap: wrap;
+		gap: 8px;
+		margin-top: 24px;
 	}
-	.associations-row img {
-		max-width: 200px;
-		height: auto;
+	.assoc-dot {
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		border: none;
+		background: var(--color-border);
+		cursor: pointer;
+		padding: 0;
+		transition: background 0.3s;
+	}
+	.assoc-dot.active {
+		background: var(--color-primary);
 	}
 	@media (max-width: 767px) {
-		.associations h2 { font-size: 32px; }
-		.associations-row img { max-width: 150px; }
+		.associations h2 { font-size: 31px; }
+		.associations-slider { max-width: 300px; }
+	}
+	@media (max-width: 1024px) and (min-width: 768px) {
+		.associations h2 { font-size: 52px; }
 	}
 
 	/* ===== 7. ADVENTURE CTA ===== */
