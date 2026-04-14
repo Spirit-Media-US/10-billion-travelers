@@ -209,17 +209,17 @@ import "../styles/global.css";
 	}
 
 	/* ===== 3. GALLERY 1 — large left + two stacked right ===== */
-	.gallery-1 { padding: 24px 0; }
+	.gallery-1 { padding: 30px 0; }
 	.gallery-1-grid {
 		display: flex;
-		gap: 0;
+		gap: 20px;
 	}
 	.gallery-1-large {
 		flex-shrink: 0;
-		width: 57%;
+		width: 50%;
 	}
 	.gallery-1-large img {
-		width: 119%;
+		width: 100%;
 		border-radius: 10px;
 		box-shadow: 4px 0 10px 0 rgba(0,0,0,0.5);
 	}
@@ -227,28 +227,26 @@ import "../styles/global.css";
 		flex: 1;
 		display: flex;
 		flex-direction: column;
-		gap: 0;
-		padding: 0;
+		gap: 20px;
 	}
 	.gallery-1-stack img {
-		width: 64%;
-		margin-left: auto;
+		width: 100%;
+		flex: 1;
+		object-fit: cover;
 		border-radius: 10px;
 		box-shadow: 4px 0 10px 0 rgba(0,0,0,0.5);
 	}
 	@media (max-width: 767px) {
-		.gallery-1-grid { flex-direction: column; gap: 16px; }
+		.gallery-1-grid { flex-direction: column; }
 		.gallery-1-large { width: 100%; }
-		.gallery-1-large img { width: 100%; }
-		.gallery-1-stack img { width: 100%; }
 	}
 
 	/* ===== 4. GALLERY 2 — 3 square images ===== */
-	.gallery-2 { padding: 24px 0; }
+	.gallery-2 { padding: 30px 0; }
 	.gallery-2-grid {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
-		gap: 0;
+		gap: 20px;
 	}
 	.gallery-2-grid img {
 		width: 100%;
@@ -258,7 +256,7 @@ import "../styles/global.css";
 		box-shadow: 4px 0 10px 0 rgba(0,0,0,0.5);
 	}
 	@media (max-width: 767px) {
-		.gallery-2-grid { grid-template-columns: 1fr; gap: 16px; }
+		.gallery-2-grid { grid-template-columns: 1fr; }
 	}
 
 	/* ===== 5. BEST TRAVEL CTA ===== */
