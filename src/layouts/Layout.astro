@@ -104,11 +104,21 @@ const navLinks = [
         </div>
         <div class="footer-col footer-col-gallery">
           <h2 class="footer-heading">Gallery</h2>
-          <img src="https://10btravelers.com/wp-content/uploads/2023/11/footer1.webp" alt="Travel gallery" class="footer-gallery-img" loading="lazy" />
+          <div class="footer-gallery-grid">
+            <img src="https://10btravelers.com/wp-content/uploads/2023/11/footer1.webp" alt="Travel photo" loading="lazy" />
+            <img src="https://storage.googleapis.com/msgsndr/ijP5xrlPYa3qzCndBKpO/media/63060faf4028c0754d2db7b3.jpeg" alt="Travel photo" loading="lazy" />
+            <img src="https://storage.googleapis.com/msgsndr/ijP5xrlPYa3qzCndBKpO/media/63060faff161f4878afc7bc4.jpeg" alt="Travel photo" loading="lazy" />
+            <img src="https://storage.googleapis.com/msgsndr/ijP5xrlPYa3qzCndBKpO/media/63060faf4028c06da62db7b4.jpeg" alt="Travel photo" loading="lazy" />
+            <img src="https://storage.googleapis.com/msgsndr/ijP5xrlPYa3qzCndBKpO/media/6305fd4aa6d0b39e53e952fa.jpeg" alt="Travel photo" loading="lazy" />
+            <img src="https://storage.googleapis.com/msgsndr/ijP5xrlPYa3qzCndBKpO/media/6305fd4aa6d0b378b8e952f9.jpeg" alt="Travel photo" loading="lazy" />
+            <img src="https://storage.googleapis.com/msgsndr/ijP5xrlPYa3qzCndBKpO/media/6305fd4aefa9a7d985a000d4.jpeg" alt="Travel photo" loading="lazy" />
+            <img src="https://storage.googleapis.com/msgsndr/ijP5xrlPYa3qzCndBKpO/media/63060181a6d0b30e8ee953f6.jpeg" alt="Travel photo" loading="lazy" />
+            <img src="https://storage.googleapis.com/msgsndr/ijP5xrlPYa3qzCndBKpO/media/6305fd4aa6d0b37b47e952f7.jpeg" alt="Travel photo" loading="lazy" />
+          </div>
         </div>
         <div class="footer-col footer-col-gallery">
           <a href="http://businessimpactcenter.com/" target="_blank" rel="noopener noreferrer">
-            <img src="https://10btravelers.com/wp-content/uploads/2023/11/bic-office-2-768x420.jpg" alt="Business Impact Center" class="footer-gallery-img" loading="lazy" />
+            <img src="https://10btravelers.com/wp-content/uploads/2023/11/bic-office-2-768x420.jpg" alt="Business Impact Center" class="footer-bic-img" loading="lazy" />
           </a>
         </div>
       </div>
@@ -258,10 +268,11 @@ const navLinks = [
     gap: 16px;
   }
   .footer-avatar {
-    width: 140px;
-    height: 140px;
+    width: 70px;
+    height: 70px;
     flex-shrink: 0;
-    border-radius: 0;
+    border-radius: 71px;
+    object-fit: cover;
   }
   .footer-about p {
     font-size: 15px;
@@ -278,19 +289,35 @@ const navLinks = [
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
+    width: 45px;
+    height: 45px;
     background: rgba(255,255,255,0.14);
     border-radius: 10%;
     transition: opacity 0.2s;
   }
   .social-icon:hover { opacity: 0.8; }
   .social-icon svg {
-    width: 16px;
-    height: 16px;
+    width: 25px;
+    height: 25px;
     fill: var(--color-text);
   }
-  .footer-gallery-img {
+  .footer-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+  }
+  .footer-gallery-grid img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    opacity: 0.8;
+    cursor: pointer;
+    border-radius: 2px;
+  }
+  .footer-gallery-grid img:hover {
+    opacity: 1;
+  }
+  .footer-bic-img {
     width: 100%;
     border-radius: 4px;
   }
