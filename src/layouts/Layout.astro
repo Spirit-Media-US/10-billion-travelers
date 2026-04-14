@@ -100,6 +100,7 @@ const navLinks = [
       <div class="footer-bottom">
         <div class="container">
           <p>&copy; {new Date().getFullYear()} 10 Billion Travelers. All rights reserved.</p>
+          <p class="footer-powered">Powered by <a href="https://spiritmediapublishing.com" target="_blank" rel="noopener noreferrer">Spirit Media</a></p>
         </div>
       </div>
     </footer>
@@ -250,6 +251,19 @@ const navLinks = [
     font-size: 14px;
     color: var(--color-text-secondary);
     margin: 0;
+  }
+  .footer-powered {
+    margin-top: 4px;
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    opacity: 0.7;
+  }
+  .footer-powered a {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+  .footer-powered a:hover {
+    color: var(--color-primary-hover);
   }
   @media (max-width: 768px) {
     .footer-inner {

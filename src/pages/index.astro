@@ -4,168 +4,229 @@ import "../styles/global.css";
 ---
 
 <Layout
-  title="Travel Agencies in Raleigh | 10 Billion Travelers"
-  description="Looking for the best travel agencies in Raleigh? Choose 10 Billion Travelers for expertly crafted tours and personalized travel experiences."
+	title="Travel Agencies in Raleigh | 10 Billion Travelers"
+	description="Looking for the best travel agencies in Raleigh? Choose 10 Billion Travelers for expertly crafted tours and personalized travel experiences."
 >
-  <Fragment slot="head">
-    <meta name="keywords" content="travel agencies in raleigh" />
-  </Fragment>
+	<Fragment slot="head">
+		<meta name="keywords" content="travel agencies in raleigh" />
+	</Fragment>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-content container">
-      <h1>Amazing Destinations</h1>
-      <p class="hero-sub">Amazing places around the globe to see</p>
-    </div>
-  </section>
+	<!-- Hero with background image -->
+	<section class="hero">
+		<div class="hero-overlay"></div>
+		<div class="hero-content container">
+			<h1>Amazing Destinations</h1>
+			<p class="hero-sub">Amazing places around the globe to see</p>
+			<a href="/about/" class="btn btn-hero">Learn More</a>
+		</div>
+	</section>
 
-  <!-- Features -->
-  <section class="features">
-    <div class="container">
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">🌍</div>
-          <h2>Amazing Destinations</h2>
-          <p>Amazing places around the globe to see</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🏨</div>
-          <h2>Great Accommodations</h2>
-          <p>Type of convenience and easily accessible</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">⚡</div>
-          <h2>Super Fast Booking</h2>
-          <p>Schedules, rates and reserve your ticket</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🧭</div>
-          <h2>Friendly Tour Guide</h2>
-          <p>A perfect guide will be attentive and respectful</p>
-        </div>
-      </div>
-    </div>
-  </section>
+	<!-- Features (4 cards with icons) -->
+	<section class="features">
+		<div class="container">
+			<div class="features-grid">
+				<div class="feature-card">
+					<div class="feature-icon">
+						<img src="https://cdn.sanity.io/images/2voldnur/production/placeholder-icon.webp" alt="Amazing Destinations icon" width="80" height="80" class="feature-icon-img" />
+					</div>
+					<h3>Amazing Destinations</h3>
+					<p>Amazing places around the globe to see</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon">
+						<img src="https://cdn.sanity.io/images/2voldnur/production/placeholder-icon.webp" alt="Great Accommodations icon" width="80" height="80" class="feature-icon-img" />
+					</div>
+					<h3>Great Accommodations</h3>
+					<p>Type of convenience and easily accessible</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon">
+						<img src="https://cdn.sanity.io/images/2voldnur/production/placeholder-icon.webp" alt="Super Fast Booking icon" width="80" height="80" class="feature-icon-img" />
+					</div>
+					<h3>Super Fast Booking</h3>
+					<p>Schedules, rates and reserve your ticket</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon">
+						<img src="https://cdn.sanity.io/images/2voldnur/production/placeholder-icon.webp" alt="Friendly Tour Guide icon" width="80" height="80" class="feature-icon-img" />
+					</div>
+					<h3>Friendly Tour Guide</h3>
+					<p>A perfect guide will be attentive and respectful</p>
+				</div>
+			</div>
+		</div>
+	</section>
 
-  <!-- Travel Photos Gallery -->
-  <section class="gallery-section">
-    <div class="container">
-      <div class="gallery-row" id="travel-gallery">
-        <div class="gallery-placeholder">Travel photos — images will be loaded from Sanity</div>
-      </div>
-    </div>
-  </section>
+	<!-- Travel Photos Gallery (3 across) -->
+	<section class="gallery-section">
+		<div class="container">
+			<div class="gallery-row">
+				<div class="gallery-item"><div class="gallery-placeholder-img"></div></div>
+				<div class="gallery-item"><div class="gallery-placeholder-img"></div></div>
+				<div class="gallery-item"><div class="gallery-placeholder-img"></div></div>
+			</div>
+		</div>
+	</section>
 
-  <!-- CTA -->
-  <section class="cta-section">
-    <div class="container">
-      <h2>Let's Join and Prove It</h2>
-      <p class="cta-sub">Best Travel</p>
-      <a href="/about/" class="btn">Learn More</a>
-    </div>
-  </section>
+	<!-- CTA -->
+	<section class="cta-section">
+		<div class="container">
+			<p class="cta-label">Let's Join and Prove It</p>
+			<h2>Best Travel</h2>
+		</div>
+	</section>
 
-  <!-- Best Travel Gallery -->
-  <section class="gallery-section">
-    <div class="container">
-      <div class="gallery-grid" id="best-gallery">
-        <div class="gallery-placeholder">Best travel photos — images will be loaded from Sanity</div>
-      </div>
-    </div>
-  </section>
+	<!-- Best Travel Gallery (3 square grid) -->
+	<section class="gallery-section gallery-best">
+		<div class="container">
+			<div class="gallery-row">
+				<div class="gallery-item square"><div class="gallery-placeholder-img"></div></div>
+				<div class="gallery-item square"><div class="gallery-placeholder-img"></div></div>
+				<div class="gallery-item square"><div class="gallery-placeholder-img"></div></div>
+			</div>
+		</div>
+	</section>
 </Layout>
 
 <style>
-  .hero {
-    background: #eeeeee;
-    padding: 80px 0;
-    text-align: center;
-  }
-  .hero h1 {
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
-  .hero-sub {
-    font-size: 17px;
-    color: var(--color-text);
-    margin-top: 16px;
-  }
+	/* Hero */
+	.hero {
+		position: relative;
+		min-height: 500px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		background: url("https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1600&q=80") center/cover no-repeat;
+		background-color: #eeeeee;
+	}
+	.hero-overlay {
+		position: absolute;
+		inset: 0;
+		background: rgba(0, 0, 0, 0.35);
+	}
+	.hero-content {
+		position: relative;
+		z-index: 1;
+		padding: 80px 24px;
+	}
+	.hero h1 {
+		color: #ffffff;
+		text-transform: uppercase;
+		letter-spacing: 3px;
+		font-size: 48px;
+		text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+	}
+	.hero-sub {
+		color: rgba(255,255,255,0.9);
+		font-size: 18px;
+		margin-top: 16px;
+		text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+	}
+	.btn-hero {
+		margin-top: 32px;
+		background: transparent;
+		color: #ffffff;
+		border-color: #ffffff;
+	}
+	.btn-hero:hover {
+		background: var(--color-primary);
+		border-color: var(--color-primary);
+		color: #ffffff;
+	}
 
-  .features {
-    padding: 60px 0;
-  }
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-  }
-  .feature-card {
-    text-align: center;
-    padding: 32px 16px;
-  }
-  .feature-icon {
-    font-size: 40px;
-    margin-bottom: 16px;
-  }
-  .feature-card h2 {
-    font-size: 16px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 12px;
-  }
-  .feature-card p {
-    font-size: 15px;
-    color: var(--color-text-secondary);
-  }
+	/* Features */
+	.features {
+		padding: 60px 0;
+		background: var(--color-white);
+	}
+	.features-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 32px;
+		text-align: center;
+	}
+	.feature-card {
+		padding: 24px 16px;
+	}
+	.feature-icon {
+		margin-bottom: 20px;
+		display: flex;
+		justify-content: center;
+	}
+	.feature-icon-img {
+		width: 80px;
+		height: 80px;
+		object-fit: contain;
+		border-radius: 50%;
+		background: var(--color-bg);
+		padding: 16px;
+	}
+	.feature-card h3 {
+		font-size: 16px;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		margin-bottom: 12px;
+		color: var(--color-heading);
+	}
+	.feature-card p {
+		font-size: 15px;
+		color: var(--color-text-secondary);
+		line-height: 1.6;
+	}
 
-  .gallery-section {
-    padding: 40px 0;
-  }
-  .gallery-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-  }
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-  }
-  .gallery-placeholder {
-    grid-column: 1 / -1;
-    text-align: center;
-    padding: 60px 20px;
-    background: var(--color-bg-light);
-    color: var(--color-text-secondary);
-    font-style: italic;
-  }
+	/* Gallery */
+	.gallery-section {
+		padding: 40px 0;
+	}
+	.gallery-row {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 16px;
+	}
+	.gallery-item {
+		overflow: hidden;
+	}
+	.gallery-placeholder-img {
+		width: 100%;
+		padding-bottom: 75%;
+		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+		opacity: 0.15;
+	}
+	.gallery-item.square .gallery-placeholder-img {
+		padding-bottom: 100%;
+	}
 
-  .cta-section {
-    padding: 80px 0;
-    text-align: center;
-    background: var(--color-white);
-  }
-  .cta-section h2 {
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 8px;
-  }
-  .cta-sub {
-    font-size: 20px;
-    color: var(--color-primary);
-    font-family: var(--font-heading);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 32px;
-  }
+	/* CTA */
+	.cta-section {
+		padding: 60px 0;
+		text-align: left;
+		background: var(--color-bg);
+	}
+	.cta-label {
+		font-family: var(--font-heading);
+		font-size: 14px;
+		font-weight: 500;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		color: var(--color-text-secondary);
+		margin-bottom: 8px;
+	}
+	.cta-section h2 {
+		font-size: 36px;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		color: var(--color-primary);
+	}
 
-  @media (max-width: 768px) {
-    .features-grid { grid-template-columns: repeat(2, 1fr); }
-    .gallery-row, .gallery-grid { grid-template-columns: 1fr; }
-    .hero { padding: 60px 0; }
-  }
-  @media (max-width: 480px) {
-    .features-grid { grid-template-columns: 1fr; }
-  }
+	@media (max-width: 768px) {
+		.hero { min-height: 350px; }
+		.hero h1 { font-size: 32px; }
+		.features-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+		.gallery-row { grid-template-columns: 1fr; }
+		.cta-section { text-align: center; }
+	}
+	@media (max-width: 480px) {
+		.features-grid { grid-template-columns: 1fr; }
+	}
 </style>
