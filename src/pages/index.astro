@@ -44,20 +44,18 @@ import "../styles/global.css";
 		</div>
 	</section>
 
-	<!-- 3. Gallery — large left, two small squares right-aligned -->
+	<!-- 3. Gallery — large left, 2-col thumbnail grid right -->
 	<section class="gallery-row">
 		<div class="container">
 			<div class="gallery-asymmetric">
 				<div class="gallery-big">
 					<img src="https://10btravelers.com/wp-content/uploads/2024/01/beach.webp" alt="Beach destination" width="1200" height="1200" loading="lazy" />
 				</div>
-				<div class="gallery-side">
-					<div class="gallery-side-item">
-						<img src="https://10btravelers.com/wp-content/uploads/2024/01/beach3.webp" alt="Beach travel" width="1204" height="1204" loading="lazy" />
-					</div>
-					<div class="gallery-side-item">
-						<img src="https://10btravelers.com/wp-content/uploads/2024/01/beach2.webp" alt="Beach scenery" width="1200" height="1200" loading="lazy" />
-					</div>
+				<div class="gallery-thumbs">
+					<img src="https://10btravelers.com/wp-content/uploads/2024/01/beach3.webp" alt="Beach travel" width="1204" height="1204" loading="lazy" />
+					<img src="https://10btravelers.com/wp-content/uploads/2024/01/beach2.webp" alt="Beach scenery" width="1200" height="1200" loading="lazy" />
+					<img src="https://10btravelers.com/wp-content/uploads/2024/01/pic1-1024x1024.webp" alt="Travel photo" width="1024" height="1024" loading="lazy" />
+					<img src="https://10btravelers.com/wp-content/uploads/2024/01/pic2-1024x1024.webp" alt="Travel photo" width="1024" height="1024" loading="lazy" />
 				</div>
 			</div>
 		</div>
@@ -224,28 +222,27 @@ import "../styles/global.css";
 	}
 	.gallery-asymmetric {
 		display: flex;
-		gap: 0;
+		gap: 20px;
 		align-items: stretch;
 	}
 	.gallery-big {
-		flex: 0 0 68%;
+		flex: 0 0 55%;
 	}
 	.gallery-big img {
 		width: 100%;
+		height: 100%;
+		object-fit: cover;
 		border-radius: 10px;
 		box-shadow: 4px 0 10px 0 rgba(0,0,0,0.5);
 	}
-	.gallery-side {
+	.gallery-thumbs {
 		flex: 1;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: flex-end;
-		gap: 20px;
-		padding-left: 20px;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 12px;
 	}
-	.gallery-side-item img {
-		width: 65%;
+	.gallery-thumbs img {
+		width: 100%;
 		aspect-ratio: 1;
 		object-fit: cover;
 		border-radius: 10px;
@@ -274,8 +271,6 @@ import "../styles/global.css";
 	@media (max-width: 767px) {
 		.gallery-asymmetric { flex-direction: column; }
 		.gallery-big { flex: 0 0 auto; }
-		.gallery-side { padding-left: 0; align-items: center; }
-		.gallery-side-item img { width: 100%; }
 		.gallery-three { flex-direction: column; gap: 16px; }
 	}
 
