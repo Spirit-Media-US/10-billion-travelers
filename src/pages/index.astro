@@ -44,7 +44,7 @@ import "../styles/global.css";
 		</div>
 	</section>
 
-	<!-- 3. Gallery — large left, two stacked right -->
+	<!-- 3. Gallery — large left overflows, two small right-aligned -->
 	<section class="gallery-row">
 		<div class="container">
 			<div class="gallery-asymmetric">
@@ -52,8 +52,12 @@ import "../styles/global.css";
 					<img src="https://10btravelers.com/wp-content/uploads/2024/01/beach.webp" alt="Beach destination" width="1200" height="1200" loading="lazy" />
 				</div>
 				<div class="gallery-side">
-					<img src="https://10btravelers.com/wp-content/uploads/2024/01/beach3.webp" alt="Beach travel" width="1204" height="1204" loading="lazy" />
-					<img src="https://10btravelers.com/wp-content/uploads/2024/01/beach2.webp" alt="Beach scenery" width="1200" height="1200" loading="lazy" />
+					<div class="gallery-side-item">
+						<img src="https://10btravelers.com/wp-content/uploads/2024/01/beach3.webp" alt="Beach travel" width="1204" height="1204" loading="lazy" />
+					</div>
+					<div class="gallery-side-item">
+						<img src="https://10btravelers.com/wp-content/uploads/2024/01/beach2.webp" alt="Beach scenery" width="1200" height="1200" loading="lazy" />
+					</div>
 				</div>
 			</div>
 		</div>
@@ -63,9 +67,15 @@ import "../styles/global.css";
 	<section class="gallery-row">
 		<div class="container">
 			<div class="gallery-three">
-				<img src="https://10btravelers.com/wp-content/uploads/2024/01/pic1-1024x1024.webp" alt="Travel destination" width="1024" height="1024" loading="lazy" />
-				<img src="https://10btravelers.com/wp-content/uploads/2024/01/pic2-1024x1024.webp" alt="Travel destination" width="1024" height="1024" loading="lazy" />
-				<img src="https://10btravelers.com/wp-content/uploads/2024/01/pic3-1024x1024.webp" alt="Travel destination" width="1024" height="1024" loading="lazy" />
+				<div class="gallery-three-col">
+					<img src="https://10btravelers.com/wp-content/uploads/2024/01/pic1-1024x1024.webp" alt="Travel destination" width="1024" height="1024" loading="lazy" />
+				</div>
+				<div class="gallery-three-col">
+					<img src="https://10btravelers.com/wp-content/uploads/2024/01/pic2-1024x1024.webp" alt="Travel destination" width="1024" height="1024" loading="lazy" />
+				</div>
+				<div class="gallery-three-col">
+					<img src="https://10btravelers.com/wp-content/uploads/2024/01/pic3-1024x1024.webp" alt="Travel destination" width="1024" height="1024" loading="lazy" />
+				</div>
 			</div>
 		</div>
 	</section>
@@ -208,34 +218,44 @@ import "../styles/global.css";
 		.feature-card { width: 45%; }
 	}
 
-	/* ===== 3. GALLERY — big left, two stacked right ===== */
+	/* ===== 3. GALLERY — large left overflows, two small right-aligned ===== */
 	.gallery-row {
 		padding: 20px 0;
 	}
 	.gallery-asymmetric {
 		display: flex;
-		gap: 24px;
+		flex-direction: row;
+		gap: 0;
 		align-items: stretch;
+		overflow: hidden;
 	}
 	.gallery-big {
-		flex: 0 0 58%;
+		flex: 0 0 57%;
+		overflow: visible;
+		z-index: 1;
 	}
 	.gallery-big img {
-		width: 100%;
+		width: 119.5%;
 		height: 100%;
 		object-fit: cover;
 		border-radius: 10px;
 		box-shadow: 4px 0 10px 0 rgba(0,0,0,0.5);
 	}
 	.gallery-side {
-		flex: 1;
+		flex: 0 0 50%;
 		display: flex;
 		flex-direction: column;
-		gap: 8px;
+		gap: 0;
+		padding: 0;
 	}
-	.gallery-side img {
-		width: 100%;
+	.gallery-side-item {
 		flex: 1;
+		display: flex;
+		justify-content: flex-end;
+		align-items: stretch;
+	}
+	.gallery-side-item img {
+		width: 64%;
 		object-fit: cover;
 		border-radius: 10px;
 		box-shadow: 4px 0 10px 0 rgba(0,0,0,0.5);
@@ -243,25 +263,31 @@ import "../styles/global.css";
 
 	/* ===== 4. GALLERY — 3 equal columns ===== */
 	.gallery-three {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 24px;
+		display: flex;
+		flex-direction: row;
+		gap: 0;
 	}
-	.gallery-three img {
+	.gallery-three-col {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+	}
+	.gallery-three-col img {
 		width: 100%;
-		aspect-ratio: 1;
+		flex: 1;
 		object-fit: cover;
 		border-radius: 10px;
 		box-shadow: 4px 0 10px 0 rgba(0,0,0,0.5);
 	}
 
 	@media (max-width: 767px) {
-		.gallery-asymmetric {
-			grid-template-columns: 1fr;
-		}
-		.gallery-three {
-			grid-template-columns: 1fr;
-		}
+		.gallery-asymmetric { flex-direction: column; overflow: visible; }
+		.gallery-big { flex: 0 0 100%; }
+		.gallery-big img { width: 100%; }
+		.gallery-side { flex: 0 0 100%; gap: 16px; }
+		.gallery-side-item { justify-content: center; }
+		.gallery-side-item img { width: 100%; }
+		.gallery-three { flex-direction: column; gap: 16px; }
 	}
 
 	/* ===== 5. BEST TRAVEL CTA ===== */
