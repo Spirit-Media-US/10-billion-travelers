@@ -183,20 +183,21 @@ import "../styles/global.css";
 </Layout>
 
 <style>
-	/* Hero — matches original Elementor hero with bg overlay */
+	/* Hero — background image with logo + text overlay */
 	.hero {
 		position: relative;
-		min-height: 480px;
+		min-height: 550px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		text-align: center;
-		background: var(--color-bg);
+		background: url("https://10btravelers.com/wp-content/uploads/2024/01/beach.webp") center/cover no-repeat;
+		background-color: #eeeeee;
 	}
 	.hero-overlay {
 		position: absolute;
 		inset: 0;
-		background: rgba(0, 0, 0, 0.05);
+		background: rgba(0, 0, 0, 0.4);
 	}
 	.hero-content {
 		position: relative;
@@ -208,17 +209,20 @@ import "../styles/global.css";
 		height: 150px;
 		margin: 0 auto 24px;
 		border-radius: 50%;
+		border: 3px solid rgba(255,255,255,0.3);
 	}
 	.hero h1 {
 		text-transform: uppercase;
-		letter-spacing: 2px;
-		font-size: 36px;
-		color: var(--color-heading);
+		letter-spacing: 3px;
+		font-size: 42px;
+		color: #ffffff;
+		text-shadow: 0 2px 8px rgba(0,0,0,0.4);
 	}
 	.hero-sub {
-		color: var(--color-text);
-		font-size: 17px;
+		color: rgba(255,255,255,0.9);
+		font-size: 18px;
 		margin-top: 12px;
+		text-shadow: 0 1px 4px rgba(0,0,0,0.3);
 	}
 
 	/* Features — 4 columns with circular icon images */
