@@ -11,21 +11,8 @@ import "../styles/global.css";
 		<meta name="keywords" content="travel agencies in raleigh" />
 	</Fragment>
 
-	<!-- Hero: logo + heading + subtitle (matches original Elementor hero) -->
-	<section class="hero">
-		<div class="hero-overlay"></div>
-		<div class="hero-content container">
-			<img
-				src="https://10btravelers.com/wp-content/uploads/2024/02/ezgif.com-optiwebp-6-150x150.webp"
-				alt="10 Billion Travelers logo"
-				width="150"
-				height="150"
-				class="hero-logo"
-			/>
-			<h1>Amazing<br />Destinations</h1>
-			<p class="hero-sub">Amazing places around the globe to see</p>
-		</div>
-	</section>
+	<!-- Hero: background image only -->
+	<section class="hero" aria-label="Hero banner"></section>
 
 	<!-- Features: 4 columns with icon images -->
 	<section class="features">
@@ -183,46 +170,11 @@ import "../styles/global.css";
 </Layout>
 
 <style>
-	/* Hero — background image with logo + text overlay */
+	/* Hero — background image only */
 	.hero {
-		position: relative;
 		min-height: 550px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		text-align: center;
 		background: url("https://10btravelers.com/wp-content/uploads/2024/02/bg-homepage.webp") center/cover no-repeat;
 		background-color: #eeeeee;
-	}
-	.hero-overlay {
-		position: absolute;
-		inset: 0;
-		background: rgba(0, 0, 0, 0.4);
-	}
-	.hero-content {
-		position: relative;
-		z-index: 1;
-		padding: 60px 24px;
-	}
-	.hero-logo {
-		width: 150px;
-		height: 150px;
-		margin: 0 auto 24px;
-		border-radius: 50%;
-		border: 3px solid rgba(255,255,255,0.3);
-	}
-	.hero h1 {
-		text-transform: uppercase;
-		letter-spacing: 3px;
-		font-size: 42px;
-		color: #ffffff;
-		text-shadow: 0 2px 8px rgba(0,0,0,0.4);
-	}
-	.hero-sub {
-		color: rgba(255,255,255,0.9);
-		font-size: 18px;
-		margin-top: 12px;
-		text-shadow: 0 1px 4px rgba(0,0,0,0.3);
 	}
 
 	/* Features — 4 columns with circular icon images */
