@@ -48,11 +48,12 @@ const navLinks = [
     <slot name="head" />
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
     <header class="header">
       <div class="header-inner container">
         <a href="/" class="logo" aria-label="10 Billion Travelers Home">
           <img src="https://10btravelers.com/wp-content/uploads/2023/11/ezgif.com-optiwebp-7.webp" alt="10 Billion Travelers" width="150" height="150" class="logo-img" />
-          <span class="logo-text">NEW 10 BILLION TRAVELERS</span>
+          <span class="logo-text">10 BILLION TRAVELERS</span>
         </a>
         <button class="mobile-toggle" aria-label="Toggle menu" aria-expanded="false">
           <span class="bar"></span>
@@ -72,7 +73,7 @@ const navLinks = [
       </div>
     </header>
 
-    <main>
+    <main id="main-content">
       <slot />
     </main>
 
@@ -116,10 +117,10 @@ const navLinks = [
             <img src="https://storage.googleapis.com/msgsndr/ijP5xrlPYa3qzCndBKpO/media/6305fd4aa6d0b37b47e952f7.jpeg" alt="Travel photo" loading="lazy" />
           </div>
         </div>
-        <div class="footer-col footer-col-gallery">
-          <a href="http://businessimpactcenter.com/" target="_blank" rel="noopener noreferrer">
-            <img src="https://10btravelers.com/wp-content/uploads/2023/11/bic-office-2-768x420.jpg" alt="Business Impact Center" class="footer-bic-img" loading="lazy" />
-          </a>
+        <div class="footer-col footer-col-contact">
+          <h2 class="footer-heading">Get in Touch</h2>
+          <p class="footer-address">205 S Academy St #3251<br />Cary, NC 27519</p>
+          <a href="mailto:kevin@10btravelers.com" class="footer-email-btn">Email Us</a>
         </div>
       </div>
       <div class="footer-bottom">
@@ -144,6 +145,19 @@ const navLinks = [
 </html>
 
 <style>
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: var(--color-primary);
+    color: #fff;
+    padding: 12px 24px;
+    z-index: 200;
+    font-weight: 600;
+  }
+  .skip-link:focus {
+    top: 0;
+  }
   .header {
     background: #ffffff;
     position: sticky;
@@ -212,9 +226,13 @@ const navLinks = [
     gap: 5px;
     background: var(--color-primary-hover);
     border: none;
-    padding: 10px;
+    padding: 12px;
     border-radius: 4px;
     cursor: pointer;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
   }
   .mobile-toggle .bar {
     display: block;
@@ -316,10 +334,25 @@ const navLinks = [
   .footer-gallery-grid img:hover {
     opacity: 1;
   }
-  .footer-bic-img {
-    width: 100%;
+  .footer-address {
+    font-size: 14px;
+    color: var(--color-text);
+    line-height: 1.6;
+    margin: 0 0 12px;
+  }
+  .footer-email-btn {
+    display: inline-block;
+    background: var(--color-primary);
+    color: #fff;
+    padding: 8px 20px;
     border-radius: 4px;
-    margin-top: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .footer-email-btn:hover {
+    background: var(--color-primary-hover);
   }
   .footer-col p {
     font-size: 14px;
@@ -327,7 +360,7 @@ const navLinks = [
     margin: 0 0 6px;
   }
   .footer-bottom {
-    background: var(--color-primary);
+    background: #1a8a7d;
     padding: 16px 0;
   }
   .footer-bottom-inner {

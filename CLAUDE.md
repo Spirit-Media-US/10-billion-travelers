@@ -88,10 +88,12 @@ Then run: `git checkout dev && git pull origin dev`
 - All 7 migration fidelity items PASS (page count, nav, CTAs, footer, images, Studio)
 - Remaining wp-content URLs are fallbacks — functional while original site is live
 
-### Still Pending — Phase 8 (Launch)
-- Replace remaining wp-content fallback URLs with Sanity CDN URLs
-- Domain cutover: GoDaddy → Cloudflare (Kevin approval needed)
-- Merge dev → main for production deploy (Kevin approval needed)
+### Completed — Phase 8 (Launch) — 2026-04-14
+- Kevin merged dev → main: commit 04c5ad9
+- Production live: https://10-billion-travelers.pages.dev (all pages 200 OK)
+- Sanity Studio live: https://10-billion-travelers.pages.dev/studio/
+- Sanity → CF Pages webhook active (auto-rebuild on content publish)
+- Domain cutover (10btravelers.com → Cloudflare) — Kevin handles DNS when ready
 
 ### Notes
 - **Domain is `10btravelers.com`** (NOT 10billiontravelers.com — that domain expired in 2023)
