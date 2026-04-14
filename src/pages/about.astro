@@ -98,27 +98,37 @@ import "../styles/global.css";
 
 	/* Bio section */
 	.bio-section {
-		padding: 50px 0;
+		padding: 60px 0;
 		background: #ffffff;
 	}
 	.bio-grid {
-		display: flex;
-		gap: 0;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 48px;
+		align-items: start;
 		max-width: 90%;
 		margin: 0 auto;
 		padding: 50px;
 	}
 	.bio-image-col {
-		flex-shrink: 0;
-		width: 50%;
+		background-image: radial-gradient(#ADD8E6 2px, transparent 2px);
+		background-size: 20px 20px;
+		padding: 40px;
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		min-height: 400px;
 	}
 	.bio-photo {
 		width: 100%;
 		max-width: 283px;
+		position: relative;
+		z-index: 1;
+		border-radius: 4px;
+		box-shadow: 4px 4px 15px rgba(0,0,0,0.2);
 	}
 	.bio-text-col {
-		width: 50%;
-		padding: 30px 0 0 0;
+		padding: 0;
 	}
 	.bio-text-col p {
 		font-size: 16px;
@@ -139,13 +149,14 @@ import "../styles/global.css";
 		color: var(--color-text);
 	}
 	@media (max-width: 1024px) {
-		.bio-image-col, .bio-text-col { width: 100%; }
-		.bio-grid { flex-direction: column; padding: 30px; }
+		.bio-grid { grid-template-columns: 1fr; padding: 30px; gap: 32px; }
+		.bio-image-col { min-height: 300px; }
 	}
 	@media (max-width: 767px) {
-		.bio-grid { padding: 30px; max-width: 100%; }
+		.bio-grid { padding: 20px; max-width: 100%; }
 		.bio-text-col p { font-size: 14px; }
 		.bio-caption { font-size: 14px; }
+		.bio-image-col { padding: 24px; min-height: auto; }
 	}
 
 	/* About CTA */
