@@ -1,6 +1,17 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
+import { sanityClient, urlFor } from "../lib/sanity";
+
+const kevin = await sanityClient.fetch(
+	`*[_type == "teamMember" && name == "Kevin White"][0]`,
+);
+const photoUrl = kevin?.photo
+	? urlFor(kevin.photo).width(283).height(300).url()
+	: "https://10btravelers.com/wp-content/uploads/2023/11/Kevin-White-1-283x300.jpeg";
+const footerPhotoUrl = kevin?.photo
+	? urlFor(kevin.photo).width(140).height(140).url()
+	: "https://10btravelers.com/wp-content/uploads/2023/11/Kevin-White.jpeg";
 ---
 
 <Layout
@@ -21,8 +32,8 @@ import "../styles/global.css";
 				<div class="bio-image-col">
 					<div class="bio-image-wrap">
 						<img
-							src="https://10btravelers.com/wp-content/uploads/2023/11/Kevin-White-1-283x300.jpeg"
-							alt="Kevin White"
+							src={photoUrl}
+							alt={kevin?.name || "Kevin White"}
 							width="283"
 							height="300"
 							class="bio-photo"

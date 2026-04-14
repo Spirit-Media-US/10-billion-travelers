@@ -1,6 +1,22 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
+import { sanityClient, urlFor } from "../lib/sanity";
+
+const settings = await sanityClient.fetch(`*[_type == "siteSettings"][0]`);
+const features = await sanityClient.fetch(
+	`*[_type == "feature"] | order(order asc)`,
+);
+const travelPhotos = await sanityClient.fetch(
+	`*[_type == "galleryImage" && section == "travel"] | order(order asc)`,
+);
+const bestPhotos = await sanityClient.fetch(
+	`*[_type == "galleryImage" && section == "best"] | order(order asc)`,
+);
+
+const heroImg = settings?.heroImage
+	? urlFor(settings.heroImage).width(2400).url()
+	: "https://10btravelers.com/wp-content/uploads/2024/02/bg-homepage.webp";
 ---
 
 <Layout
@@ -12,7 +28,7 @@ import "../styles/global.css";
 	</Fragment>
 
 	<!-- 1. Hero — full-width bg image with radial gradient overlay -->
-	<section class="hero">
+	<section class="hero" style={`background-image: url('${heroImg}');`}>
 		<div class="hero-overlay"></div>
 	</section>
 
@@ -20,60 +36,49 @@ import "../styles/global.css";
 	<section class="features">
 		<div class="container">
 			<div class="features-grid">
-				<div class="feature-card">
-					<img src="https://10btravelers.com/wp-content/uploads/2024/02/ezgif.com-optiwebp-6-150x150.webp" alt="Amazing Destinations" width="150" height="150" class="feature-icon" />
-					<h2>Amazing Destinations</h2>
-					<p>Amazing places around the globe to see</p>
-				</div>
-				<div class="feature-card">
-					<img src="https://10btravelers.com/wp-content/uploads/2024/01/icon2-150x150.webp" alt="Great Accommodations" width="150" height="150" class="feature-icon" />
-					<h2>Great Accommodations</h2>
-					<p>Type of convenience and easily accessible</p>
-				</div>
-				<div class="feature-card">
-					<img src="https://10btravelers.com/wp-content/uploads/2024/01/icon3-150x150.webp" alt="Super Fast Booking" width="150" height="150" class="feature-icon" />
-					<h2>Super Fast Booking</h2>
-					<p>Schedules, rates and reserve your ticket</p>
-				</div>
-				<div class="feature-card">
-					<img src="https://10btravelers.com/wp-content/uploads/2024/01/icon2-150x150.webp" alt="Friendly Tour Guide" width="150" height="150" class="feature-icon" />
-					<h2>Friendly Tour Guide</h2>
-					<p>A perfect guide will be attentive and respectful</p>
-				</div>
+				{features.map((f: any) => (
+					<div class="feature-card">
+						{f.icon && <img src={urlFor(f.icon).width(150).height(150).url()} alt={f.title} width="150" height="150" class="feature-icon" />}
+						<h2>{f.title}</h2>
+						<p>{f.description}</p>
+					</div>
+				))}
 			</div>
 		</div>
 	</section>
 
-	<!-- 3. Gallery — large left spans full height, two right -->
+	<!-- 3. Gallery — large left, two right from Sanity -->
 	<section class="gallery-row">
 		<div class="container">
 			<div class="gallery-asymmetric">
-				<div class="gallery-big">
-					<img src="https://10btravelers.com/wp-content/uploads/2024/01/beach.webp" alt="Beach destination" width="1200" height="1200" loading="lazy" />
-				</div>
-				<div class="gallery-side">
-					<img src="https://10btravelers.com/wp-content/uploads/2024/01/beach3.webp" alt="Beach travel" width="1204" height="1204" loading="lazy" />
-				</div>
-				<div class="gallery-side">
-					<img src="https://10btravelers.com/wp-content/uploads/2024/01/beach2.webp" alt="Beach scenery" width="1200" height="1200" loading="lazy" />
-				</div>
+				{travelPhotos[0] && (
+					<div class="gallery-big">
+						<img src={urlFor(travelPhotos[0].image).width(1200).url()} alt={travelPhotos[0].image?.alt || travelPhotos[0].title} loading="lazy" />
+					</div>
+				)}
+				{travelPhotos[1] && (
+					<div class="gallery-side">
+						<img src={urlFor(travelPhotos[1].image).width(800).url()} alt={travelPhotos[1].image?.alt || travelPhotos[1].title} loading="lazy" />
+					</div>
+				)}
+				{travelPhotos[2] && (
+					<div class="gallery-side">
+						<img src={urlFor(travelPhotos[2].image).width(800).url()} alt={travelPhotos[2].image?.alt || travelPhotos[2].title} loading="lazy" />
+					</div>
+				)}
 			</div>
 		</div>
 	</section>
 
-	<!-- 4. Gallery — 3 equal columns -->
+	<!-- 4. Gallery — 3 equal columns from Sanity -->
 	<section class="gallery-row">
 		<div class="container">
 			<div class="gallery-three">
-				<div class="gallery-three-col">
-					<img src="https://10btravelers.com/wp-content/uploads/2024/01/pic1-1024x1024.webp" alt="Travel destination" width="1024" height="1024" loading="lazy" />
-				</div>
-				<div class="gallery-three-col">
-					<img src="https://10btravelers.com/wp-content/uploads/2024/01/pic2-1024x1024.webp" alt="Travel destination" width="1024" height="1024" loading="lazy" />
-				</div>
-				<div class="gallery-three-col">
-					<img src="https://10btravelers.com/wp-content/uploads/2024/01/pic3-1024x1024.webp" alt="Travel destination" width="1024" height="1024" loading="lazy" />
-				</div>
+				{bestPhotos.map((p: any) => (
+					<div class="gallery-three-col">
+						<img src={urlFor(p.image).width(1024).height(1024).url()} alt={p.image?.alt || p.title} loading="lazy" />
+					</div>
+				))}
 			</div>
 		</div>
 	</section>
@@ -206,7 +211,9 @@ import "../styles/global.css";
 	.hero {
 		position: relative;
 		min-height: 633px;
-		background: url("https://10btravelers.com/wp-content/uploads/2024/02/bg-homepage.webp") top center / cover no-repeat;
+		background-position: top center;
+		background-size: cover;
+		background-repeat: no-repeat;
 		background-color: #eeeeee;
 	}
 	.hero-overlay {
