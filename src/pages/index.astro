@@ -287,46 +287,48 @@ import "../styles/global.css";
 	.best-travel-inner {
 		position: relative;
 		z-index: 1;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0;
 	}
 	.best-travel-text {
 		width: 100%;
 		text-align: center;
-		margin-bottom: 40px;
+		margin-bottom: 48px;
 	}
 	.best-travel-label {
 		color: #ffffff;
 		font-size: 16px;
-		margin-bottom: 4px;
+		margin-bottom: 8px;
 	}
 	.best-travel-heading {
 		color: var(--color-primary-hover);
 		font-size: 70px;
 		letter-spacing: 2px;
 		line-height: 1;
-		-webkit-text-stroke-color: #000;
 	}
 	.best-travel-badges {
+		width: 100%;
 		display: flex;
-		gap: 0;
+		justify-content: center;
+		gap: 40px;
 	}
 	.badge-item {
-		width: 50%;
 		display: flex;
 		align-items: center;
 		gap: 15px;
 	}
 	.badge-item img {
-		width: 30%;
-		max-width: 80px;
-		border-radius: 50%;
+		width: 80px;
+		height: 80px;
 		flex-shrink: 0;
 	}
 	.badge-item strong {
 		display: block;
 		color: #ffffff;
 		font-family: var(--font-heading);
-		font-size: 16px;
-		-webkit-text-stroke-color: #000;
+		font-size: 17px;
+		margin-bottom: 4px;
 	}
 	.badge-item p {
 		color: #ffffff;
@@ -337,8 +339,8 @@ import "../styles/global.css";
 		.best-travel { padding: 40px 20px; }
 		.best-travel-heading { font-size: 26px; letter-spacing: 1.8px; }
 		.best-travel-label { font-size: 14px; }
-		.best-travel-badges { flex-direction: column; gap: 24px; }
-		.badge-item { width: 100%; }
+		.best-travel-badges { flex-direction: column; gap: 24px; align-items: center; }
+		.badge-item strong { font-size: 15px; }
 	}
 
 	/* ===== 6. ASSOCIATIONS ===== */
