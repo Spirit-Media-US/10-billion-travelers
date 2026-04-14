@@ -11,306 +11,417 @@ import "../styles/global.css";
 		<meta name="keywords" content="travel agencies in raleigh" />
 	</Fragment>
 
-	<!-- Hero: background image only -->
-	<section class="hero" aria-label="Hero banner"></section>
+	<!-- 1. Hero — full-width bg image with radial gradient overlay -->
+	<section class="hero">
+		<div class="hero-overlay"></div>
+	</section>
 
-	<!-- Features: 4 columns with icon images -->
+	<!-- 2. Feature cards — 4 cards overlapping hero, black bottom border, rounded -->
 	<section class="features">
 		<div class="container">
 			<div class="features-grid">
 				<div class="feature-card">
-					<img
-						src="https://10btravelers.com/wp-content/uploads/2024/01/icon2-150x150.webp"
-						alt="Amazing Destinations icon"
-						width="150"
-						height="150"
-						class="feature-icon"
-					/>
-					<h3>Amazing Destinations</h3>
+					<img src="https://10btravelers.com/wp-content/uploads/2024/02/ezgif.com-optiwebp-6-150x150.webp" alt="Amazing Destinations" width="150" height="150" class="feature-icon" />
+					<h2>Amazing Destinations</h2>
 					<p>Amazing places around the globe to see</p>
 				</div>
 				<div class="feature-card">
-					<img
-						src="https://10btravelers.com/wp-content/uploads/2024/01/icon2-150x150.webp"
-						alt="Great Accommodations icon"
-						width="150"
-						height="150"
-						class="feature-icon"
-					/>
-					<h3>Great Accommodations</h3>
+					<img src="https://10btravelers.com/wp-content/uploads/2024/01/icon2-150x150.webp" alt="Great Accommodations" width="150" height="150" class="feature-icon" />
+					<h2>Great Accommodations</h2>
 					<p>Type of convenience and easily accessible</p>
 				</div>
 				<div class="feature-card">
-					<img
-						src="https://10btravelers.com/wp-content/uploads/2024/01/icon3-150x150.webp"
-						alt="Super Fast Booking icon"
-						width="150"
-						height="150"
-						class="feature-icon"
-					/>
-					<h3>Super Fast Booking</h3>
+					<img src="https://10btravelers.com/wp-content/uploads/2024/01/icon3-150x150.webp" alt="Super Fast Booking" width="150" height="150" class="feature-icon" />
+					<h2>Super Fast Booking</h2>
 					<p>Schedules, rates and reserve your ticket</p>
 				</div>
 				<div class="feature-card">
-					<img
-						src="https://10btravelers.com/wp-content/uploads/2024/01/icon2-150x150.webp"
-						alt="Friendly Tour Guide icon"
-						width="150"
-						height="150"
-						class="feature-icon"
-					/>
-					<h3>Friendly Tour Guide</h3>
+					<img src="https://10btravelers.com/wp-content/uploads/2024/01/icon2-150x150.webp" alt="Friendly Tour Guide" width="150" height="150" class="feature-icon" />
+					<h2>Friendly Tour Guide</h2>
 					<p>A perfect guide will be attentive and respectful</p>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<!-- Gallery 1: large image left, two stacked right (matches original layout) -->
-	<section class="gallery-section">
+	<!-- 3. Photo gallery — large left, two stacked right -->
+	<section class="gallery-1">
 		<div class="container">
-			<div class="gallery-layout-1">
-				<div class="gallery-large">
-					<img
-						src="https://10btravelers.com/wp-content/uploads/2024/01/beach.webp"
-						alt="Beach destination"
-						width="1200"
-						height="1200"
-						loading="lazy"
-					/>
+			<div class="gallery-1-grid">
+				<div class="gallery-1-large">
+					<img src="https://10btravelers.com/wp-content/uploads/2024/01/beach.webp" alt="Beach destination" width="1200" height="1200" loading="lazy" />
 				</div>
-				<div class="gallery-stack">
-					<img
-						src="https://10btravelers.com/wp-content/uploads/2024/01/beach3.webp"
-						alt="Beach travel photo"
-						width="1204"
-						height="1204"
-						loading="lazy"
-					/>
-					<img
-						src="https://10btravelers.com/wp-content/uploads/2024/01/beach2.webp"
-						alt="Beach destination photo"
-						width="1200"
-						height="1200"
-						loading="lazy"
-					/>
+				<div class="gallery-1-stack">
+					<img src="https://10btravelers.com/wp-content/uploads/2024/01/beach3.webp" alt="Beach travel" width="1204" height="1204" loading="lazy" />
+					<img src="https://10btravelers.com/wp-content/uploads/2024/01/beach2.webp" alt="Beach scenery" width="1200" height="1200" loading="lazy" />
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<!-- Gallery 2: 3 square images (pic1, pic2, pic3) -->
-	<section class="gallery-section">
+	<!-- 4. Photo grid — 3 square images -->
+	<section class="gallery-2">
 		<div class="container">
-			<div class="gallery-grid-3">
-				<img
-					src="https://10btravelers.com/wp-content/uploads/2024/01/pic1-1024x1024.webp"
-					alt="Travel destination"
-					width="1024"
-					height="1024"
-					loading="lazy"
-				/>
-				<img
-					src="https://10btravelers.com/wp-content/uploads/2024/01/pic2-1024x1024.webp"
-					alt="Travel destination"
-					width="1024"
-					height="1024"
-					loading="lazy"
-				/>
-				<img
-					src="https://10btravelers.com/wp-content/uploads/2024/01/pic3-1024x1024.webp"
-					alt="Travel destination"
-					width="1024"
-					height="1024"
-					loading="lazy"
-				/>
+			<div class="gallery-2-grid">
+				<img src="https://10btravelers.com/wp-content/uploads/2024/01/pic1-1024x1024.webp" alt="Travel destination" width="1024" height="1024" loading="lazy" />
+				<img src="https://10btravelers.com/wp-content/uploads/2024/01/pic2-1024x1024.webp" alt="Travel destination" width="1024" height="1024" loading="lazy" />
+				<img src="https://10btravelers.com/wp-content/uploads/2024/01/pic3-1024x1024.webp" alt="Travel destination" width="1024" height="1024" loading="lazy" />
 			</div>
 		</div>
 	</section>
 
-	<!-- CTA with badges -->
-	<section class="cta-section">
+	<!-- 5. CTA — "BEST TRAVEL" with bg image, badges -->
+	<section class="best-travel">
+		<div class="best-travel-overlay"></div>
+		<div class="best-travel-inner container">
+			<div class="best-travel-text">
+				<p class="best-travel-label">Let's Join and Prove It</p>
+				<h2 class="best-travel-heading">Best Travel</h2>
+			</div>
+			<div class="best-travel-badges">
+				<div class="badge-item">
+					<img src="https://10btravelers.com/wp-content/uploads/2023/10/630604fa0a1d0d335693c0d2-150x150.png" alt="Google Maps Local Guide" width="150" height="150" loading="lazy" />
+					<div>
+						<strong>Google Maps + Local Guide</strong>
+						<p>Over 500,000 impacts!</p>
+					</div>
+				</div>
+				<div class="badge-item">
+					<img src="https://10btravelers.com/wp-content/uploads/2023/10/6306053e4548ae342af15010-150x150.png" alt="TripAdvisor Top 3 percent" width="150" height="150" loading="lazy" />
+					<div>
+						<strong>Top 3%</strong>
+						<p>On Tripadvisor.com</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- 6. Associations carousel -->
+	<section class="associations">
 		<div class="container">
-			<div class="cta-grid">
-				<div class="cta-text">
-					<p class="cta-label">Let's Join and Prove It</p>
-					<h2>Best Travel</h2>
-				</div>
-				<div class="cta-badges">
-					<div class="badge">
-						<img
-							src="https://10btravelers.com/wp-content/uploads/2023/10/630604fa0a1d0d335693c0d2-150x150.png"
-							alt="Google Maps + Local Guide"
-							width="60"
-							height="60"
-							loading="lazy"
-						/>
-						<div>
-							<strong>Google Maps + Local Guide</strong>
-							<p>Over 500,000 impacts!</p>
-						</div>
-					</div>
-					<div class="badge">
-						<img
-							src="https://10btravelers.com/wp-content/uploads/2023/10/6306053e4548ae342af15010-150x150.png"
-							alt="TripAdvisor Top 3%"
-							width="60"
-							height="60"
-							loading="lazy"
-						/>
-						<div>
-							<strong>Top 3%</strong>
-							<p>On Tripadvisor.com</p>
-						</div>
-					</div>
-				</div>
+			<h2>Associations</h2>
+			<div class="associations-row">
+				<img src="https://10btravelers.com/wp-content/uploads/2024/01/accredit.webp" alt="Accredited" width="405" height="153" loading="lazy" />
+				<img src="https://10btravelers.com/wp-content/uploads/2024/01/world-foodtravel-association.webp" alt="World Food Travel Association" width="405" height="155" loading="lazy" />
+				<img src="https://10btravelers.com/wp-content/uploads/2024/01/unwto.webp" alt="UNWTO" width="404" height="154" loading="lazy" />
+			</div>
+		</div>
+	</section>
+
+	<!-- 7. Bottom CTA — "TIME FOR ADVENTURE?" with island bg -->
+	<section class="adventure-cta">
+		<div class="adventure-cta-overlay"></div>
+		<div class="adventure-cta-inner container">
+			<div class="adventure-cta-content">
+				<h2>Time for Adventure?</h2>
+				<p>Contact us to learn about booking your trip</p>
+			</div>
+			<div class="adventure-cta-action">
+				<a href="/about/" class="btn btn-primary">Get on My Mailing List</a>
 			</div>
 		</div>
 	</section>
 </Layout>
 
 <style>
-	/* Hero — background image only */
+	/* ===== 1. HERO ===== */
 	.hero {
-		min-height: 550px;
-		background: url("https://10btravelers.com/wp-content/uploads/2024/02/bg-homepage.webp") center/cover no-repeat;
+		position: relative;
+		min-height: 633px;
+		background: url("https://10btravelers.com/wp-content/uploads/2024/02/bg-homepage.webp") top center / cover no-repeat;
 		background-color: #eeeeee;
 	}
+	.hero-overlay {
+		position: absolute;
+		inset: 0;
+		background: radial-gradient(at center center, #000000 0%, #30C7B5 100%);
+		opacity: 0.5;
+	}
+	@media (max-width: 767px) {
+		.hero {
+			min-height: 30vh;
+			background-image: url("https://10btravelers.com/wp-content/uploads/2024/02/bg-mobile.jpeg");
+			padding: 150px 20px 50px;
+		}
+	}
+	@media (max-width: 1024px) and (min-width: 768px) {
+		.hero {
+			min-height: 40vh;
+			padding: 100px 50px 50px;
+		}
+	}
 
-	/* Features — 4 columns with circular icon images */
+	/* ===== 2. FEATURE CARDS ===== */
 	.features {
-		padding: 60px 0;
-		background: var(--color-white);
+		position: relative;
+		z-index: 2;
+		margin-top: -40px;
+		padding-bottom: 40px;
 	}
 	.features-grid {
-		display: grid;
-		grid-template-columns: repeat(4, 1fr);
-		gap: 24px;
-		text-align: center;
+		display: flex;
+		justify-content: space-evenly;
+		gap: 0;
 	}
 	.feature-card {
-		padding: 24px 16px;
+		width: 23%;
+		background: #ffffff;
+		border-radius: 20px;
+		border-bottom: 10px solid #000000;
+		box-shadow: 0 4px 10px -1px rgba(0,0,0,0.5);
+		padding: 20px;
+		text-align: center;
+		overflow: hidden;
 	}
 	.feature-icon {
-		width: 80px;
-		height: 80px;
-		margin: 0 auto 20px;
+		width: 50%;
+		max-width: 50%;
+		margin: 20px auto;
 		border-radius: 50%;
-		object-fit: cover;
 	}
-	.feature-card h3 {
-		font-size: 16px;
-		text-transform: uppercase;
-		letter-spacing: 1px;
-		margin-bottom: 12px;
-		color: var(--color-heading);
+	.feature-card h2 {
+		font-size: 19px;
+		color: var(--color-primary);
+		margin-bottom: 8px;
 	}
 	.feature-card p {
 		font-size: 15px;
 		color: var(--color-text);
-		line-height: 1.6;
+		line-height: 1.5;
+	}
+	@media (max-width: 767px) {
+		.features { margin-top: -40px; }
+		.features-grid {
+			flex-direction: column;
+			align-items: center;
+			gap: 60px;
+		}
+		.feature-card {
+			width: 100%;
+			max-width: 320px;
+			margin-bottom: 0;
+		}
+	}
+	@media (max-width: 1024px) and (min-width: 768px) {
+		.features-grid { flex-wrap: wrap; justify-content: center; gap: 20px; }
+		.feature-card { width: 45%; }
 	}
 
-	/* Gallery layout 1: large left, two stacked right */
-	.gallery-section {
-		padding: 24px 0;
+	/* ===== 3. GALLERY 1 — large left + two stacked right ===== */
+	.gallery-1 { padding: 24px 0; }
+	.gallery-1-grid {
+		display: flex;
+		gap: 0;
 	}
-	.gallery-layout-1 {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 16px;
+	.gallery-1-large {
+		flex-shrink: 0;
+		width: 57%;
 	}
-	.gallery-large img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
+	.gallery-1-large img {
+		width: 119%;
+		border-radius: 10px;
+		box-shadow: 4px 0 10px 0 rgba(0,0,0,0.5);
 	}
-	.gallery-stack {
+	.gallery-1-stack {
+		flex: 1;
 		display: flex;
 		flex-direction: column;
-		gap: 16px;
+		gap: 0;
+		padding: 0;
 	}
-	.gallery-stack img {
-		width: 100%;
-		flex: 1;
-		object-fit: cover;
+	.gallery-1-stack img {
+		width: 64%;
+		margin-left: auto;
+		border-radius: 10px;
+		box-shadow: 4px 0 10px 0 rgba(0,0,0,0.5);
+	}
+	@media (max-width: 767px) {
+		.gallery-1-grid { flex-direction: column; gap: 16px; }
+		.gallery-1-large { width: 100%; }
+		.gallery-1-large img { width: 100%; }
+		.gallery-1-stack img { width: 100%; }
 	}
 
-	/* Gallery grid: 3 equal squares */
-	.gallery-grid-3 {
+	/* ===== 4. GALLERY 2 — 3 square images ===== */
+	.gallery-2 { padding: 24px 0; }
+	.gallery-2-grid {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
-		gap: 16px;
+		gap: 0;
 	}
-	.gallery-grid-3 img {
+	.gallery-2-grid img {
 		width: 100%;
 		aspect-ratio: 1;
 		object-fit: cover;
+		border-radius: 10px;
+		box-shadow: 4px 0 10px 0 rgba(0,0,0,0.5);
+	}
+	@media (max-width: 767px) {
+		.gallery-2-grid { grid-template-columns: 1fr; gap: 16px; }
 	}
 
-	/* CTA with badges */
-	.cta-section {
-		padding: 60px 0;
-		background: var(--color-bg);
+	/* ===== 5. BEST TRAVEL CTA ===== */
+	.best-travel {
+		position: relative;
+		display: flex;
+		flex-wrap: wrap;
+		min-height: 0;
+		padding: 100px;
+		background: url("https://10btravelers.com/wp-content/uploads/2024/02/bg-beach.jpg") center / cover no-repeat;
 	}
-	.cta-grid {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 48px;
-		align-items: center;
+	.best-travel-overlay {
+		position: absolute;
+		inset: 0;
+		background: #000000;
+		opacity: 0.63;
 	}
-	.cta-label {
-		font-family: var(--font-heading);
-		font-size: 14px;
-		font-weight: 500;
+	.best-travel-inner {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0;
+		width: 100%;
+	}
+	.best-travel-text {
+		flex: 1;
+		min-width: 200px;
+	}
+	.best-travel-label {
+		color: #ffffff;
+		font-size: 16px;
+		margin-bottom: 4px;
+	}
+	.best-travel-heading {
+		color: var(--color-primary-hover);
+		font-size: 70px;
 		text-transform: uppercase;
 		letter-spacing: 2px;
-		color: var(--color-text-secondary);
-		margin-bottom: 8px;
+		line-height: 1;
 	}
-	.cta-section h2 {
-		font-size: 36px;
-		text-transform: uppercase;
-		letter-spacing: 2px;
-		color: var(--color-primary);
-	}
-	.cta-badges {
+	.best-travel-badges {
+		flex: 1;
 		display: flex;
 		flex-direction: column;
 		gap: 24px;
+		min-width: 200px;
 	}
-	.badge {
+	.badge-item {
 		display: flex;
 		align-items: center;
-		gap: 16px;
+		gap: 15px;
 	}
-	.badge img {
-		width: 60px;
-		height: 60px;
+	.badge-item img {
+		width: 30%;
+		max-width: 80px;
 		border-radius: 50%;
 		flex-shrink: 0;
 	}
-	.badge strong {
+	.badge-item strong {
 		display: block;
+		color: #ffffff;
 		font-family: var(--font-heading);
 		font-size: 16px;
-		color: var(--color-heading);
 	}
-	.badge p {
+	.badge-item p {
+		color: #ffffff;
 		font-size: 14px;
-		color: var(--color-text-secondary);
 		margin: 0;
 	}
-
-	@media (max-width: 768px) {
-		.hero { min-height: 350px; }
-		.hero h1 { font-size: 28px; }
-		.features-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-		.gallery-layout-1 { grid-template-columns: 1fr; }
-		.gallery-grid-3 { grid-template-columns: 1fr; }
-		.cta-grid { grid-template-columns: 1fr; gap: 32px; }
+	@media (max-width: 767px) {
+		.best-travel { padding: 40px 20px; }
+		.best-travel-heading { font-size: 26px; letter-spacing: 1.8px; }
+		.best-travel-label { font-size: 14px; }
+		.best-travel-inner { flex-direction: column; gap: 32px; }
 	}
-	@media (max-width: 480px) {
-		.features-grid { grid-template-columns: 1fr; }
+
+	/* ===== 6. ASSOCIATIONS ===== */
+	.associations {
+		padding: 40px 0;
+		text-align: center;
+	}
+	.associations h2 {
+		font-size: 56px;
+		color: var(--color-primary-hover);
+		text-transform: uppercase;
+		margin-bottom: 32px;
+		mix-blend-mode: darken;
+	}
+	.associations-row {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 40px;
+		flex-wrap: wrap;
+	}
+	.associations-row img {
+		max-width: 200px;
+		height: auto;
+	}
+	@media (max-width: 767px) {
+		.associations h2 { font-size: 32px; }
+		.associations-row img { max-width: 150px; }
+	}
+
+	/* ===== 7. ADVENTURE CTA ===== */
+	.adventure-cta {
+		position: relative;
+		border-radius: 15px;
+		margin: 40px auto;
+		max-width: var(--container-max);
+		padding: 50px;
+		background: url("https://10btravelers.com/wp-content/uploads/2024/02/island-bg.webp") bottom center / cover no-repeat;
+		display: flex;
+	}
+	.adventure-cta-overlay {
+		position: absolute;
+		inset: 0;
+		background: #000000;
+		opacity: 0.49;
+		border-radius: 15px;
+	}
+	.adventure-cta-inner {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		align-items: center;
+		width: 100%;
+		gap: 32px;
+	}
+	.adventure-cta-content {
+		flex: 1;
+	}
+	.adventure-cta-content h2 {
+		color: var(--color-primary-hover);
+		font-size: 55px;
+		text-transform: uppercase;
+		line-height: 1.1;
+	}
+	.adventure-cta-content p {
+		color: #ffffff;
+		font-size: 20px;
+		margin-top: 8px;
+	}
+	.adventure-cta-action {
+		flex-shrink: 0;
+	}
+	.btn-primary {
+		background: var(--color-primary);
+		color: #ffffff;
+		border-color: var(--color-primary);
+		border-radius: 9px;
+		padding: 16px 40px;
+	}
+	.btn-primary:hover {
+		background: var(--color-primary-hover);
+		border-color: var(--color-primary-hover);
+		color: #ffffff;
+	}
+	@media (max-width: 767px) {
+		.adventure-cta { padding: 30px 20px; margin: 20px 16px; }
+		.adventure-cta-inner { flex-direction: column; text-align: center; }
+		.adventure-cta-content h2 { font-size: 28px; }
+		.adventure-cta-content p { font-size: 16px; }
 	}
 </style>

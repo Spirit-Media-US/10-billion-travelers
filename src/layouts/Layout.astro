@@ -51,7 +51,7 @@ const navLinks = [
     <header class="header">
       <div class="header-inner container">
         <a href="/" class="logo" aria-label="10 Billion Travelers Home">
-          <img src="https://10btravelers.com/wp-content/uploads/2023/11/ezgif.com-optiwebp-7.webp" alt="10 Billion Travelers" width="40" height="40" class="logo-img" />
+          <img src="https://10btravelers.com/wp-content/uploads/2023/11/ezgif.com-optiwebp-7.webp" alt="10 Billion Travelers" width="150" height="150" class="logo-img" />
           <span class="logo-text">NEW 10 BILLION TRAVELERS</span>
         </a>
         <button class="mobile-toggle" aria-label="Toggle menu" aria-expanded="false">
@@ -119,18 +119,17 @@ const navLinks = [
 
 <style>
   .header {
-    background: var(--color-white);
+    background: #ffffff;
     position: sticky;
     top: 0;
     z-index: 100;
-    border-bottom: 1px solid var(--color-border);
   }
   .header-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 16px;
-    padding-bottom: 16px;
+    padding-top: 12px;
+    padding-bottom: 12px;
   }
   .logo {
     text-decoration: none;
@@ -139,43 +138,56 @@ const navLinks = [
     gap: 12px;
   }
   .logo-img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+    width: 55px;
+    height: 55px;
   }
   .logo-text {
     font-family: var(--font-heading);
     font-weight: 700;
-    font-size: 16px;
-    color: var(--color-heading);
+    font-size: 20px;
+    color: var(--color-primary);
     line-height: 1.2;
   }
   .main-nav {
     display: flex;
     gap: 32px;
     align-items: center;
+    align-self: center;
   }
   .nav-link {
     font-family: var(--font-heading);
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 500;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--color-heading);
+    color: #000000;
     text-decoration: none;
     transition: color 0.2s ease;
+    position: relative;
+    padding-bottom: 4px;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: var(--color-primary);
+    transition: width 0.3s;
   }
   .nav-link:hover,
   .nav-link.active {
     color: var(--color-primary);
   }
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    width: 100%;
+  }
   .mobile-toggle {
     display: none;
     flex-direction: column;
     gap: 5px;
-    background: var(--color-primary);
+    background: var(--color-primary-hover);
     border: none;
     padding: 10px;
+    border-radius: 4px;
     cursor: pointer;
   }
   .mobile-toggle .bar {
