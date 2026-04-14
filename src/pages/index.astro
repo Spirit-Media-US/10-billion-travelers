@@ -105,19 +105,14 @@ import "../styles/global.css";
 		</div>
 	</section>
 
-	<!-- 6. Associations slider -->
+	<!-- 6. Associations carousel -->
 	<section class="associations">
 		<div class="container">
 			<h2>Associations</h2>
-			<div class="associations-slider">
-				<div class="associations-track">
-					<img src="https://10btravelers.com/wp-content/uploads/2024/01/accredit.webp" alt="Accredited" width="405" height="153" loading="lazy" />
-					<img src="https://10btravelers.com/wp-content/uploads/2024/01/world-foodtravel-association.webp" alt="World Food Travel Association" width="405" height="155" loading="lazy" />
-					<img src="https://10btravelers.com/wp-content/uploads/2024/01/unwto.webp" alt="UNWTO" width="404" height="154" loading="lazy" />
-					<img src="https://10btravelers.com/wp-content/uploads/2024/01/accredit.webp" alt="Accredited" width="405" height="153" loading="lazy" />
-					<img src="https://10btravelers.com/wp-content/uploads/2024/01/world-foodtravel-association.webp" alt="World Food Travel Association" width="405" height="155" loading="lazy" />
-					<img src="https://10btravelers.com/wp-content/uploads/2024/01/unwto.webp" alt="UNWTO" width="404" height="154" loading="lazy" />
-				</div>
+			<div class="associations-row">
+				<img src="https://10btravelers.com/wp-content/uploads/2024/01/accredit.webp" alt="Accredited" width="405" height="153" loading="lazy" />
+				<img src="https://10btravelers.com/wp-content/uploads/2024/01/world-foodtravel-association.webp" alt="World Food Travel Association" width="405" height="155" loading="lazy" />
+				<img src="https://10btravelers.com/wp-content/uploads/2024/01/unwto.webp" alt="UNWTO" width="404" height="154" loading="lazy" />
 			</div>
 		</div>
 	</section>
@@ -350,44 +345,30 @@ import "../styles/global.css";
 
 	/* ===== 6. ASSOCIATIONS ===== */
 	.associations {
-		padding: 50px 0;
+		padding: 40px 0;
 		text-align: center;
-		background: #ffffff;
 	}
 	.associations h2 {
 		font-size: 56px;
 		color: var(--color-primary-hover);
 		text-transform: uppercase;
 		margin-bottom: 32px;
+		mix-blend-mode: darken;
 	}
-	.associations-slider {
-		overflow: hidden;
-		width: 100%;
-	}
-	.associations-track {
+	.associations-row {
 		display: flex;
+		justify-content: center;
 		align-items: center;
-		gap: 60px;
-		animation: slide 15s linear infinite;
-		width: max-content;
+		gap: 40px;
+		flex-wrap: wrap;
 	}
-	.associations-track img {
-		height: 50px;
-		width: auto;
-		flex-shrink: 0;
-		opacity: 0.7;
-	}
-	.associations-track img:hover {
-		opacity: 1;
-	}
-	@keyframes slide {
-		0% { transform: translateX(0); }
-		100% { transform: translateX(-50%); }
+	.associations-row img {
+		max-width: 200px;
+		height: auto;
 	}
 	@media (max-width: 767px) {
 		.associations h2 { font-size: 32px; }
-		.associations-track img { height: 40px; }
-		.associations-track { gap: 40px; }
+		.associations-row img { max-width: 150px; }
 	}
 
 	/* ===== 7. ADVENTURE CTA ===== */
