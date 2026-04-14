@@ -75,8 +75,8 @@ import "../styles/global.css";
 		<div class="best-travel-overlay"></div>
 		<div class="best-travel-inner container">
 			<div class="best-travel-text">
-				<p class="best-travel-label">Let's Join and Prove It</p>
-				<h2 class="best-travel-heading">Best Travel</h2>
+				<p class="best-travel-label">LET'S JOIN AND PROVE IT</p>
+				<h2 class="best-travel-heading">BEST TRAVEL</h2>
 			</div>
 			<div class="best-travel-badges">
 				<div class="badge-item">
@@ -264,9 +264,6 @@ import "../styles/global.css";
 	/* ===== 5. BEST TRAVEL CTA ===== */
 	.best-travel {
 		position: relative;
-		display: flex;
-		flex-wrap: wrap;
-		min-height: 0;
 		padding: 100px;
 		background: url("https://10btravelers.com/wp-content/uploads/2024/02/bg-beach.jpg") center / cover no-repeat;
 	}
@@ -279,14 +276,11 @@ import "../styles/global.css";
 	.best-travel-inner {
 		position: relative;
 		z-index: 1;
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0;
-		width: 100%;
 	}
 	.best-travel-text {
-		flex: 1;
-		min-width: 200px;
+		width: 100%;
+		text-align: center;
+		margin-bottom: 40px;
 	}
 	.best-travel-label {
 		color: #ffffff;
@@ -296,18 +290,16 @@ import "../styles/global.css";
 	.best-travel-heading {
 		color: var(--color-primary-hover);
 		font-size: 70px;
-		text-transform: uppercase;
 		letter-spacing: 2px;
 		line-height: 1;
+		-webkit-text-stroke-color: #000;
 	}
 	.best-travel-badges {
-		flex: 1;
 		display: flex;
-		flex-direction: column;
-		gap: 24px;
-		min-width: 200px;
+		gap: 0;
 	}
 	.badge-item {
+		width: 50%;
 		display: flex;
 		align-items: center;
 		gap: 15px;
@@ -323,6 +315,7 @@ import "../styles/global.css";
 		color: #ffffff;
 		font-family: var(--font-heading);
 		font-size: 16px;
+		-webkit-text-stroke-color: #000;
 	}
 	.badge-item p {
 		color: #ffffff;
@@ -333,7 +326,8 @@ import "../styles/global.css";
 		.best-travel { padding: 40px 20px; }
 		.best-travel-heading { font-size: 26px; letter-spacing: 1.8px; }
 		.best-travel-label { font-size: 14px; }
-		.best-travel-inner { flex-direction: column; gap: 32px; }
+		.best-travel-badges { flex-direction: column; gap: 24px; }
+		.badge-item { width: 100%; }
 	}
 
 	/* ===== 6. ASSOCIATIONS ===== */
