@@ -44,18 +44,16 @@ import "../styles/global.css";
 		</div>
 	</section>
 
-	<!-- 3. Gallery — large left, 2-col thumbnail grid right -->
+	<!-- 3. Gallery — large left, two stacked right -->
 	<section class="gallery-row">
 		<div class="container">
 			<div class="gallery-asymmetric">
 				<div class="gallery-big">
 					<img src="https://10btravelers.com/wp-content/uploads/2024/01/beach.webp" alt="Beach destination" width="1200" height="1200" loading="lazy" />
 				</div>
-				<div class="gallery-thumbs">
+				<div class="gallery-side">
 					<img src="https://10btravelers.com/wp-content/uploads/2024/01/beach3.webp" alt="Beach travel" width="1204" height="1204" loading="lazy" />
 					<img src="https://10btravelers.com/wp-content/uploads/2024/01/beach2.webp" alt="Beach scenery" width="1200" height="1200" loading="lazy" />
-					<img src="https://10btravelers.com/wp-content/uploads/2024/01/pic1-1024x1024.webp" alt="Travel photo" width="1024" height="1024" loading="lazy" />
-					<img src="https://10btravelers.com/wp-content/uploads/2024/01/pic2-1024x1024.webp" alt="Travel photo" width="1024" height="1024" loading="lazy" />
 				</div>
 			</div>
 		</div>
@@ -226,7 +224,7 @@ import "../styles/global.css";
 		align-items: stretch;
 	}
 	.gallery-big {
-		flex: 0 0 55%;
+		flex: 0 0 60%;
 	}
 	.gallery-big img {
 		width: 100%;
@@ -235,15 +233,15 @@ import "../styles/global.css";
 		border-radius: 10px;
 		box-shadow: 4px 0 10px 0 rgba(0,0,0,0.5);
 	}
-	.gallery-thumbs {
+	.gallery-side {
 		flex: 1;
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 12px;
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
 	}
-	.gallery-thumbs img {
+	.gallery-side img {
 		width: 100%;
-		aspect-ratio: 1;
+		flex: 1;
 		object-fit: cover;
 		border-radius: 10px;
 		box-shadow: 4px 0 10px 0 rgba(0,0,0,0.5);
@@ -271,6 +269,7 @@ import "../styles/global.css";
 	@media (max-width: 767px) {
 		.gallery-asymmetric { flex-direction: column; }
 		.gallery-big { flex: 0 0 auto; }
+		.gallery-side img { flex: 0 0 auto; }
 		.gallery-three { flex-direction: column; gap: 16px; }
 	}
 
