@@ -117,6 +117,11 @@ const navLinks = [
             <img src="https://storage.googleapis.com/msgsndr/ijP5xrlPYa3qzCndBKpO/media/6305fd4aa6d0b37b47e952f7.jpeg" alt="Travel photo" loading="lazy" />
           </div>
         </div>
+        <div class="footer-col footer-col-contact">
+          <h2 class="footer-heading">Get in Touch</h2>
+          <p class="footer-address">205 S Academy St #3251<br />Cary, NC 27519</p>
+          <a href="mailto:kevin@10btravelers.com" class="footer-email-btn">Email Us</a>
+        </div>
       </div>
       <div class="footer-bottom">
         <div class="container footer-bottom-inner">
@@ -329,10 +334,25 @@ const navLinks = [
   .footer-gallery-grid img:hover {
     opacity: 1;
   }
-  .footer-bic-img {
-    width: 100%;
+  .footer-address {
+    font-size: 14px;
+    color: var(--color-text);
+    line-height: 1.6;
+    margin: 0 0 12px;
+  }
+  .footer-email-btn {
+    display: inline-block;
+    background: var(--color-primary);
+    color: #fff;
+    padding: 8px 20px;
     border-radius: 4px;
-    margin-top: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .footer-email-btn:hover {
+    background: var(--color-primary-hover);
   }
   .footer-col p {
     font-size: 14px;
