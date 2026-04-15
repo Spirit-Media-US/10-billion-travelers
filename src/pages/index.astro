@@ -224,9 +224,9 @@ const heroImg = settings?.heroImage
 	}
 	@media (max-width: 767px) {
 		.hero {
-			min-height: 30vh;
+			min-height: 250px;
 			background-image: url("https://cdn.sanity.io/images/2voldnur/production/a40a8123ab7929f7f5bd4b642dada747e1f6eee1-895x940.jpg");
-			padding: 150px 20px 50px;
+			padding: 60px 20px 40px;
 		}
 	}
 	@media (max-width: 1024px) and (min-width: 768px) {
@@ -422,8 +422,9 @@ const heroImg = settings?.heroImage
 	}
 	@media (max-width: 767px) {
 		.best-travel { padding: 40px 20px; }
-		.best-travel-heading { font-size: 26px; letter-spacing: 1.8px; }
+		.best-travel-heading { font-size: 36px; letter-spacing: 1.8px; }
 		.best-travel-label { font-size: 14px; }
+		.best-travel-text { margin-bottom: 32px; }
 		.best-travel-badges { flex-direction: column; gap: 24px; align-items: center; }
 		.badge-item strong { font-size: 15px; }
 	}
@@ -499,9 +500,11 @@ const heroImg = settings?.heroImage
 		.assoc-slide img { height: 100px; }
 	}
 	@media (max-width: 767px) {
-		.associations h2 { font-size: 31px; }
-		.assoc-slide { padding: 0 8px; }
-		.assoc-slide img { height: 120px; width: 100%; }
+		.associations { padding: 48px 0; }
+		.associations h2 { font-size: 31px; margin-bottom: 24px; }
+		.assoc-slider { gap: 8px; }
+		.assoc-slide { flex: 0 0 100%; padding: 0 16px; }
+		.assoc-slide img { height: auto; width: 80%; max-height: 140px; }
 	}
 
 	/* ===== 7. ADVENTURE CTA ===== */

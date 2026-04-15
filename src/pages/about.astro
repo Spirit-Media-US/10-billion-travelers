@@ -176,7 +176,9 @@ const footerPhotoUrl = kevin?.photo
 	}
 	@media (max-width: 767px) {
 		.bio-grid { padding: 30px 20px; max-width: 100%; }
-		.bio-image-col { padding-left: 50px; }
+		.bio-image-col { padding-left: 0; text-align: center; }
+		.bio-image-wrap::before { display: none; }
+		.bio-photo { margin: 0 auto; width: 220px; }
 		.bio-text-col p { font-size: 14px; }
 		.bio-caption { font-size: 14px; }
 	}
