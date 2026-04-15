@@ -503,8 +503,17 @@ const heroImg = settings?.heroImage
 		.associations { padding: 48px 0; }
 		.associations h2 { font-size: 31px; margin-bottom: 24px; }
 		.assoc-slider { gap: 8px; }
-		.assoc-slide { flex: 0 0 100%; padding: 0 16px; }
-		.assoc-slide img { height: auto; width: 80%; max-height: 140px; }
+		.assoc-arrow { display: none; }
+		.assoc-viewport { overflow: visible; }
+		.assoc-track {
+			flex-direction: column;
+			gap: 24px;
+			transform: none !important;
+		}
+		.assoc-slide { flex: none; width: 100%; padding: 0; }
+		.assoc-slide[aria-hidden="true"] { display: none; }
+		.assoc-slide img { height: auto; width: 70%; max-height: 140px; margin: 0 auto; }
+		.assoc-dots { display: none; }
 	}
 
 	/* ===== 7. ADVENTURE CTA ===== */
