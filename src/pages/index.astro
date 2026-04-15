@@ -123,9 +123,6 @@ const heroImg = settings?.heroImage
 						<div class="assoc-slide"><img src="https://cdn.sanity.io/images/2voldnur/production/fd785de645c67d8b8d0651a953b302e4f0f47798-405x153.webp" alt="Accredited Media" /></div>
 						<div class="assoc-slide"><img src="https://cdn.sanity.io/images/2voldnur/production/86f546c6c54b113a83f32589f1c9ced0aab416a3-405x155.webp" alt="World Food Travel Association" /></div>
 						<div class="assoc-slide"><img src="https://cdn.sanity.io/images/2voldnur/production/abef94d0c81c8c93d4c113587f697f6a4a8bfb03-404x154.webp" alt="UNWTO" /></div>
-						<div class="assoc-slide"><img src="https://cdn.sanity.io/images/2voldnur/production/fd785de645c67d8b8d0651a953b302e4f0f47798-405x153.webp" alt="Accredited Media" aria-hidden="true" /></div>
-						<div class="assoc-slide"><img src="https://cdn.sanity.io/images/2voldnur/production/86f546c6c54b113a83f32589f1c9ced0aab416a3-405x155.webp" alt="World Food Travel Association" aria-hidden="true" /></div>
-						<div class="assoc-slide"><img src="https://cdn.sanity.io/images/2voldnur/production/abef94d0c81c8c93d4c113587f697f6a4a8bfb03-404x154.webp" alt="UNWTO" aria-hidden="true" /></div>
 					</div>
 				</div>
 				<button class="assoc-arrow assoc-next" id="assoc-next" aria-label="Next">
@@ -149,35 +146,19 @@ const heroImg = settings?.heroImage
 		if (!track) return;
 
 		var pos = 0;
-		var slideWidth = 100 / 6;
+		var total = 3;
+
+		function isMobile() { return window.innerWidth <= 767; }
 
 		function slideTo(p) {
-			pos = p;
+			if (isMobile()) return;
+			pos = ((p % total) + total) % total;
 			track.style.transition = 'transform 0.5s ease';
-			track.style.transform = 'translateX(-' + (pos * slideWidth) + '%)';
-			dots.forEach(function(d, i) { d.classList.toggle('active', i === (pos % 3)); });
+			track.style.transform = 'translateX(-' + (pos * (100 / total)) + '%)';
+			dots.forEach(function(d, i) { d.classList.toggle('active', i === pos); });
 		}
 
-		track.addEventListener('transitionend', function() {
-			if (pos >= 3) {
-				track.style.transition = 'none';
-				pos = 0;
-				track.style.transform = 'translateX(0%)';
-			}
-		});
-
-		prev.addEventListener('click', function() {
-			if (pos <= 0) {
-				track.style.transition = 'none';
-				pos = 3;
-				track.style.transform = 'translateX(-' + (pos * slideWidth) + '%)';
-				requestAnimationFrame(function() {
-					requestAnimationFrame(function() { slideTo(pos - 1); });
-				});
-			} else {
-				slideTo(pos - 1);
-			}
-		});
+		prev.addEventListener('click', function() { slideTo(pos - 1); });
 		next.addEventListener('click', function() { slideTo(pos + 1); });
 		dots.forEach(function(d) {
 			d.addEventListener('click', function() { slideTo(Number(d.dataset.index)); });
@@ -187,6 +168,13 @@ const heroImg = settings?.heroImage
 		document.getElementById('assoc-slider').addEventListener('mouseenter', function() { clearInterval(interval); });
 		document.getElementById('assoc-slider').addEventListener('mouseleave', function() {
 			interval = setInterval(function() { slideTo(pos + 1); }, 5000);
+		});
+
+		window.addEventListener('resize', function() {
+			if (isMobile()) {
+				track.style.transition = 'none';
+				track.style.transform = 'none';
+			}
 		});
 	})();
 	</script>
@@ -511,7 +499,6 @@ const heroImg = settings?.heroImage
 			transform: none !important;
 		}
 		.assoc-slide { flex: none; width: 100%; padding: 0; }
-		.assoc-slide[aria-hidden="true"] { display: none; }
 		.assoc-slide img { height: auto; width: 70%; max-height: 140px; margin: 0 auto; }
 		.assoc-dots { display: none; }
 	}
