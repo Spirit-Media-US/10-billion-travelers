@@ -150,11 +150,16 @@ const heroImg = settings?.heroImage
 
 		function isMobile() { return window.innerWidth <= 767; }
 
+		function getStepPercent() {
+			// Mobile: each slide is 100% of viewport, so step = 100/3 of track
+			// Desktop: all 3 visible, step = 100/3 of track (slides through 1 at a time)
+			return 100 / total;
+		}
+
 		function slideTo(p) {
-			if (isMobile()) return;
 			pos = ((p % total) + total) % total;
 			track.style.transition = 'transform 0.5s ease';
-			track.style.transform = 'translateX(-' + (pos * (100 / total)) + '%)';
+			track.style.transform = 'translateX(-' + (pos * getStepPercent()) + '%)';
 			dots.forEach(function(d, i) { d.classList.toggle('active', i === pos); });
 		}
 
@@ -168,13 +173,6 @@ const heroImg = settings?.heroImage
 		document.getElementById('assoc-slider').addEventListener('mouseenter', function() { clearInterval(interval); });
 		document.getElementById('assoc-slider').addEventListener('mouseleave', function() {
 			interval = setInterval(function() { slideTo(pos + 1); }, 5000);
-		});
-
-		window.addEventListener('resize', function() {
-			if (isMobile()) {
-				track.style.transition = 'none';
-				track.style.transform = 'none';
-			}
 		});
 	})();
 	</script>
@@ -491,16 +489,8 @@ const heroImg = settings?.heroImage
 		.associations { padding: 48px 0; }
 		.associations h2 { font-size: 31px; margin-bottom: 24px; }
 		.assoc-slider { gap: 8px; }
-		.assoc-arrow { display: none; }
-		.assoc-viewport { overflow: visible; }
-		.assoc-track {
-			flex-direction: column;
-			gap: 24px;
-			transform: none !important;
-		}
-		.assoc-slide { flex: none; width: 100%; padding: 0; }
-		.assoc-slide img { height: auto; width: 70%; max-height: 140px; margin: 0 auto; }
-		.assoc-dots { display: none; }
+		.assoc-slide { flex: 0 0 100%; padding: 0 20px; box-sizing: border-box; }
+		.assoc-slide img { height: auto; width: 80%; max-height: 140px; margin: 0 auto; }
 	}
 
 	/* ===== 7. ADVENTURE CTA ===== */
