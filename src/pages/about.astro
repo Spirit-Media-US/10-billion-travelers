@@ -8,10 +8,10 @@ const kevin = await sanityClient.fetch(
 );
 const photoUrl = kevin?.photo
 	? urlFor(kevin.photo).width(283).height(300).url()
-	: "https://10btravelers.com/wp-content/uploads/2023/11/Kevin-White-1-283x300.jpeg";
+	: "https://cdn.sanity.io/images/2voldnur/production/ea90fe8e393f8844be9b0375f911bad2e835f431-283x300.jpg";
 const footerPhotoUrl = kevin?.photo
 	? urlFor(kevin.photo).width(140).height(140).url()
-	: "https://10btravelers.com/wp-content/uploads/2023/11/Kevin-White.jpeg";
+	: "https://cdn.sanity.io/images/2voldnur/production/89a8d90403c115a7e92ce20c881df2696054c461-140x140.jpg";
 ---
 
 <Layout
@@ -78,7 +78,7 @@ const footerPhotoUrl = kevin?.photo
 	.about-hero {
 		position: relative;
 		min-height: 400px;
-		background: url("https://10btravelers.com/wp-content/uploads/2023/11/about.jpeg") bottom center / cover no-repeat;
+		background: url("https://cdn.sanity.io/images/2voldnur/production/491b4be1e3f328ae2bb3ad663a1202d1703656d7-1200x799.jpg") bottom center / cover no-repeat;
 		background-attachment: fixed;
 		display: flex;
 		align-items: center;
@@ -191,7 +191,7 @@ const footerPhotoUrl = kevin?.photo
 		overflow: hidden;
 		max-width: var(--container-max);
 		margin: 0 auto;
-		background: url("https://10btravelers.com/wp-content/uploads/2023/11/10-Billion-Travelers-button-pic-1024x677.jpeg") bottom center / cover no-repeat;
+		background: url("https://cdn.sanity.io/images/2voldnur/production/f7b8aeefbbc7200c02ccc30c13c682c8822c5389-1024x677.jpg") bottom center / cover no-repeat;
 	}
 	.about-cta-overlay {
 		position: absolute;

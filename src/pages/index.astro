@@ -16,7 +16,7 @@ const bestPhotos = await sanityClient.fetch(
 
 const heroImg = settings?.heroImage
 	? urlFor(settings.heroImage).width(2400).url()
-	: "https://10btravelers.com/wp-content/uploads/2024/02/bg-homepage.webp";
+	: "https://cdn.sanity.io/images/2voldnur/production/6e299e952d906041d8de47e436283d1125e54c43-2369x940.webp";
 ---
 
 <Layout
@@ -93,14 +93,14 @@ const heroImg = settings?.heroImage
 			</div>
 			<div class="best-travel-badges">
 				<div class="badge-item">
-					<img src="https://10btravelers.com/wp-content/uploads/2023/10/630604fa0a1d0d335693c0d2-150x150.png" alt="Google Maps Local Guide" width="150" height="150" loading="lazy" />
+					<img src="https://cdn.sanity.io/images/2voldnur/production/0589b9373e45bc50e08959863a7a691cd0564b97-150x150.png" alt="Google Maps Local Guide" width="150" height="150" loading="lazy" />
 					<div>
 						<strong>Google Maps + Local Guide</strong>
 						<p>Over 500,000 impacts!</p>
 					</div>
 				</div>
 				<div class="badge-item">
-					<img src="https://10btravelers.com/wp-content/uploads/2023/10/6306053e4548ae342af15010-150x150.png" alt="TripAdvisor Top 3 percent" width="150" height="150" loading="lazy" />
+					<img src="https://cdn.sanity.io/images/2voldnur/production/1d20a81206c101dcc09a0dcd832827bdca062e99-150x150.png" alt="TripAdvisor Top 3 percent" width="150" height="150" loading="lazy" />
 					<div>
 						<strong>Top 3%</strong>
 						<p>On Tripadvisor.com</p>
@@ -120,12 +120,12 @@ const heroImg = settings?.heroImage
 				</button>
 				<div class="assoc-viewport">
 					<div class="assoc-track" id="assoc-track">
-						<div class="assoc-slide"><img src="https://10btravelers.com/wp-content/uploads/2024/01/accredit.webp" alt="Accredited Media" /></div>
-						<div class="assoc-slide"><img src="https://10btravelers.com/wp-content/uploads/2024/01/world-foodtravel-association.webp" alt="World Food Travel Association" /></div>
-						<div class="assoc-slide"><img src="https://10btravelers.com/wp-content/uploads/2024/01/unwto.webp" alt="UNWTO" /></div>
-						<div class="assoc-slide"><img src="https://10btravelers.com/wp-content/uploads/2024/01/accredit.webp" alt="Accredited Media" aria-hidden="true" /></div>
-						<div class="assoc-slide"><img src="https://10btravelers.com/wp-content/uploads/2024/01/world-foodtravel-association.webp" alt="World Food Travel Association" aria-hidden="true" /></div>
-						<div class="assoc-slide"><img src="https://10btravelers.com/wp-content/uploads/2024/01/unwto.webp" alt="UNWTO" aria-hidden="true" /></div>
+						<div class="assoc-slide"><img src="https://cdn.sanity.io/images/2voldnur/production/fd785de645c67d8b8d0651a953b302e4f0f47798-405x153.webp" alt="Accredited Media" /></div>
+						<div class="assoc-slide"><img src="https://cdn.sanity.io/images/2voldnur/production/86f546c6c54b113a83f32589f1c9ced0aab416a3-405x155.webp" alt="World Food Travel Association" /></div>
+						<div class="assoc-slide"><img src="https://cdn.sanity.io/images/2voldnur/production/abef94d0c81c8c93d4c113587f697f6a4a8bfb03-404x154.webp" alt="UNWTO" /></div>
+						<div class="assoc-slide"><img src="https://cdn.sanity.io/images/2voldnur/production/fd785de645c67d8b8d0651a953b302e4f0f47798-405x153.webp" alt="Accredited Media" aria-hidden="true" /></div>
+						<div class="assoc-slide"><img src="https://cdn.sanity.io/images/2voldnur/production/86f546c6c54b113a83f32589f1c9ced0aab416a3-405x155.webp" alt="World Food Travel Association" aria-hidden="true" /></div>
+						<div class="assoc-slide"><img src="https://cdn.sanity.io/images/2voldnur/production/abef94d0c81c8c93d4c113587f697f6a4a8bfb03-404x154.webp" alt="UNWTO" aria-hidden="true" /></div>
 					</div>
 				</div>
 				<button class="assoc-arrow assoc-next" id="assoc-next" aria-label="Next">
@@ -225,7 +225,7 @@ const heroImg = settings?.heroImage
 	@media (max-width: 767px) {
 		.hero {
 			min-height: 30vh;
-			background-image: url("https://10btravelers.com/wp-content/uploads/2024/02/bg-mobile.jpeg");
+			background-image: url("https://cdn.sanity.io/images/2voldnur/production/a40a8123ab7929f7f5bd4b642dada747e1f6eee1-895x940.jpg");
 			padding: 150px 20px 50px;
 		}
 	}
@@ -275,11 +275,11 @@ const heroImg = settings?.heroImage
 		line-height: 1.5;
 	}
 	@media (max-width: 767px) {
-		.features { margin-top: -40px; }
+		.features { margin-top: 24px; }
 		.features-grid {
 			flex-direction: column;
 			align-items: center;
-			gap: 60px;
+			gap: 24px;
 		}
 		.feature-card {
 			width: 100%;
@@ -361,7 +361,7 @@ const heroImg = settings?.heroImage
 	.best-travel {
 		position: relative;
 		padding: 100px;
-		background: url("https://10btravelers.com/wp-content/uploads/2024/02/bg-beach.jpg") center / cover no-repeat;
+		background: url("https://cdn.sanity.io/images/2voldnur/production/ef24a834fa2adaa6b249191ee5f6378e49418045-1378x775.jpg") center / cover no-repeat;
 	}
 	.best-travel-overlay {
 		position: absolute;
@@ -500,7 +500,8 @@ const heroImg = settings?.heroImage
 	}
 	@media (max-width: 767px) {
 		.associations h2 { font-size: 31px; }
-		.assoc-slide img { height: 80px; }
+		.assoc-slide { padding: 0 8px; }
+		.assoc-slide img { height: 120px; width: 100%; }
 	}
 
 	/* ===== 7. ADVENTURE CTA ===== */
@@ -510,7 +511,7 @@ const heroImg = settings?.heroImage
 		margin: 40px auto;
 		max-width: var(--container-max);
 		padding: 50px;
-		background: url("https://10btravelers.com/wp-content/uploads/2024/02/island-bg.webp") bottom center / cover no-repeat;
+		background: url("https://cdn.sanity.io/images/2voldnur/production/cb269ac7d209e7712753d157805c3fa54a4f6032-1500x992.webp") bottom center / cover no-repeat;
 		display: flex;
 	}
 	.adventure-cta-overlay {
