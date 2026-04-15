@@ -110,7 +110,7 @@ const heroImg = settings?.heroImage
 		</div>
 	</section>
 
-	<!-- 6. Associations — classic looping slider -->
+	<!-- 6. Associations — looping slider (desktop), 1-per-slide (mobile) -->
 	<section class="associations">
 		<div class="container">
 			<h2>Associations</h2>
@@ -123,6 +123,10 @@ const heroImg = settings?.heroImage
 						<div class="assoc-slide"><img src="https://cdn.sanity.io/images/2voldnur/production/fd785de645c67d8b8d0651a953b302e4f0f47798-405x153.webp" alt="Accredited Media" /></div>
 						<div class="assoc-slide"><img src="https://cdn.sanity.io/images/2voldnur/production/86f546c6c54b113a83f32589f1c9ced0aab416a3-405x155.webp" alt="World Food Travel Association" /></div>
 						<div class="assoc-slide"><img src="https://cdn.sanity.io/images/2voldnur/production/abef94d0c81c8c93d4c113587f697f6a4a8bfb03-404x154.webp" alt="UNWTO" /></div>
+						<!-- Clones for desktop infinite loop -->
+						<div class="assoc-slide assoc-clone"><img src="https://cdn.sanity.io/images/2voldnur/production/fd785de645c67d8b8d0651a953b302e4f0f47798-405x153.webp" alt="Accredited Media" aria-hidden="true" /></div>
+						<div class="assoc-slide assoc-clone"><img src="https://cdn.sanity.io/images/2voldnur/production/86f546c6c54b113a83f32589f1c9ced0aab416a3-405x155.webp" alt="World Food Travel Association" aria-hidden="true" /></div>
+						<div class="assoc-slide assoc-clone"><img src="https://cdn.sanity.io/images/2voldnur/production/abef94d0c81c8c93d4c113587f697f6a4a8bfb03-404x154.webp" alt="UNWTO" aria-hidden="true" /></div>
 					</div>
 				</div>
 				<button class="assoc-arrow assoc-next" id="assoc-next" aria-label="Next">
@@ -146,26 +150,45 @@ const heroImg = settings?.heroImage
 		if (!track) return;
 
 		var pos = 0;
-		var total = 3;
 
 		function isMobile() { return window.innerWidth <= 767; }
 
 		function slideTo(p) {
-			if (!isMobile()) {
-				// Desktop: all 3 visible, no sliding
-				pos = 0;
-				track.style.transition = 'none';
-				track.style.transform = 'translateX(0%)';
-				return;
+			pos = p;
+			if (isMobile()) {
+				// Mobile: 3 real slides only (clones hidden), each 100% width, track = 300%
+				pos = ((p % 3) + 3) % 3;
+				track.style.transition = 'transform 0.5s ease';
+				track.style.transform = 'translateX(-' + (pos * (100 / 3)) + '%)';
+			} else {
+				// Desktop: 6 slides (3 + 3 clones) at 33.333% each, showing 3 at a time
+				var slideWidth = 100 / 6;
+				track.style.transition = 'transform 0.5s ease';
+				track.style.transform = 'translateX(-' + (pos * slideWidth) + '%)';
 			}
-			// Mobile: 1 logo per slide, each slide = 100% width, track = 300%
-			pos = ((p % total) + total) % total;
-			track.style.transition = 'transform 0.5s ease';
-			track.style.transform = 'translateX(-' + (pos * (100 / total)) + '%)';
-			dots.forEach(function(d, i) { d.classList.toggle('active', i === pos); });
+			dots.forEach(function(d, i) { d.classList.toggle('active', i === (pos % 3)); });
 		}
 
-		prev.addEventListener('click', function() { slideTo(pos - 1); });
+		track.addEventListener('transitionend', function() {
+			if (!isMobile() && pos >= 3) {
+				track.style.transition = 'none';
+				pos = 0;
+				track.style.transform = 'translateX(0%)';
+			}
+		});
+
+		prev.addEventListener('click', function() {
+			if (!isMobile() && pos <= 0) {
+				track.style.transition = 'none';
+				pos = 3;
+				track.style.transform = 'translateX(-' + (pos * (100 / 6)) + '%)';
+				requestAnimationFrame(function() {
+					requestAnimationFrame(function() { slideTo(pos - 1); });
+				});
+			} else {
+				slideTo(pos - 1);
+			}
+		});
 		next.addEventListener('click', function() { slideTo(pos + 1); });
 		dots.forEach(function(d) {
 			d.addEventListener('click', function() { slideTo(Number(d.dataset.index)); });
@@ -444,7 +467,6 @@ const heroImg = settings?.heroImage
 		color: #ccc;
 		padding: 8px;
 		transition: color 0.2s;
-		display: none;
 	}
 	.assoc-arrow:hover { color: #999; }
 	.assoc-viewport {
@@ -468,7 +490,7 @@ const heroImg = settings?.heroImage
 		object-fit: contain;
 	}
 	.assoc-dots {
-		display: none;
+		display: flex;
 		justify-content: center;
 		gap: 10px;
 		margin-top: 28px;
@@ -492,10 +514,9 @@ const heroImg = settings?.heroImage
 		.associations { padding: 48px 0; }
 		.associations h2 { font-size: 31px; margin-bottom: 24px; }
 		.assoc-slider { gap: 8px; }
-		.assoc-arrow { display: block; }
+		.assoc-clone { display: none; }
 		.assoc-slide { flex: 0 0 100%; padding: 0 20px; box-sizing: border-box; }
 		.assoc-slide img { height: auto; width: 80%; max-height: 140px; margin: 0 auto; }
-		.assoc-dots { display: flex; }
 	}
 
 	/* ===== 7. ADVENTURE CTA ===== */
