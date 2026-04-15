@@ -513,9 +513,12 @@ const heroImg = settings?.heroImage
 	@media (max-width: 767px) {
 		.associations { padding: 48px 0; }
 		.associations h2 { font-size: 31px; margin-bottom: 24px; }
-		.assoc-slider { gap: 8px; }
+		.assoc-slider { gap: 0; }
+		.assoc-arrow { display: none; }
 		.assoc-clone { display: none; }
-		.assoc-slide { flex: 0 0 100%; padding: 0 20px; box-sizing: border-box; }
+		.assoc-viewport { overflow: hidden; width: 100%; }
+		.assoc-track { display: flex; width: 300%; }
+		.assoc-slide { flex: none; width: 33.333%; padding: 0 16px; box-sizing: border-box; }
 		.assoc-slide img { height: auto; width: 80%; max-height: 140px; margin: 0 auto; }
 	}
 
