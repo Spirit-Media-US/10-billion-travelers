@@ -18,9 +18,9 @@ const heroBase = settings?.heroImage
 	? urlFor(settings.heroImage).url().split("?")[0]
 	: "https://cdn.sanity.io/images/2voldnur/production/6e299e952d906041d8de47e436283d1125e54c43-2369x940.webp";
 const heroMobileBase = `https://cdn.sanity.io/images/2voldnur/production/a40a8123ab7929f7f5bd4b642dada747e1f6eee1-895x940.jpg`;
-const heroMobile = `${heroMobileBase}?w=640&fm=webp&q=70`;
-const heroMobile2x = `${heroMobileBase}?w=900&fm=webp&q=70`;
-const heroDesktop = `${heroBase}?w=1600&fm=webp&q=72`;
+const heroMobile = `${heroMobileBase}?w=640&fm=webp&q=62`;
+const heroMobile2x = `${heroMobileBase}?w=900&fm=webp&q=62`;
+const heroDesktop = `${heroBase}?w=1600&fm=webp&q=70`;
 ---
 
 <Layout
@@ -128,8 +128,8 @@ const heroDesktop = `${heroBase}?w=1600&fm=webp&q=72`;
 				{bestPhotos.map((p: any) => (
 					<div class="gallery-three-col">
 						<img
-							src={urlFor(p.image).width(800).height(800).format('webp').quality(75).url()}
-							srcset={`${urlFor(p.image).width(480).height(480).format('webp').quality(70).url()} 480w, ${urlFor(p.image).width(800).height(800).format('webp').quality(75).url()} 800w`}
+							src={urlFor(p.image).width(800).height(800).format('webp').quality(70).url()}
+							srcset={`${urlFor(p.image).width(400).height(400).format('webp').quality(65).url()} 400w, ${urlFor(p.image).width(600).height(600).format('webp').quality(68).url()} 600w, ${urlFor(p.image).width(800).height(800).format('webp').quality(70).url()} 800w`}
 							sizes="(max-width: 767px) 92vw, 30vw"
 							alt={p.image?.alt || p.title}
 							width="800"
@@ -436,11 +436,11 @@ const heroDesktop = `${heroBase}?w=1600&fm=webp&q=72`;
 	.best-travel {
 		position: relative;
 		padding: 100px;
-		background: url("https://cdn.sanity.io/images/2voldnur/production/ef24a834fa2adaa6b249191ee5f6378e49418045-1378x775.jpg?w=1378&fm=webp&q=55") center / cover no-repeat;
+		background: url("https://cdn.sanity.io/images/2voldnur/production/ef24a834fa2adaa6b249191ee5f6378e49418045-1378x775.jpg?w=1378&fm=webp&q=45") center / cover no-repeat;
 	}
 	@media (max-width: 767px) {
 		.best-travel {
-			background-image: url("https://cdn.sanity.io/images/2voldnur/production/ef24a834fa2adaa6b249191ee5f6378e49418045-1378x775.jpg?w=640&fm=webp&q=55");
+			background-image: url("https://cdn.sanity.io/images/2voldnur/production/ef24a834fa2adaa6b249191ee5f6378e49418045-1378x775.jpg?w=640&fm=webp&q=45");
 		}
 	}
 	.best-travel-overlay {
