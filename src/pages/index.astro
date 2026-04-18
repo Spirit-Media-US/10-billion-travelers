@@ -18,8 +18,8 @@ const heroBase = settings?.heroImage
 	? urlFor(settings.heroImage).url().split("?")[0]
 	: "https://cdn.sanity.io/images/2voldnur/production/6e299e952d906041d8de47e436283d1125e54c43-2369x940.webp";
 const heroMobileBase = `https://cdn.sanity.io/images/2voldnur/production/a40a8123ab7929f7f5bd4b642dada747e1f6eee1-895x940.jpg`;
-const heroMobile = `${heroMobileBase}?w=480&fm=webp&q=60`;
-const heroMobile2x = `${heroMobileBase}?w=760&fm=webp&q=55`;
+const heroMobile = `${heroMobileBase}?w=420&fm=webp&q=55`;
+const heroMobile2x = `${heroMobileBase}?w=720&fm=webp&q=50`;
 const heroDesktop = `${heroBase}?w=1600&fm=webp&q=70`;
 ---
 
@@ -33,7 +33,7 @@ const heroDesktop = `${heroBase}?w=1600&fm=webp&q=70`;
 			rel="preload"
 			as="image"
 			href={heroMobile}
-			imagesrcset={`${heroMobile} 480w, ${heroMobile2x} 760w, ${heroDesktop} 1600w`}
+			imagesrcset={`${heroMobile} 420w, ${heroMobile2x} 720w, ${heroDesktop} 1600w`}
 			imagesizes="(max-width: 767px) 420px, 100vw"
 			fetchpriority="high"
 		/>
@@ -43,7 +43,7 @@ const heroDesktop = `${heroBase}?w=1600&fm=webp&q=70`;
 	<section class="hero">
 		<img
 			src={heroDesktop}
-			srcset={`${heroMobile} 480w, ${heroMobile2x} 760w, ${heroDesktop} 1600w`}
+			srcset={`${heroMobile} 420w, ${heroMobile2x} 720w, ${heroDesktop} 1600w`}
 			sizes="(max-width: 767px) 420px, 100vw"
 			alt="10 Billion Travelers"
 			width="1600"
@@ -153,14 +153,14 @@ const heroDesktop = `${heroBase}?w=1600&fm=webp&q=70`;
 			</div>
 			<div class="best-travel-badges">
 				<div class="badge-item">
-					<img src="https://cdn.sanity.io/images/2voldnur/production/0589b9373e45bc50e08959863a7a691cd0564b97-150x150.png?w=160&h=160&fm=webp&q=80" alt="Google Maps Local Guide" width="80" height="80" loading="lazy" decoding="async" />
+					<img src="https://cdn.sanity.io/images/2voldnur/production/0589b9373e45bc50e08959863a7a691cd0564b97-150x150.png?w=160&h=160&fm=webp&q=60" alt="Google Maps Local Guide" width="80" height="80" loading="lazy" decoding="async" />
 					<div>
 						<strong>Google Maps + Local Guide</strong>
 						<p>Over 500,000 impacts!</p>
 					</div>
 				</div>
 				<div class="badge-item">
-					<img src="https://cdn.sanity.io/images/2voldnur/production/1d20a81206c101dcc09a0dcd832827bdca062e99-150x150.png?w=160&h=160&fm=webp&q=80" alt="TripAdvisor Top 3 percent" width="80" height="80" loading="lazy" decoding="async" />
+					<img src="https://cdn.sanity.io/images/2voldnur/production/1d20a81206c101dcc09a0dcd832827bdca062e99-150x150.png?w=160&h=160&fm=webp&q=60" alt="TripAdvisor Top 3 percent" width="80" height="80" loading="lazy" decoding="async" />
 					<div>
 						<strong>Top 3%</strong>
 						<p>On Tripadvisor.com</p>
