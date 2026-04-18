@@ -17,8 +17,10 @@ const bestPhotos = await sanityClient.fetch(
 const heroBase = settings?.heroImage
 	? urlFor(settings.heroImage).url().split("?")[0]
 	: "https://cdn.sanity.io/images/2voldnur/production/6e299e952d906041d8de47e436283d1125e54c43-2369x940.webp";
-const heroMobile = `https://cdn.sanity.io/images/2voldnur/production/a40a8123ab7929f7f5bd4b642dada747e1f6eee1-895x940.jpg?w=640&fm=webp&q=80`;
-const heroDesktop = `${heroBase}?w=1600&fm=webp&q=80`;
+const heroMobileBase = `https://cdn.sanity.io/images/2voldnur/production/a40a8123ab7929f7f5bd4b642dada747e1f6eee1-895x940.jpg`;
+const heroMobile = `${heroMobileBase}?w=640&fm=webp&q=70`;
+const heroMobile2x = `${heroMobileBase}?w=900&fm=webp&q=70`;
+const heroDesktop = `${heroBase}?w=1600&fm=webp&q=72`;
 ---
 
 <Layout
@@ -31,8 +33,8 @@ const heroDesktop = `${heroBase}?w=1600&fm=webp&q=80`;
 			rel="preload"
 			as="image"
 			href={heroMobile}
-			imagesrcset={`${heroMobile} 640w, ${heroDesktop} 1600w`}
-			imagesizes="(max-width: 767px) 100vw, 100vw"
+			imagesrcset={`${heroMobile} 640w, ${heroMobile2x} 900w, ${heroDesktop} 1600w`}
+			imagesizes="(max-width: 767px) 420px, 100vw"
 			fetchpriority="high"
 		/>
 	</Fragment>
@@ -41,8 +43,8 @@ const heroDesktop = `${heroBase}?w=1600&fm=webp&q=80`;
 	<section class="hero">
 		<img
 			src={heroDesktop}
-			srcset={`${heroMobile} 640w, ${heroDesktop} 1600w`}
-			sizes="(max-width: 767px) 100vw, 100vw"
+			srcset={`${heroMobile} 640w, ${heroMobile2x} 900w, ${heroDesktop} 1600w`}
+			sizes="(max-width: 767px) 420px, 100vw"
 			alt="10 Billion Travelers"
 			width="1600"
 			height="634"
@@ -60,7 +62,7 @@ const heroDesktop = `${heroBase}?w=1600&fm=webp&q=80`;
 			<div class="features-grid">
 				{features.map((f: any) => (
 					<div class="feature-card">
-						{f.icon && <img src={urlFor(f.icon).width(200).height(200).format('webp').quality(80).url()} alt={f.title} width="100" height="100" class="feature-icon" loading="lazy" decoding="async" />}
+						{f.icon && <img src={urlFor(f.icon).width(160).height(160).format('webp').quality(75).url()} alt={f.title} width="80" height="80" class="feature-icon" loading="lazy" decoding="async" />}
 						<h2>{f.title}</h2>
 						<p>{f.description}</p>
 					</div>
@@ -75,17 +77,44 @@ const heroDesktop = `${heroBase}?w=1600&fm=webp&q=80`;
 			<div class="gallery-asymmetric">
 				{travelPhotos[0] && (
 					<div class="gallery-big">
-						<img src={urlFor(travelPhotos[0].image).width(1200).format('webp').quality(80).url()} alt={travelPhotos[0].image?.alt || travelPhotos[0].title} width="1200" height="900" loading="lazy" decoding="async" />
+						<img
+							src={urlFor(travelPhotos[0].image).width(1200).format('webp').quality(75).url()}
+							srcset={`${urlFor(travelPhotos[0].image).width(480).format('webp').quality(70).url()} 480w, ${urlFor(travelPhotos[0].image).width(800).format('webp').quality(75).url()} 800w, ${urlFor(travelPhotos[0].image).width(1200).format('webp').quality(75).url()} 1200w`}
+							sizes="(max-width: 767px) 92vw, 55vw"
+							alt={travelPhotos[0].image?.alt || travelPhotos[0].title}
+							width="1200"
+							height="900"
+							loading="lazy"
+							decoding="async"
+						/>
 					</div>
 				)}
 				{travelPhotos[1] && (
 					<div class="gallery-right-img">
-						<img src={urlFor(travelPhotos[1].image).width(600).format('webp').quality(80).url()} alt={travelPhotos[1].image?.alt || travelPhotos[1].title} width="600" height="450" loading="lazy" decoding="async" />
+						<img
+							src={urlFor(travelPhotos[1].image).width(600).format('webp').quality(75).url()}
+							srcset={`${urlFor(travelPhotos[1].image).width(480).format('webp').quality(70).url()} 480w, ${urlFor(travelPhotos[1].image).width(600).format('webp').quality(75).url()} 600w`}
+							sizes="(max-width: 767px) 92vw, 30vw"
+							alt={travelPhotos[1].image?.alt || travelPhotos[1].title}
+							width="600"
+							height="450"
+							loading="lazy"
+							decoding="async"
+						/>
 					</div>
 				)}
 				{travelPhotos[2] && (
 					<div class="gallery-right-img">
-						<img src={urlFor(travelPhotos[2].image).width(600).format('webp').quality(80).url()} alt={travelPhotos[2].image?.alt || travelPhotos[2].title} width="600" height="450" loading="lazy" decoding="async" />
+						<img
+							src={urlFor(travelPhotos[2].image).width(600).format('webp').quality(75).url()}
+							srcset={`${urlFor(travelPhotos[2].image).width(480).format('webp').quality(70).url()} 480w, ${urlFor(travelPhotos[2].image).width(600).format('webp').quality(75).url()} 600w`}
+							sizes="(max-width: 767px) 92vw, 30vw"
+							alt={travelPhotos[2].image?.alt || travelPhotos[2].title}
+							width="600"
+							height="450"
+							loading="lazy"
+							decoding="async"
+						/>
 					</div>
 				)}
 			</div>
@@ -98,7 +127,16 @@ const heroDesktop = `${heroBase}?w=1600&fm=webp&q=80`;
 			<div class="gallery-three">
 				{bestPhotos.map((p: any) => (
 					<div class="gallery-three-col">
-						<img src={urlFor(p.image).width(800).height(800).format('webp').quality(80).url()} alt={p.image?.alt || p.title} width="800" height="800" loading="lazy" decoding="async" />
+						<img
+							src={urlFor(p.image).width(800).height(800).format('webp').quality(75).url()}
+							srcset={`${urlFor(p.image).width(480).height(480).format('webp').quality(70).url()} 480w, ${urlFor(p.image).width(800).height(800).format('webp').quality(75).url()} 800w`}
+							sizes="(max-width: 767px) 92vw, 30vw"
+							alt={p.image?.alt || p.title}
+							width="800"
+							height="800"
+							loading="lazy"
+							decoding="async"
+						/>
 					</div>
 				))}
 			</div>
@@ -398,7 +436,12 @@ const heroDesktop = `${heroBase}?w=1600&fm=webp&q=80`;
 	.best-travel {
 		position: relative;
 		padding: 100px;
-		background: url("https://cdn.sanity.io/images/2voldnur/production/ef24a834fa2adaa6b249191ee5f6378e49418045-1378x775.jpg?w=1378&fm=webp&q=70") center / cover no-repeat;
+		background: url("https://cdn.sanity.io/images/2voldnur/production/ef24a834fa2adaa6b249191ee5f6378e49418045-1378x775.jpg?w=1378&fm=webp&q=55") center / cover no-repeat;
+	}
+	@media (max-width: 767px) {
+		.best-travel {
+			background-image: url("https://cdn.sanity.io/images/2voldnur/production/ef24a834fa2adaa6b249191ee5f6378e49418045-1378x775.jpg?w=640&fm=webp&q=55");
+		}
 	}
 	.best-travel-overlay {
 		position: absolute;
@@ -555,7 +598,7 @@ const heroDesktop = `${heroBase}?w=1600&fm=webp&q=80`;
 		margin: 40px auto;
 		max-width: var(--container-max);
 		padding: 50px;
-		background: url("https://cdn.sanity.io/images/2voldnur/production/cb269ac7d209e7712753d157805c3fa54a4f6032-1500x992.webp?w=1500&fm=webp&q=70") bottom center / cover no-repeat;
+		background: url("https://cdn.sanity.io/images/2voldnur/production/cb269ac7d209e7712753d157805c3fa54a4f6032-1500x992.webp?w=1500&fm=webp&q=55") bottom center / cover no-repeat;
 		display: flex;
 	}
 	.adventure-cta-overlay {
@@ -603,7 +646,11 @@ const heroDesktop = `${heroBase}?w=1600&fm=webp&q=80`;
 		color: #ffffff;
 	}
 	@media (max-width: 767px) {
-		.adventure-cta { padding: 30px 20px; margin: 20px 16px; }
+		.adventure-cta {
+			padding: 30px 20px;
+			margin: 20px 16px;
+			background-image: url("https://cdn.sanity.io/images/2voldnur/production/cb269ac7d209e7712753d157805c3fa54a4f6032-1500x992.webp?w=640&fm=webp&q=55");
+		}
 		.adventure-cta-inner { flex-direction: column; text-align: center; }
 		.adventure-cta-content h2 { font-size: 28px; }
 		.adventure-cta-content p { font-size: 16px; }
