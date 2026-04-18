@@ -38,6 +38,10 @@ const navLinks = [
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://cdn.sanity.io" crossorigin />
+    <link rel="preconnect" href="https://assets.spiritmediapublishing.com" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="https://assets.spiritmediapublishing.com/fonts/montserrat/montserrat-700.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="https://assets.spiritmediapublishing.com/fonts/lato/lato-400.woff2" crossorigin />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Organization",
@@ -52,7 +56,7 @@ const navLinks = [
     <header class="header">
       <div class="header-inner container">
         <a href="/" class="logo" aria-label="10 Billion Travelers Home">
-          <img src="https://cdn.sanity.io/images/2voldnur/production/c72fa126e31f5111a46f5684fb45d30ed84c12e9-150x150.webp" alt="10 Billion Travelers" width="150" height="150" class="logo-img" />
+          <img src="https://cdn.sanity.io/images/2voldnur/production/c72fa126e31f5111a46f5684fb45d30ed84c12e9-150x150.webp?w=110&h=110&fm=webp&q=80" alt="10 Billion Travelers" width="55" height="55" class="logo-img" fetchpriority="high" decoding="async" />
           <span class="logo-text">10 BILLION TRAVELERS</span>
         </a>
         <button class="mobile-toggle" aria-label="Toggle menu" aria-expanded="false">
@@ -82,7 +86,7 @@ const navLinks = [
         <div class="footer-col">
           <h2 class="footer-heading">About Us</h2>
           <div class="footer-about">
-            <img src="https://cdn.sanity.io/images/2voldnur/production/89a8d90403c115a7e92ce20c881df2696054c461-140x140.jpg" alt="Kevin White" width="140" height="140" class="footer-avatar" />
+            <img src="https://cdn.sanity.io/images/2voldnur/production/89a8d90403c115a7e92ce20c881df2696054c461-140x140.jpg?w=130&h=130&fm=webp&q=80" alt="Kevin White" width="65" height="65" class="footer-avatar" loading="lazy" decoding="async" />
             <p>I was born to travel! I've logged over 1 million miles to 26 different countries. Before I'm 100 years old there will be 10 Billion people alive. Our team is inspiring &amp; facilitating as many travelers as possible.</p>
           </div>
         </div>
@@ -106,15 +110,15 @@ const navLinks = [
         <div class="footer-col footer-col-gallery">
           <h2 class="footer-heading">Gallery</h2>
           <div class="footer-gallery-grid">
-            <img src="https://cdn.sanity.io/images/2voldnur/production/c690863d1d5fc840e8c4ffe32ef84278bf503244-150x150.webp" alt="Travel photo" loading="lazy" />
-            <img src="https://cdn.sanity.io/images/2voldnur/production/fb825482b2025d7885706e67a799a23c36efc35d-1200x1200.jpg" alt="Travel photo" loading="lazy" />
-            <img src="https://cdn.sanity.io/images/2voldnur/production/59163ae11d7908ebf04dfb9e4ccd56af788591e2-1200x1200.jpg" alt="Travel photo" loading="lazy" />
-            <img src="https://cdn.sanity.io/images/2voldnur/production/1a3b1fdff636a583bdf81c311d4ac0e0134c6ba1-1200x1200.jpg" alt="Travel photo" loading="lazy" />
-            <img src="https://cdn.sanity.io/images/2voldnur/production/efcbf0ea30f8b41c33587bbe20501e50e4dff55e-1200x1200.jpg" alt="Travel photo" loading="lazy" />
-            <img src="https://cdn.sanity.io/images/2voldnur/production/f8bf82df36476f20fc05447092d737581c240c40-1200x1200.jpg" alt="Travel photo" loading="lazy" />
-            <img src="https://cdn.sanity.io/images/2voldnur/production/40105400cedb9c275a180de96803106ffa711eb7-1204x1204.jpg" alt="Travel photo" loading="lazy" />
-            <img src="https://cdn.sanity.io/images/2voldnur/production/e9ac44b428e63894467d4cfa921839aeab0285a0-1200x1200.jpg" alt="Travel photo" loading="lazy" />
-            <img src="https://cdn.sanity.io/images/2voldnur/production/ae5fc9d367885d32354bbac83bca3b0d1df378e0-1200x1200.jpg" alt="Travel photo" loading="lazy" />
+            <img src="https://cdn.sanity.io/images/2voldnur/production/c690863d1d5fc840e8c4ffe32ef84278bf503244-150x150.webp?w=200&h=200&fm=webp&q=70" alt="Travel photo" width="100" height="100" loading="lazy" decoding="async" />
+            <img src="https://cdn.sanity.io/images/2voldnur/production/fb825482b2025d7885706e67a799a23c36efc35d-1200x1200.jpg?w=200&h=200&fm=webp&q=70" alt="Travel photo" width="100" height="100" loading="lazy" decoding="async" />
+            <img src="https://cdn.sanity.io/images/2voldnur/production/59163ae11d7908ebf04dfb9e4ccd56af788591e2-1200x1200.jpg?w=200&h=200&fm=webp&q=70" alt="Travel photo" width="100" height="100" loading="lazy" decoding="async" />
+            <img src="https://cdn.sanity.io/images/2voldnur/production/1a3b1fdff636a583bdf81c311d4ac0e0134c6ba1-1200x1200.jpg?w=200&h=200&fm=webp&q=70" alt="Travel photo" width="100" height="100" loading="lazy" decoding="async" />
+            <img src="https://cdn.sanity.io/images/2voldnur/production/efcbf0ea30f8b41c33587bbe20501e50e4dff55e-1200x1200.jpg?w=200&h=200&fm=webp&q=70" alt="Travel photo" width="100" height="100" loading="lazy" decoding="async" />
+            <img src="https://cdn.sanity.io/images/2voldnur/production/f8bf82df36476f20fc05447092d737581c240c40-1200x1200.jpg?w=200&h=200&fm=webp&q=70" alt="Travel photo" width="100" height="100" loading="lazy" decoding="async" />
+            <img src="https://cdn.sanity.io/images/2voldnur/production/40105400cedb9c275a180de96803106ffa711eb7-1204x1204.jpg?w=200&h=200&fm=webp&q=70" alt="Travel photo" width="100" height="100" loading="lazy" decoding="async" />
+            <img src="https://cdn.sanity.io/images/2voldnur/production/e9ac44b428e63894467d4cfa921839aeab0285a0-1200x1200.jpg?w=200&h=200&fm=webp&q=70" alt="Travel photo" width="100" height="100" loading="lazy" decoding="async" />
+            <img src="https://cdn.sanity.io/images/2voldnur/production/ae5fc9d367885d32354bbac83bca3b0d1df378e0-1200x1200.jpg?w=200&h=200&fm=webp&q=70" alt="Travel photo" width="100" height="100" loading="lazy" decoding="async" />
           </div>
         </div>
         <div class="footer-col footer-col-contact">
