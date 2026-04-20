@@ -9,7 +9,6 @@
   Link: <https://assets.spiritmediapublishing.com/fonts/lato/lato-400.woff2>; rel=preload; as=font; type=font/woff2; crossorigin
 
 /
-  Link: <https://cdn.sanity.io/images/2voldnur/production/a40a8123ab7929f7f5bd4b642dada747e1f6eee1-895x940.jpg?w=480&fm=webp&q=60>; rel=preload; as=image; imagesrcset="https://cdn.sanity.io/images/2voldnur/production/a40a8123ab7929f7f5bd4b642dada747e1f6eee1-895x940.jpg?w=480&fm=webp&q=60 480w, https://cdn.sanity.io/images/2voldnur/production/a40a8123ab7929f7f5bd4b642dada747e1f6eee1-895x940.jpg?w=760&fm=webp&q=55 760w"; imagesizes="480px"; fetchpriority=high; media="(max-width: 767px)"
   Link: <https://cdn.sanity.io/images/2voldnur/production/6e299e952d906041d8de47e436283d1125e54c43-2369x940.webp?w=1600&fm=webp&q=70>; rel=preload; as=image; fetchpriority=high; media="(min-width: 768px)"
 
 /assets/*
