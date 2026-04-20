@@ -6,6 +6,8 @@
   X-Robots-Tag: index, follow
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://cdn.sanity.io https://assets.spiritmediapublishing.com; font-src 'self' https://assets.spiritmediapublishing.com; connect-src 'self' https://*.sanity.io https://cloudflareinsights.com; frame-ancestors 'none'
   Link: <https://assets.spiritmediapublishing.com/fonts/montserrat/montserrat-700.woff2>; rel=preload; as=font; type=font/woff2; crossorigin
+  Link: <https://assets.spiritmediapublishing.com/fonts/montserrat/montserrat-600.woff2>; rel=preload; as=font; type=font/woff2; crossorigin
+  Link: <https://assets.spiritmediapublishing.com/fonts/montserrat/montserrat-500.woff2>; rel=preload; as=font; type=font/woff2; crossorigin
   Link: <https://assets.spiritmediapublishing.com/fonts/lato/lato-400.woff2>; rel=preload; as=font; type=font/woff2; crossorigin
 
 /
