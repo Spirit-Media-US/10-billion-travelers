@@ -14,13 +14,13 @@ const bestPhotos = await sanityClient.fetch(
 	`*[_type == "galleryImage" && section == "best"] | order(order asc) [0...3]`,
 );
 
-const heroBase = settings?.heroImage
-	? urlFor(settings.heroImage).url().split("?")[0]
-	: "https://cdn.sanity.io/images/2voldnur/production/6e299e952d906041d8de47e436283d1125e54c43-2369x940.webp";
-const heroMobileBase = `https://cdn.sanity.io/images/2voldnur/production/a40a8123ab7929f7f5bd4b642dada747e1f6eee1-895x940.jpg`;
-const heroMobile = `${heroMobileBase}?w=480&fm=webp&q=60`;
-const heroMobile2x = `${heroMobileBase}?w=760&fm=webp&q=55`;
-const heroDesktop = `${heroBase}?w=1600&fm=webp&q=70`;
+// Hero is R2-only (per CLAUDE.md 100 Club commitment) — same origin as fonts, one TLS handshake
+const heroMobile =
+	"https://assets.spiritmediapublishing.com/10-billion-travelers/hero-mobile-480.webp";
+const heroMobile2x =
+	"https://assets.spiritmediapublishing.com/10-billion-travelers/hero-mobile-760.webp";
+const heroDesktop =
+	"https://assets.spiritmediapublishing.com/10-billion-travelers/hero-desktop-1600.webp";
 ---
 
 <Layout
@@ -341,7 +341,7 @@ const heroDesktop = `${heroBase}?w=1600&fm=webp&q=70`;
 	}
 	.feature-card h2 {
 		font-size: 19px;
-		color: var(--color-primary);
+		color: var(--color-heading);
 		margin-bottom: 8px;
 	}
 	.feature-card p {
@@ -565,16 +565,26 @@ const heroDesktop = `${heroBase}?w=1600&fm=webp&q=70`;
 		margin-top: 28px;
 	}
 	.assoc-dot {
+		width: 24px;
+		height: 24px;
+		border-radius: 50%;
+		border: none;
+		background: transparent;
+		cursor: pointer;
+		padding: 0;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.assoc-dot::before {
+		content: '';
 		width: 10px;
 		height: 10px;
 		border-radius: 50%;
-		border: none;
 		background: #d4d4d4;
-		cursor: pointer;
-		padding: 0;
 		transition: background 0.3s;
 	}
-	.assoc-dot.active { background: #333; }
+	.assoc-dot.active::before { background: #333; }
 	@media (max-width: 1024px) {
 		.associations h2 { font-size: 52px; }
 		.assoc-slide img { height: 100px; }
