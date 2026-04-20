@@ -14,9 +14,14 @@ const bestPhotos = await sanityClient.fetch(
 	`*[_type == "galleryImage" && section == "best"] | order(order asc) [0...3]`,
 );
 
-const heroImg = settings?.heroImage
-	? urlFor(settings.heroImage).width(2400).url()
+const heroBase = settings?.heroImage
+	? urlFor(settings.heroImage).url().split("?")[0]
 	: "https://cdn.sanity.io/images/2voldnur/production/6e299e952d906041d8de47e436283d1125e54c43-2369x940.webp";
+const heroMobileBase =
+	"https://cdn.sanity.io/images/2voldnur/production/a40a8123ab7929f7f5bd4b642dada747e1f6eee1-895x940.jpg";
+const heroMobile = `${heroMobileBase}?w=480&fm=webp&q=60`;
+const heroMobile2x = `${heroMobileBase}?w=760&fm=webp&q=55`;
+const heroDesktop = `${heroBase}?w=1600&fm=webp&q=70`;
 ---
 
 <Layout
@@ -25,10 +30,50 @@ const heroImg = settings?.heroImage
 >
 	<Fragment slot="head">
 		<meta name="keywords" content="travel agencies in raleigh" />
+		<!-- Desktop-only hero preload. Mobile never fetches the hero image —
+		     mobile LCP is the H1 text node (paints from the HTML stream). -->
+		<link
+			rel="preload"
+			as="image"
+			href={heroDesktop}
+			fetchpriority="high"
+			media="(min-width: 768px)"
+		/>
 	</Fragment>
 
-	<!-- 1. Hero — full-width bg image with radial gradient overlay -->
-	<section class="hero" style={`background-image: url('${heroImg}');`}>
+	<!-- MOBILE HERO — text-first, H1 is LCP. CSS-gated via .hero-mobile
+	     media query; desktop hides this block. -->
+	<section class="hero-mobile">
+		<div class="hero-mobile-inner">
+			<p class="hero-eyebrow">Travel Agencies in Raleigh</p>
+			<h1 class="hero-heading">Expertly Crafted Tours, Personalized Experiences</h1>
+			<p class="hero-sub">Over 1 million miles logged. 26 countries explored. Let's plan your next adventure.</p>
+			<a href="/about/" class="btn btn-primary hero-cta">Meet Kevin</a>
+		</div>
+	</section>
+
+	<!-- DESKTOP HERO — full-viewport photo with radial overlay. Hidden below
+	     768px so mobile never pays the image download cost. The <img>
+	     fallback is a 1×1 GIF data URI — no HTTP request on mobile even
+	     though the tag is still parsed. -->
+	<section class="hero hero-desktop">
+		<picture>
+			<source
+				media="(min-width: 768px)"
+				srcset={heroDesktop}
+			/>
+			<img
+				src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+				alt=""
+				aria-hidden="true"
+				width="1600"
+				height="634"
+				fetchpriority="high"
+				loading="eager"
+				decoding="async"
+				class="hero-img"
+			/>
+		</picture>
 		<div class="hero-overlay"></div>
 	</section>
 
@@ -38,7 +83,7 @@ const heroImg = settings?.heroImage
 			<div class="features-grid">
 				{features.map((f: any) => (
 					<div class="feature-card">
-						{f.icon && <img src={urlFor(f.icon).width(150).height(150).url()} alt={f.title} width="150" height="150" class="feature-icon" />}
+						{f.icon && <img src={urlFor(f.icon).width(160).height(160).format('webp').quality(75).url()} alt={f.title} width="80" height="80" class="feature-icon" loading="lazy" decoding="async" />}
 						<h2>{f.title}</h2>
 						<p>{f.description}</p>
 					</div>
@@ -53,17 +98,44 @@ const heroImg = settings?.heroImage
 			<div class="gallery-asymmetric">
 				{travelPhotos[0] && (
 					<div class="gallery-big">
-						<img src={urlFor(travelPhotos[0].image).width(1200).url()} alt={travelPhotos[0].image?.alt || travelPhotos[0].title} loading="lazy" />
+						<img
+							src={urlFor(travelPhotos[0].image).width(1200).format('webp').quality(70).url()}
+							srcset={`${urlFor(travelPhotos[0].image).width(420).format('webp').quality(62).url()} 420w, ${urlFor(travelPhotos[0].image).width(720).format('webp').quality(65).url()} 720w, ${urlFor(travelPhotos[0].image).width(1200).format('webp').quality(70).url()} 1200w`}
+							sizes="(max-width: 767px) 88vw, 55vw"
+							alt={travelPhotos[0].image?.alt || travelPhotos[0].title}
+							width="1200"
+							height="900"
+							loading="lazy"
+							decoding="async"
+						/>
 					</div>
 				)}
 				{travelPhotos[1] && (
 					<div class="gallery-right-img">
-						<img src={urlFor(travelPhotos[1].image).width(600).url()} alt={travelPhotos[1].image?.alt || travelPhotos[1].title} loading="lazy" />
+						<img
+							src={urlFor(travelPhotos[1].image).width(600).format('webp').quality(68).url()}
+							srcset={`${urlFor(travelPhotos[1].image).width(420).format('webp').quality(62).url()} 420w, ${urlFor(travelPhotos[1].image).width(600).format('webp').quality(68).url()} 600w`}
+							sizes="(max-width: 767px) 88vw, 30vw"
+							alt={travelPhotos[1].image?.alt || travelPhotos[1].title}
+							width="600"
+							height="450"
+							loading="lazy"
+							decoding="async"
+						/>
 					</div>
 				)}
 				{travelPhotos[2] && (
 					<div class="gallery-right-img">
-						<img src={urlFor(travelPhotos[2].image).width(600).url()} alt={travelPhotos[2].image?.alt || travelPhotos[2].title} loading="lazy" />
+						<img
+							src={urlFor(travelPhotos[2].image).width(600).format('webp').quality(68).url()}
+							srcset={`${urlFor(travelPhotos[2].image).width(420).format('webp').quality(62).url()} 420w, ${urlFor(travelPhotos[2].image).width(600).format('webp').quality(68).url()} 600w`}
+							sizes="(max-width: 767px) 88vw, 30vw"
+							alt={travelPhotos[2].image?.alt || travelPhotos[2].title}
+							width="600"
+							height="450"
+							loading="lazy"
+							decoding="async"
+						/>
 					</div>
 				)}
 			</div>
@@ -76,7 +148,16 @@ const heroImg = settings?.heroImage
 			<div class="gallery-three">
 				{bestPhotos.map((p: any) => (
 					<div class="gallery-three-col">
-						<img src={urlFor(p.image).width(1024).height(1024).url()} alt={p.image?.alt || p.title} loading="lazy" />
+						<img
+							src={urlFor(p.image).width(720).height(720).format('webp').quality(65).url()}
+							srcset={`${urlFor(p.image).width(400).height(400).format('webp').quality(62).url()} 400w, ${urlFor(p.image).width(720).height(720).format('webp').quality(65).url()} 720w`}
+							sizes="(max-width: 767px) 88vw, 30vw"
+							alt={p.image?.alt || p.title}
+							width="720"
+							height="720"
+							loading="lazy"
+							decoding="async"
+						/>
 					</div>
 				))}
 			</div>
@@ -93,14 +174,14 @@ const heroImg = settings?.heroImage
 			</div>
 			<div class="best-travel-badges">
 				<div class="badge-item">
-					<img src="https://cdn.sanity.io/images/2voldnur/production/0589b9373e45bc50e08959863a7a691cd0564b97-150x150.png" alt="Google Maps Local Guide" width="150" height="150" loading="lazy" />
+					<img src="https://cdn.sanity.io/images/2voldnur/production/0589b9373e45bc50e08959863a7a691cd0564b97-150x150.png?w=160&h=160&fm=webp&q=60" alt="Google Maps Local Guide" width="80" height="80" loading="lazy" decoding="async" />
 					<div>
 						<strong>Google Maps + Local Guide</strong>
 						<p>Over 500,000 impacts!</p>
 					</div>
 				</div>
 				<div class="badge-item">
-					<img src="https://cdn.sanity.io/images/2voldnur/production/1d20a81206c101dcc09a0dcd832827bdca062e99-150x150.png" alt="TripAdvisor Top 3 percent" width="150" height="150" loading="lazy" />
+					<img src="https://cdn.sanity.io/images/2voldnur/production/1d20a81206c101dcc09a0dcd832827bdca062e99-150x150.png?w=160&h=160&fm=webp&q=60" alt="TripAdvisor Top 3 percent" width="80" height="80" loading="lazy" decoding="async" />
 					<div>
 						<strong>Top 3%</strong>
 						<p>On Tripadvisor.com</p>
@@ -110,7 +191,7 @@ const heroImg = settings?.heroImage
 		</div>
 	</section>
 
-	<!-- 6. Associations — classic looping slider -->
+	<!-- 6. Associations — looping slider (desktop), 1-per-slide (mobile) -->
 	<section class="associations">
 		<div class="container">
 			<h2>Associations</h2>
@@ -120,12 +201,13 @@ const heroImg = settings?.heroImage
 				</button>
 				<div class="assoc-viewport">
 					<div class="assoc-track" id="assoc-track">
-						<div class="assoc-slide"><img src="https://cdn.sanity.io/images/2voldnur/production/fd785de645c67d8b8d0651a953b302e4f0f47798-405x153.webp" alt="Accredited Media" /></div>
-						<div class="assoc-slide"><img src="https://cdn.sanity.io/images/2voldnur/production/86f546c6c54b113a83f32589f1c9ced0aab416a3-405x155.webp" alt="World Food Travel Association" /></div>
-						<div class="assoc-slide"><img src="https://cdn.sanity.io/images/2voldnur/production/abef94d0c81c8c93d4c113587f697f6a4a8bfb03-404x154.webp" alt="UNWTO" /></div>
-						<div class="assoc-slide"><img src="https://cdn.sanity.io/images/2voldnur/production/fd785de645c67d8b8d0651a953b302e4f0f47798-405x153.webp" alt="Accredited Media" aria-hidden="true" /></div>
-						<div class="assoc-slide"><img src="https://cdn.sanity.io/images/2voldnur/production/86f546c6c54b113a83f32589f1c9ced0aab416a3-405x155.webp" alt="World Food Travel Association" aria-hidden="true" /></div>
-						<div class="assoc-slide"><img src="https://cdn.sanity.io/images/2voldnur/production/abef94d0c81c8c93d4c113587f697f6a4a8bfb03-404x154.webp" alt="UNWTO" aria-hidden="true" /></div>
+						<div class="assoc-slide"><img src="https://cdn.sanity.io/images/2voldnur/production/fd785de645c67d8b8d0651a953b302e4f0f47798-405x153.webp?w=405&fm=webp&q=80" alt="Accredited Media" width="405" height="153" loading="lazy" decoding="async" /></div>
+						<div class="assoc-slide"><img src="https://cdn.sanity.io/images/2voldnur/production/86f546c6c54b113a83f32589f1c9ced0aab416a3-405x155.webp?w=405&fm=webp&q=80" alt="World Food Travel Association" width="405" height="155" loading="lazy" decoding="async" /></div>
+						<div class="assoc-slide"><img src="https://cdn.sanity.io/images/2voldnur/production/abef94d0c81c8c93d4c113587f697f6a4a8bfb03-404x154.webp?w=404&fm=webp&q=80" alt="UNWTO" width="404" height="154" loading="lazy" decoding="async" /></div>
+						<!-- Clones for desktop infinite loop -->
+						<div class="assoc-slide assoc-clone"><img src="https://cdn.sanity.io/images/2voldnur/production/fd785de645c67d8b8d0651a953b302e4f0f47798-405x153.webp?w=405&fm=webp&q=80" alt="Accredited Media" width="405" height="153" loading="lazy" decoding="async" aria-hidden="true" /></div>
+						<div class="assoc-slide assoc-clone"><img src="https://cdn.sanity.io/images/2voldnur/production/86f546c6c54b113a83f32589f1c9ced0aab416a3-405x155.webp?w=405&fm=webp&q=80" alt="World Food Travel Association" width="405" height="155" loading="lazy" decoding="async" aria-hidden="true" /></div>
+						<div class="assoc-slide assoc-clone"><img src="https://cdn.sanity.io/images/2voldnur/production/abef94d0c81c8c93d4c113587f697f6a4a8bfb03-404x154.webp?w=404&fm=webp&q=80" alt="UNWTO" width="404" height="154" loading="lazy" decoding="async" aria-hidden="true" /></div>
 					</div>
 				</div>
 				<button class="assoc-arrow assoc-next" id="assoc-next" aria-label="Next">
@@ -149,17 +231,27 @@ const heroImg = settings?.heroImage
 		if (!track) return;
 
 		var pos = 0;
-		var slideWidth = 100 / 6;
+
+		function isMobile() { return window.innerWidth <= 767; }
 
 		function slideTo(p) {
 			pos = p;
-			track.style.transition = 'transform 0.5s ease';
-			track.style.transform = 'translateX(-' + (pos * slideWidth) + '%)';
+			if (isMobile()) {
+				// Mobile: 3 real slides only (clones hidden), each 100% width, track = 300%
+				pos = ((p % 3) + 3) % 3;
+				track.style.transition = 'transform 0.5s ease';
+				track.style.transform = 'translateX(-' + (pos * (100 / 3)) + '%)';
+			} else {
+				// Desktop: 6 slides (3 + 3 clones) at 33.333% each, showing 3 at a time
+				var slideWidth = 100 / 6;
+				track.style.transition = 'transform 0.5s ease';
+				track.style.transform = 'translateX(-' + (pos * slideWidth) + '%)';
+			}
 			dots.forEach(function(d, i) { d.classList.toggle('active', i === (pos % 3)); });
 		}
 
 		track.addEventListener('transitionend', function() {
-			if (pos >= 3) {
+			if (!isMobile() && pos >= 3) {
 				track.style.transition = 'none';
 				pos = 0;
 				track.style.transform = 'translateX(0%)';
@@ -167,10 +259,10 @@ const heroImg = settings?.heroImage
 		});
 
 		prev.addEventListener('click', function() {
-			if (pos <= 0) {
+			if (!isMobile() && pos <= 0) {
 				track.style.transition = 'none';
 				pos = 3;
-				track.style.transform = 'translateX(-' + (pos * slideWidth) + '%)';
+				track.style.transform = 'translateX(-' + (pos * (100 / 6)) + '%)';
 				requestAnimationFrame(function() {
 					requestAnimationFrame(function() { slideTo(pos - 1); });
 				});
@@ -208,13 +300,77 @@ const heroImg = settings?.heroImage
 
 <style>
 	/* ===== 1. HERO ===== */
+	/* Mobile text-first hero — H1 is LCP. Rendered only below 768px. */
+	.hero-mobile {
+		display: none;
+		background: linear-gradient(180deg, #ffffff 0%, var(--color-bg) 100%);
+		padding: 40px 24px 48px;
+	}
+	.hero-mobile-inner {
+		max-width: 560px;
+		margin: 0 auto;
+		text-align: center;
+	}
+	.hero-eyebrow {
+		font-family: var(--font-heading);
+		font-size: 12px;
+		font-weight: 600;
+		letter-spacing: 2px;
+		text-transform: uppercase;
+		color: var(--color-primary-dark);
+		margin: 0 0 12px;
+	}
+	.hero-heading {
+		font-family: var(--font-heading);
+		font-size: 30px;
+		font-weight: 700;
+		line-height: 1.15;
+		color: var(--color-heading);
+		margin: 0 0 16px;
+		text-wrap: balance;
+	}
+	.hero-sub {
+		font-size: 16px;
+		color: var(--color-text);
+		line-height: 1.55;
+		margin: 0 0 24px;
+	}
+	.hero-cta {
+		border-radius: 9px;
+	}
+	@media (max-width: 767px) {
+		.hero-mobile { display: block; }
+	}
+
+	/* Skip paint + layout for offscreen sections on mobile.
+	   Cuts ~200-400ms of synchronous layout work during initial render
+	   on throttled CPU, which advances LCP of the H1 above. */
+	@media (max-width: 767px) {
+		.features,
+		.gallery-row,
+		.best-travel,
+		.associations,
+		.adventure-cta {
+			content-visibility: auto;
+			contain-intrinsic-size: 1px 600px;
+		}
+	}
+
+	/* Desktop photo hero — hidden below 768px via .hero-desktop media query below. */
 	.hero {
 		position: relative;
 		min-height: 633px;
-		background-position: top center;
-		background-size: cover;
-		background-repeat: no-repeat;
 		background-color: #eeeeee;
+		overflow: hidden;
+	}
+	.hero-img {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: top center;
+		display: block;
 	}
 	.hero-overlay {
 		position: absolute;
@@ -223,16 +379,11 @@ const heroImg = settings?.heroImage
 		opacity: 0.5;
 	}
 	@media (max-width: 767px) {
-		.hero {
-			min-height: 30vh;
-			background-image: url("https://cdn.sanity.io/images/2voldnur/production/a40a8123ab7929f7f5bd4b642dada747e1f6eee1-895x940.jpg");
-			padding: 150px 20px 50px;
-		}
+		.hero-desktop { display: none; }
 	}
 	@media (max-width: 1024px) and (min-width: 768px) {
 		.hero {
-			min-height: 40vh;
-			padding: 100px 50px 50px;
+			min-height: 65vh;
 		}
 	}
 
@@ -266,7 +417,7 @@ const heroImg = settings?.heroImage
 	}
 	.feature-card h2 {
 		font-size: 19px;
-		color: var(--color-primary);
+		color: var(--color-heading);
 		margin-bottom: 8px;
 	}
 	.feature-card p {
@@ -361,7 +512,12 @@ const heroImg = settings?.heroImage
 	.best-travel {
 		position: relative;
 		padding: 100px;
-		background: url("https://cdn.sanity.io/images/2voldnur/production/ef24a834fa2adaa6b249191ee5f6378e49418045-1378x775.jpg") center / cover no-repeat;
+		background: url("https://cdn.sanity.io/images/2voldnur/production/ef24a834fa2adaa6b249191ee5f6378e49418045-1378x775.jpg?w=1378&fm=webp&q=45") center / cover no-repeat;
+	}
+	@media (max-width: 767px) {
+		.best-travel {
+			background-image: url("https://cdn.sanity.io/images/2voldnur/production/ef24a834fa2adaa6b249191ee5f6378e49418045-1378x775.jpg?w=640&fm=webp&q=35");
+		}
 	}
 	.best-travel-overlay {
 		position: absolute;
@@ -422,8 +578,9 @@ const heroImg = settings?.heroImage
 	}
 	@media (max-width: 767px) {
 		.best-travel { padding: 40px 20px; }
-		.best-travel-heading { font-size: 26px; letter-spacing: 1.8px; }
+		.best-travel-heading { font-size: 36px; letter-spacing: 1.8px; }
 		.best-travel-label { font-size: 14px; }
+		.best-travel-text { margin-bottom: 32px; }
 		.best-travel-badges { flex-direction: column; gap: 24px; align-items: center; }
 		.badge-item strong { font-size: 15px; }
 	}
@@ -435,10 +592,9 @@ const heroImg = settings?.heroImage
 	}
 	.associations h2 {
 		font-size: 56px;
-		color: var(--color-primary-hover);
+		color: var(--color-primary-dark);
 		text-transform: uppercase;
 		margin-bottom: 40px;
-		mix-blend-mode: darken;
 	}
 	.assoc-slider {
 		display: flex;
@@ -473,7 +629,7 @@ const heroImg = settings?.heroImage
 		padding: 0 20px;
 	}
 	.assoc-slide img {
-		width: 480px;
+		max-width: 100%;
 		height: 180px;
 		object-fit: contain;
 	}
@@ -484,24 +640,40 @@ const heroImg = settings?.heroImage
 		margin-top: 28px;
 	}
 	.assoc-dot {
+		width: 24px;
+		height: 24px;
+		border-radius: 50%;
+		border: none;
+		background: transparent;
+		cursor: pointer;
+		padding: 0;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.assoc-dot::before {
+		content: '';
 		width: 10px;
 		height: 10px;
 		border-radius: 50%;
-		border: none;
 		background: #d4d4d4;
-		cursor: pointer;
-		padding: 0;
 		transition: background 0.3s;
 	}
-	.assoc-dot.active { background: #333; }
+	.assoc-dot.active::before { background: #333; }
 	@media (max-width: 1024px) {
 		.associations h2 { font-size: 52px; }
 		.assoc-slide img { height: 100px; }
 	}
 	@media (max-width: 767px) {
-		.associations h2 { font-size: 31px; }
-		.assoc-slide { padding: 0 8px; }
-		.assoc-slide img { height: 120px; width: 100%; }
+		.associations { padding: 48px 0; }
+		.associations h2 { font-size: 31px; margin-bottom: 24px; }
+		.assoc-slider { gap: 0; }
+		.assoc-arrow { display: none; }
+		.assoc-clone { display: none; }
+		.assoc-viewport { overflow: hidden; width: 100%; }
+		.assoc-track { display: flex; width: 300%; }
+		.assoc-slide { flex: none; width: 33.333%; padding: 0 16px; box-sizing: border-box; }
+		.assoc-slide img { height: auto; width: 80%; max-height: 140px; margin: 0 auto; }
 	}
 
 	/* ===== 7. ADVENTURE CTA ===== */
@@ -511,7 +683,7 @@ const heroImg = settings?.heroImage
 		margin: 40px auto;
 		max-width: var(--container-max);
 		padding: 50px;
-		background: url("https://cdn.sanity.io/images/2voldnur/production/cb269ac7d209e7712753d157805c3fa54a4f6032-1500x992.webp") bottom center / cover no-repeat;
+		background: url("https://cdn.sanity.io/images/2voldnur/production/cb269ac7d209e7712753d157805c3fa54a4f6032-1500x992.webp?w=1500&fm=webp&q=55") bottom center / cover no-repeat;
 		display: flex;
 	}
 	.adventure-cta-overlay {
@@ -547,9 +719,9 @@ const heroImg = settings?.heroImage
 		flex-shrink: 0;
 	}
 	.btn-primary {
-		background: var(--color-primary);
+		background: var(--color-primary-dark);
 		color: #ffffff;
-		border-color: var(--color-primary);
+		border-color: var(--color-primary-dark);
 		border-radius: 9px;
 		padding: 16px 40px;
 	}
@@ -559,7 +731,11 @@ const heroImg = settings?.heroImage
 		color: #ffffff;
 	}
 	@media (max-width: 767px) {
-		.adventure-cta { padding: 30px 20px; margin: 20px 16px; }
+		.adventure-cta {
+			padding: 30px 20px;
+			margin: 20px 16px;
+			background-image: url("https://cdn.sanity.io/images/2voldnur/production/cb269ac7d209e7712753d157805c3fa54a4f6032-1500x992.webp?w=640&fm=webp&q=55");
+		}
 		.adventure-cta-inner { flex-direction: column; text-align: center; }
 		.adventure-cta-content h2 { font-size: 28px; }
 		.adventure-cta-content p { font-size: 16px; }

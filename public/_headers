@@ -1,0 +1,20 @@
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  X-Robots-Tag: index, follow
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://cdn.sanity.io https://assets.spiritmediapublishing.com; font-src 'self' https://assets.spiritmediapublishing.com; connect-src 'self' https://*.sanity.io https://cloudflareinsights.com; frame-ancestors 'none'
+  Link: <https://assets.spiritmediapublishing.com/fonts/montserrat/montserrat-700.woff2>; rel=preload; as=font; type=font/woff2; crossorigin
+  Link: <https://assets.spiritmediapublishing.com/fonts/montserrat/montserrat-600.woff2>; rel=preload; as=font; type=font/woff2; crossorigin
+  Link: <https://assets.spiritmediapublishing.com/fonts/montserrat/montserrat-500.woff2>; rel=preload; as=font; type=font/woff2; crossorigin
+  Link: <https://assets.spiritmediapublishing.com/fonts/lato/lato-400.woff2>; rel=preload; as=font; type=font/woff2; crossorigin
+
+/
+  Link: <https://cdn.sanity.io/images/2voldnur/production/6e299e952d906041d8de47e436283d1125e54c43-2369x940.webp?w=1600&fm=webp&q=70>; rel=preload; as=image; fetchpriority=high; media="(min-width: 768px)"
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable

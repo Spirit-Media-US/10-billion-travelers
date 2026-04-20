@@ -6,20 +6,47 @@ import { sanityClient, urlFor } from "../lib/sanity";
 const kevin = await sanityClient.fetch(
 	`*[_type == "teamMember" && name == "Kevin White"][0]`,
 );
-const photoUrl = kevin?.photo
-	? urlFor(kevin.photo).width(283).height(300).url()
-	: "https://cdn.sanity.io/images/2voldnur/production/ea90fe8e393f8844be9b0375f911bad2e835f431-283x300.jpg";
-const footerPhotoUrl = kevin?.photo
-	? urlFor(kevin.photo).width(140).height(140).url()
-	: "https://cdn.sanity.io/images/2voldnur/production/89a8d90403c115a7e92ce20c881df2696054c461-140x140.jpg";
+const photoMobile = kevin?.photo
+	? urlFor(kevin.photo).width(440).height(466).format("webp").quality(80).url()
+	: "https://cdn.sanity.io/images/2voldnur/production/ea90fe8e393f8844be9b0375f911bad2e835f431-283x300.jpg?w=440&h=466&fm=webp&q=80";
+const photoDesktop = kevin?.photo
+	? urlFor(kevin.photo).width(566).height(600).format("webp").quality(80).url()
+	: "https://cdn.sanity.io/images/2voldnur/production/ea90fe8e393f8844be9b0375f911bad2e835f431-283x300.jpg?w=566&h=600&fm=webp&q=80";
+const aboutHeroBg =
+	"https://cdn.sanity.io/images/2voldnur/production/491b4be1e3f328ae2bb3ad663a1202d1703656d7-1200x799.jpg";
+const aboutHeroMobile = `${aboutHeroBg}?w=640&fm=webp&q=75`;
+const aboutHeroDesktop = `${aboutHeroBg}?w=1600&fm=webp&q=75`;
 ---
 
 <Layout
 	title="About | 10 Billion Travelers"
 	description="Meet Kevin White — over 1 million miles traveled across 26 countries. Learn the story behind 10 Billion Travelers."
 >
-	<!-- Hero banner with about.jpeg background, fixed attachment -->
+	<Fragment slot="head">
+		<link
+			rel="preload"
+			as="image"
+			href={aboutHeroMobile}
+			imagesrcset={`${aboutHeroMobile} 640w, ${aboutHeroDesktop} 1600w`}
+			imagesizes="100vw"
+			fetchpriority="high"
+		/>
+	</Fragment>
+
+	<!-- Hero banner with about.jpeg background -->
 	<section class="about-hero">
+		<img
+			src={aboutHeroDesktop}
+			srcset={`${aboutHeroMobile} 640w, ${aboutHeroDesktop} 1600w`}
+			sizes="100vw"
+			alt="About 10 Billion Travelers"
+			width="1600"
+			height="1066"
+			fetchpriority="high"
+			loading="eager"
+			decoding="async"
+			class="about-hero-img"
+		/>
 		<div class="about-hero-inner">
 			<h1 class="about-hero-title">Our Story</h1>
 		</div>
@@ -32,10 +59,14 @@ const footerPhotoUrl = kevin?.photo
 				<div class="bio-image-col">
 					<div class="bio-image-wrap">
 						<img
-							src={photoUrl}
+							src={photoDesktop}
+							srcset={`${photoMobile} 440w, ${photoDesktop} 566w`}
+							sizes="(max-width: 767px) 220px, 283px"
 							alt={kevin?.name || "Kevin White"}
 							width="283"
 							height="300"
+							loading="lazy"
+							decoding="async"
 							class="bio-photo"
 						/>
 					</div>
@@ -74,17 +105,29 @@ const footerPhotoUrl = kevin?.photo
 </Layout>
 
 <style>
-	/* About hero — background image with fixed attachment */
+	/* About hero — real <img> behind overlay text */
 	.about-hero {
 		position: relative;
 		min-height: 400px;
-		background: url("https://cdn.sanity.io/images/2voldnur/production/491b4be1e3f328ae2bb3ad663a1202d1703656d7-1200x799.jpg") bottom center / cover no-repeat;
-		background-attachment: fixed;
+		background-color: #333;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		overflow: hidden;
+	}
+	.about-hero-img {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: bottom center;
+		display: block;
+		z-index: 0;
 	}
 	.about-hero-inner {
+		position: relative;
+		z-index: 1;
 		text-align: center;
 		padding: 100px 0;
 	}
@@ -159,7 +202,7 @@ const footerPhotoUrl = kevin?.photo
 		color: var(--color-text);
 	}
 	.bio-name {
-		color: var(--color-primary);
+		color: var(--color-primary-dark);
 		font-size: 23px;
 		font-weight: 700;
 		text-transform: capitalize;
@@ -176,7 +219,9 @@ const footerPhotoUrl = kevin?.photo
 	}
 	@media (max-width: 767px) {
 		.bio-grid { padding: 30px 20px; max-width: 100%; }
-		.bio-image-col { padding-left: 50px; }
+		.bio-image-col { padding-left: 0; text-align: center; }
+		.bio-image-wrap::before { display: none; }
+		.bio-photo { margin: 0 auto; width: 220px; }
 		.bio-text-col p { font-size: 14px; }
 		.bio-caption { font-size: 14px; }
 	}
@@ -191,7 +236,7 @@ const footerPhotoUrl = kevin?.photo
 		overflow: hidden;
 		max-width: var(--container-max);
 		margin: 0 auto;
-		background: url("https://cdn.sanity.io/images/2voldnur/production/f7b8aeefbbc7200c02ccc30c13c682c8822c5389-1024x677.jpg") bottom center / cover no-repeat;
+		background: url("https://cdn.sanity.io/images/2voldnur/production/f7b8aeefbbc7200c02ccc30c13c682c8822c5389-1024x677.jpg?w=1024&fm=webp&q=70") bottom center / cover no-repeat;
 	}
 	.about-cta-overlay {
 		position: absolute;
@@ -229,15 +274,15 @@ const footerPhotoUrl = kevin?.photo
 		justify-content: flex-start;
 	}
 	.btn-cta {
-		background: var(--color-primary-hover);
+		background: var(--color-primary-dark);
 		color: #ffffff;
-		border-color: var(--color-primary-hover);
+		border-color: var(--color-primary-dark);
 		border-radius: 5px;
 		font-size: 15px;
 	}
 	.btn-cta:hover {
-		background: var(--color-primary);
-		border-color: var(--color-primary);
+		background: var(--color-primary-hover);
+		border-color: var(--color-primary-hover);
 	}
 	@media (max-width: 767px) {
 		.about-cta-inner { flex-direction: column; text-align: center; padding: 30px; }
