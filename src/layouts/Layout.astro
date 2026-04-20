@@ -267,6 +267,12 @@ const navLinks = [
     background: var(--color-bg);
     margin-top: 0;
   }
+  @media (max-width: 767px) {
+    .footer {
+      content-visibility: auto;
+      contain-intrinsic-size: 1px 1200px;
+    }
+  }
   .footer-inner {
     display: grid;
     grid-template-columns: 1.3fr 1fr 1fr 1fr;

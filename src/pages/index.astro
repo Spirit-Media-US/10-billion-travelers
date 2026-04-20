@@ -304,7 +304,7 @@ const heroDesktop = `${heroBase}?w=1600&fm=webp&q=70`;
 	.hero-mobile {
 		display: none;
 		background: linear-gradient(180deg, #ffffff 0%, var(--color-bg) 100%);
-		padding: 48px 24px 60px;
+		padding: 40px 24px 48px;
 	}
 	.hero-mobile-inner {
 		max-width: 560px;
@@ -322,23 +322,38 @@ const heroDesktop = `${heroBase}?w=1600&fm=webp&q=70`;
 	}
 	.hero-heading {
 		font-family: var(--font-heading);
-		font-size: 34px;
+		font-size: 30px;
 		font-weight: 700;
 		line-height: 1.15;
 		color: var(--color-heading);
 		margin: 0 0 16px;
+		text-wrap: balance;
 	}
 	.hero-sub {
 		font-size: 16px;
 		color: var(--color-text);
 		line-height: 1.55;
-		margin: 0 0 28px;
+		margin: 0 0 24px;
 	}
 	.hero-cta {
 		border-radius: 9px;
 	}
 	@media (max-width: 767px) {
 		.hero-mobile { display: block; }
+	}
+
+	/* Skip paint + layout for offscreen sections on mobile.
+	   Cuts ~200-400ms of synchronous layout work during initial render
+	   on throttled CPU, which advances LCP of the H1 above. */
+	@media (max-width: 767px) {
+		.features,
+		.gallery-row,
+		.best-travel,
+		.associations,
+		.adventure-cta {
+			content-visibility: auto;
+			contain-intrinsic-size: 1px 600px;
+		}
 	}
 
 	/* Desktop photo hero — hidden below 768px via .hero-desktop media query below. */
