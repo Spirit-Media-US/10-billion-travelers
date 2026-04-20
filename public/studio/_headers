@@ -9,7 +9,7 @@
   Link: <https://assets.spiritmediapublishing.com/fonts/lato/lato-400.woff2>; rel=preload; as=font; type=font/woff2; crossorigin
 
 /
-  Link: <https://assets.spiritmediapublishing.com/10-billion-travelers/hero-mobile-480.webp>; rel=preload; as=image; imagesrcset="https://assets.spiritmediapublishing.com/10-billion-travelers/hero-mobile-480.webp 480w, https://assets.spiritmediapublishing.com/10-billion-travelers/hero-mobile-760.webp 760w, https://assets.spiritmediapublishing.com/10-billion-travelers/hero-desktop-1600.webp 1600w"; imagesizes="(max-width: 767px) 480px, 100vw"; fetchpriority=high
+  Link: <https://cdn.sanity.io/images/2voldnur/production/a40a8123ab7929f7f5bd4b642dada747e1f6eee1-895x940.jpg?w=480&fm=webp&q=60>; rel=preload; as=image; imagesrcset="https://cdn.sanity.io/images/2voldnur/production/a40a8123ab7929f7f5bd4b642dada747e1f6eee1-895x940.jpg?w=480&fm=webp&q=60 480w, https://cdn.sanity.io/images/2voldnur/production/a40a8123ab7929f7f5bd4b642dada747e1f6eee1-895x940.jpg?w=760&fm=webp&q=55 760w, https://cdn.sanity.io/images/2voldnur/production/6e299e952d906041d8de47e436283d1125e54c43-2369x940.webp?w=1600&fm=webp&q=70 1600w"; imagesizes="(max-width: 767px) 480px, 100vw"; fetchpriority=high
 
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
