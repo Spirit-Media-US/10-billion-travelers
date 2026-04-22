@@ -4,6 +4,25 @@
 
 This site: 10 Billion Travelers | Repo: github.com/Spirit-Media-US/10-billion-travelers | Domain: 10btravelers.com | Sanity ID: 2voldnur | Registry ID: 051de8cc
 
+---
+
+## 100 CLUB — FROZEN
+
+This site is in the 100 Club. As of 2026-04-22: **mobile 97 / 100 / 100 / 100, desktop 100 / 100 / 100 / 100** on PSI. Registry: `/home/deploy/etc/100club-sites.json`.
+
+**Before making any performance-framed edit, do these steps in order. No exceptions.**
+
+1. **Measure first.** Run `psi-median.sh https://10btravelers.com mobile` and record all four scores. If you're about to edit CSS, fonts, images, the hero, `_headers`, preload links, critical CSS, `astro.config.mjs`, or anything labeled "perf" — that's a performance-framed edit.
+2. **Identify the specific failing audit.** Open PSI, find the audit that's actually failing. If nothing is failing and all four scores already clear the bar, **stop — there is no edit to make.** Do not "improve" a passing site.
+3. **Make only the edit that targets that audit.** No scope creep, no "while I'm here" cleanups.
+4. **Re-measure after.** Run `psi-median.sh` again. If *any* score drops versus step 1's baseline, **revert immediately** — even if the intended score went up.
+
+**Rules in `/home/deploy/claude-config/rules/performance-gate.md` are remediations, not universal upgrades.** Each MANDATORY-labeled rule applies only when its named failure is present. Example: the `inlineStylesheets: 'auto'` + async-css postbuild pattern from performance-gate.md dropped mobile A11y 100 → 96 on this site (async `media="print" onload` swap lands *after* Lighthouse's contrast audit snapshot). Because 10bt's total CSS is ~33 KB, `inlineStylesheets: 'always'` is the correct setting here. That was the trigger for this banner on 2026-04-22.
+
+If you're unsure whether an edit is "performance-framed" — it is. Measure first.
+
+---
+
 **Migration protocol:** /home/deploy/bin/tools-api/pipelines/migration/CLAUDE.md
 **Client URL:** https://10btravelers.com (original WordPress site on Cloudways)
 **Infrastructure:** Deploy webhook wired | CF Pages: 10-billion-travelers.pages.dev | Dev preview: dev.10-billion-travelers.pages.dev
