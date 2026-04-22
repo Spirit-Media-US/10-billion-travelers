@@ -7,7 +7,7 @@ export default defineConfig({
   server: { port: 4330, host: true },
   integrations: [sitemap()],
   build: {
-    inlineStylesheets: 'auto',
+    inlineStylesheets: 'always',
   },
   vite: {
     server: { allowedHosts: ['preview.spiritmediapublishing.com'] },
