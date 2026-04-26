@@ -1,4 +1,6 @@
 ---
+import HundredClubBadge from "../components/HundredClubBadge.astro";
+
 interface Props {
 	title: string;
 	description?: string;
@@ -131,7 +133,7 @@ const navLinks = [
       </div>
       <div class="footer-bottom">
         <div class="container footer-bottom-inner">
-          <p>&copy; {new Date().getFullYear()} 10 Billion Travelers. All rights reserved. &bull; Powered by <a href="https://spiritmediapublishing.com" target="_blank" rel="noopener noreferrer">Spirit Media</a></p>
+          <p>&copy; {new Date().getFullYear()} 10 Billion Travelers. All rights reserved. &bull; Powered by <a href="https://spiritmediapublishing.com" target="_blank" rel="noopener noreferrer">Spirit Media</a> <HundredClubBadge /></p>
         </div>
       </div>
     </footer>

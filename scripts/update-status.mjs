@@ -15,7 +15,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const STATUS_FILE = join(__dirname, '..', 'PROJECT-STATUS.md');
 
 const client = createClient({
-  projectId: 'REPLACE_PROJECT_ID',
+  projectId: '2voldnur',
   dataset: 'production',
   useCdn: false,
   apiVersion: '2024-01-01',
@@ -53,7 +53,8 @@ async function run() {
 |---|---|---|
 ${tableRows}`;
 
-  let content = readFileSync(STATUS_FILE, 'utf8');
+  const original = readFileSync(STATUS_FILE, 'utf8');
+  let content = original;
 
   // Update the "Last updated" date
   content = content.replace(
@@ -66,6 +67,16 @@ ${tableRows}`;
     /## Sanity Document Counts[\s\S]*?(?=\n---|\n## )/,
     newTable + '\n\n'
   );
+
+  // Skip write if only the date would change (counts unchanged) — prevents
+  // daily date-bump noise that re-dirties the repo on every pre-push run.
+  const stripDates = (s) => s
+    .replace(/> Last updated: \d{4}-\d{2}-\d{2}/, '> Last updated: DATE')
+    .replace(/\(as of \d{4}-\d{2}-\d{2}\)/g, '(as of DATE)');
+  if (stripDates(original) === stripDates(content)) {
+    console.log(`✓ Sanity counts unchanged — skipping date bump (no real diff)`);
+    return;
+  }
 
   writeFileSync(STATUS_FILE, content);
   console.log(`✅ PROJECT-STATUS.md updated (${today})`);
