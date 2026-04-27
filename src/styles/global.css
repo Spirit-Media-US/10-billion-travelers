@@ -21,9 +21,9 @@
   --color-border: #dbe8eb;
   --color-border-alt: #dddddd;
 
-  /* Typography */
-  --font-heading: 'Montserrat', sans-serif;
-  --font-body: 'Lato', sans-serif;
+  /* Typography — system fonts (experiment: target mobile Perf 100) */
+  --font-heading: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   /* Spacing */
   --container-max: 1240px;
