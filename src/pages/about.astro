@@ -31,6 +31,30 @@ const aboutHeroDesktop = `${aboutHeroBg}?w=1600&fm=webp&q=75`;
 			imagesizes="100vw"
 			fetchpriority="high"
 		/>
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "Person",
+			"name": "Kevin White",
+			"jobTitle": "Founder & Travel Consultant",
+			"description": "Travel consultant who has logged over 1 million miles across 26 countries. Born in Western North Carolina, didn't have a passport until age 30. TripAdvisor Top 3% reviewer. Google Maps Local Guide with 500,000+ impacts. Member of UNWTO and the World Food Travel Association.",
+			"image": "https://cdn.sanity.io/images/2voldnur/production/ea90fe8e393f8844be9b0375f911bad2e835f431-283x300.jpg",
+			"url": "https://10btravelers.com/about/",
+			"worksFor": {
+				"@type": "Organization",
+				"name": "10 Billion Travelers",
+				"url": "https://10btravelers.com"
+			},
+			"memberOf": [
+				{ "@type": "Organization", "name": "UNWTO (UN World Tourism Organization)" },
+				{ "@type": "Organization", "name": "World Food Travel Association" }
+			],
+			"sameAs": [
+				"https://www.facebook.com/10BTravelers/",
+				"https://twitter.com/1Travelers",
+				"https://www.youtube.com/channel/UCs99zYse2OsPNYlPBWQTzog",
+				"https://www.instagram.com/10btravelers/"
+			]
+		})} />
 	</Fragment>
 
 	<!-- Hero banner with about.jpeg background -->
