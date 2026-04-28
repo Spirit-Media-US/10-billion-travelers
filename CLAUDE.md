@@ -114,6 +114,28 @@ Then run: `git checkout dev && git pull origin dev`
 - Sanity → CF Pages webhook active (auto-rebuild on content publish)
 - Domain cutover (10btravelers.com → Cloudflare) — Kevin handles DNS when ready
 
+### Completed — Phase 9 (SEO Implementation, Wave 1) — 2026-04-28
+Five score-neutral metadata + visible-content commits on `dev`. Live site untouched (no merge to main yet).
+- `804ff19` Phase 1.1 — enriched Organization JSON-LD on every page (founder, PostalAddress, email, telephone, sameAs ×4, logo, alternateName)
+- `9ace5f2` Phase 1.2 — Person schema for Kevin White on `/about/` (worksFor → 10BT, memberOf UNWTO + WFTA, sameAs ×4)
+- `1a12c2d` Phase 1.3 — `/about/` title rewrite (`Kevin White, Travel Consultant | 10 Billion Travelers`), description rewrite (lead with credentials), H1 (`Meet Kevin White — Travel Consultant in Raleigh`)
+- `072879b` Phase 1.5 — removed obsolete `<meta name="keywords">` tag from homepage (Google ignored since 2009)
+- `a0f0407` Phase 1.7 — homepage `BEST TRAVEL` h2 → `TRUSTED WORLDWIDE` with eyebrow `THE CREDENTIALS` (frames the trust badge cluster as external validation)
+
+Verified on dev preview (manual deploy via `deploy-preview.sh --skip-push` — see infrastructure note below):
+- All schemas parse cleanly (1 JSON-LD on `/`, 2 on `/about/`)
+- 0 broken images, 0 console errors, all HTTP 200
+- No layout regressions — associations slider rendering identically to live (verified by side-by-side DOM + screenshot)
+
+#### Phase 1 — still blocked, pending Kevin's input
+- **1.4** OG image meta tags — needs the actual social-share images
+- **1.6** Adventure CTA fix — needs Kevin to pick option A or B
+- **1.8** TripAdvisor badge → live link — needs the actual TripAdvisor URL
+- **1.9** Newsletter signup form — needs the email-platform name (Mailchimp / ConvertKit / GHL / etc.)
+
+#### Infrastructure issue surfaced 2026-04-28
+**CF Pages GitHub auto-build is broken across this project — possibly fleet-wide.** None of today's 5 git pushes to `dev` triggered a Cloudflare build; latest auto-deploy on the `dev` branch was `5e35b14` from 2026-04-27. Project source config is correct (`preview_branch_includes: ['dev']`, `deployments_enabled: true`), so the issue is upstream of CF — most likely a stuck/failed GitHub webhook delivery. Worked around by running `/home/deploy/bin/deploy-preview.sh --skip-push` for the manual Wrangler upload. Worth investigating separately, as it likely affects every Spirit Media site that depends on the GitHub→CF auto-build pipeline.
+
 ### Notes
 - **Domain is `10btravelers.com`** (NOT 10billiontravelers.com — that domain expired in 2023)
 - Old site is WordPress + Astra + Elementor on Cloudways (IP: 161.35.131.217)
