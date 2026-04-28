@@ -134,7 +134,23 @@ Verified on dev preview (manual deploy via `deploy-preview.sh --skip-push` — s
 - **1.9** Newsletter signup form — needs the email-platform name (Mailchimp / ConvertKit / GHL / etc.)
 
 #### Infrastructure issue surfaced 2026-04-28
-**CF Pages GitHub auto-build is broken across this project — possibly fleet-wide.** None of today's 5 git pushes to `dev` triggered a Cloudflare build; latest auto-deploy on the `dev` branch was `5e35b14` from 2026-04-27. Project source config is correct (`preview_branch_includes: ['dev']`, `deployments_enabled: true`), so the issue is upstream of CF — most likely a stuck/failed GitHub webhook delivery. Worked around by running `/home/deploy/bin/deploy-preview.sh --skip-push` for the manual Wrangler upload. Worth investigating separately, as it likely affects every Spirit Media site that depends on the GitHub→CF auto-build pipeline.
+**CF Pages GitHub webhook is broken on this project — diagnosed, NOT fleet-wide.**
+
+Diagnosed via Cloudflare Pages API on 2026-04-28. Findings:
+- Last 25 CF deployments are all `trigger.type=ad_hoc` with `commit_dirty=true` — never a `github:push` event. Span covers 8+ days.
+- CF Pages project config is intact: `source.type=github`, `repo_id=1209697814`, `repo_name=10-billion-travelers`, `deployments_enabled=true`, `preview_branch_includes=["dev"]`. Identical to global-hope-india's project config (which IS receiving webhooks correctly).
+- Conclusion: GitHub side is not sending events to CF Pages for this repo. Most likely cause is the Cloudflare Pages GitHub App on the Spirit-Media-US org doesn't have repo access to 10-billion-travelers (CF project can be created with a `repo_id` reference even if the GitHub App lacks permission to send webhooks for it).
+
+**Fix required:** GitHub org admin (Kevin or Nathan) must:
+1. Go to https://github.com/organizations/Spirit-Media-US/settings/installations
+2. Find the Cloudflare Pages app, click "Configure"
+3. Either set "All repositories" or add `10-billion-travelers` to the selected repos list
+
+Alternative path: disconnect/reconnect the Git source from the CF dashboard, which re-runs OAuth.
+
+Worked around in the meantime by manual Wrangler uploads via `/home/deploy/bin/deploy-preview.sh --skip-push`. Confirmed working: today's 5 SEO commits all reached the dev preview successfully via that path.
+
+Fleet-wide check: global-hope-india's CF Pages auto-build IS firing correctly (verified same day). So this is a project-specific GitHub App permission issue, not an org-wide outage.
 
 ### Notes
 - **Domain is `10btravelers.com`** (NOT 10billiontravelers.com — that domain expired in 2023)
