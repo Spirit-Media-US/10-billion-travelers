@@ -152,6 +152,26 @@ Worked around in the meantime by manual Wrangler uploads via `/home/deploy/bin/d
 
 Fleet-wide check: global-hope-india's CF Pages auto-build IS firing correctly (verified same day). So this is a project-specific GitHub App permission issue, not an org-wide outage.
 
+### Completed — Phase 9 (SEO Implementation, Wave 2) — 2026-05-01
+One score-neutral CSS-visibility commit on `dev`. Live site untouched (no merge to main yet).
+- `d7b00bc` Phase 2.1 — un-hid the hero text block on desktop (single-line CSS flip: `.hero-mobile { display: none }` → `display: block` in the desktop default rule). Visible-content change on viewports ≥ 768px only; mobile path byte-for-byte preserved. Single H1 in source preserved (no duplicate).
+
+Verified on dev preview (manual deploy via `deploy-preview.sh --skip-push` — same workaround used in Wave 1 since the CF Pages webhook fix is still pending):
+- Mobile rendering byte-for-byte identical (image preload still gated `min-width: 768px`, `content-visibility` rules untouched, mobile LCP rescue pattern intact)
+- Desktop now shows eyebrow + H1 + sub + CTA stacked above the existing full-bleed photo hero
+
+#### Heads-up for future contributors
+- **Desktop hero text now uses mobile-sized styling.** 30px H1, 560px max-width, centered. On wide canvases this reads "slightly small but intentional." Visual polish (desktop-specific font scaling, padding, max-width overrides) is a deliberate deferral — it's a design call, Kevin's. Roughly a 6–10-line CSS block when ready.
+- **The deliberate hero split is load-bearing for the 100 Club score.** The mobile LCP rescue pattern is text-on-mobile / photo-on-desktop ≥ 768px — see the `## 100 CLUB — FROZEN` section at the top of this file. Future contributors touching `.hero-mobile` or `.hero-desktop` should preserve that split. Collapsing them, or moving the photo above the text on mobile, would regress mobile LCP. The hero image preload is still gated `min-width: 768px` for the same reason.
+
+#### Findings surfaced during this wave
+- **The audit's SEO framing was wrong on this commit.** The audit claimed desktop had no H1; in reality the H1 was already in the rendered DOM (Google, Lighthouse, AI crawlers all see it regardless of CSS visibility). The actual gap was UX — desktop visitors couldn't see a value prop above the fold — not SEO. We shipped the fix anyway because (a) the audit prescribed it, (b) the visual-UX gap is real even if the SEO claim was wrong, and (c) un-hiding existing markup is the smallest possible change to satisfy the audit's intent. Recording transparently so the next audit pass doesn't re-flag this as an SEO issue, and so a future reader of `d7b00bc` understands why the commit body opens with "the audit's SEO framing here is slightly off."
+
+#### Phase 2 status
+Source-side audit-actionable work for this audit cycle is complete. Remaining items still blocked on Kevin:
+- The 4 Wave 1 blocked items (1.4 OG image meta tags, 1.6 Adventure CTA fix, 1.8 TripAdvisor live link, 1.9 newsletter signup form) — unchanged from 2026-04-28
+- **New:** desktop hero visual polish — size, padding, max-width adjustments to make the un-hidden text block read as designed-for-desktop rather than mobile copy stretched across the canvas
+
 ### Notes
 - **Domain is `10btravelers.com`** (NOT 10billiontravelers.com — that domain expired in 2023)
 - Old site is WordPress + Astra + Elementor on Cloudways (IP: 161.35.131.217)
