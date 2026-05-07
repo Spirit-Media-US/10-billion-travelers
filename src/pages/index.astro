@@ -29,7 +29,6 @@ const heroDesktop = `${heroBase}?w=1600&fm=webp&q=70`;
 	description="Looking for the best travel agencies in Raleigh? Choose 10 Billion Travelers for expertly crafted tours and personalized travel experiences."
 >
 	<Fragment slot="head">
-		<meta name="keywords" content="travel agencies in raleigh" />
 		<!-- Desktop-only hero preload. Mobile never fetches the hero image —
 		     mobile LCP is the H1 text node (paints from the HTML stream). -->
 		<link
@@ -169,8 +168,8 @@ const heroDesktop = `${heroBase}?w=1600&fm=webp&q=70`;
 		<div class="best-travel-overlay"></div>
 		<div class="best-travel-inner container">
 			<div class="best-travel-text">
-				<p class="best-travel-label">LET'S JOIN AND PROVE IT</p>
-				<h2 class="best-travel-heading">BEST TRAVEL</h2>
+				<p class="best-travel-label">THE CREDENTIALS</p>
+				<h2 class="best-travel-heading">TRUSTED WORLDWIDE</h2>
 			</div>
 			<div class="best-travel-badges">
 				<div class="badge-item">
@@ -302,7 +301,7 @@ const heroDesktop = `${heroBase}?w=1600&fm=webp&q=70`;
 	/* ===== 1. HERO ===== */
 	/* Mobile text-first hero — H1 is LCP. Rendered only below 768px. */
 	.hero-mobile {
-		display: none;
+		display: block;
 		background: linear-gradient(180deg, #ffffff 0%, var(--color-bg) 100%);
 		padding: 40px 24px 48px;
 	}

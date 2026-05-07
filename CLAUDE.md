@@ -114,6 +114,64 @@ Then run: `git checkout dev && git pull origin dev`
 - Sanity → CF Pages webhook active (auto-rebuild on content publish)
 - Domain cutover (10btravelers.com → Cloudflare) — Kevin handles DNS when ready
 
+### Completed — Phase 9 (SEO Implementation, Wave 1) — 2026-04-28
+Five score-neutral metadata + visible-content commits on `dev`. Live site untouched (no merge to main yet).
+- `804ff19` Phase 1.1 — enriched Organization JSON-LD on every page (founder, PostalAddress, email, telephone, sameAs ×4, logo, alternateName)
+- `9ace5f2` Phase 1.2 — Person schema for Kevin White on `/about/` (worksFor → 10BT, memberOf UNWTO + WFTA, sameAs ×4)
+- `1a12c2d` Phase 1.3 — `/about/` title rewrite (`Kevin White, Travel Consultant | 10 Billion Travelers`), description rewrite (lead with credentials), H1 (`Meet Kevin White — Travel Consultant in Raleigh`)
+- `072879b` Phase 1.5 — removed obsolete `<meta name="keywords">` tag from homepage (Google ignored since 2009)
+- `a0f0407` Phase 1.7 — homepage `BEST TRAVEL` h2 → `TRUSTED WORLDWIDE` with eyebrow `THE CREDENTIALS` (frames the trust badge cluster as external validation)
+
+Verified on dev preview (manual deploy via `deploy-preview.sh --skip-push` — see infrastructure note below):
+- All schemas parse cleanly (1 JSON-LD on `/`, 2 on `/about/`)
+- 0 broken images, 0 console errors, all HTTP 200
+- No layout regressions — associations slider rendering identically to live (verified by side-by-side DOM + screenshot)
+
+#### Phase 1 — still blocked, pending Kevin's input
+- **1.4** OG image meta tags — needs the actual social-share images
+- **1.6** Adventure CTA fix — needs Kevin to pick option A or B
+- **1.8** TripAdvisor badge → live link — needs the actual TripAdvisor URL
+- **1.9** Newsletter signup form — needs the email-platform name (Mailchimp / ConvertKit / GHL / etc.)
+
+#### Infrastructure issue surfaced 2026-04-28
+**CF Pages GitHub webhook is broken on this project — diagnosed, NOT fleet-wide.**
+
+Diagnosed via Cloudflare Pages API on 2026-04-28. Findings:
+- Last 25 CF deployments are all `trigger.type=ad_hoc` with `commit_dirty=true` — never a `github:push` event. Span covers 8+ days.
+- CF Pages project config is intact: `source.type=github`, `repo_id=1209697814`, `repo_name=10-billion-travelers`, `deployments_enabled=true`, `preview_branch_includes=["dev"]`. Identical to global-hope-india's project config (which IS receiving webhooks correctly).
+- Conclusion: GitHub side is not sending events to CF Pages for this repo. Most likely cause is the Cloudflare Pages GitHub App on the Spirit-Media-US org doesn't have repo access to 10-billion-travelers (CF project can be created with a `repo_id` reference even if the GitHub App lacks permission to send webhooks for it).
+
+**Fix required:** GitHub org admin (Kevin or Nathan) must:
+1. Go to https://github.com/organizations/Spirit-Media-US/settings/installations
+2. Find the Cloudflare Pages app, click "Configure"
+3. Either set "All repositories" or add `10-billion-travelers` to the selected repos list
+
+Alternative path: disconnect/reconnect the Git source from the CF dashboard, which re-runs OAuth.
+
+Worked around in the meantime by manual Wrangler uploads via `/home/deploy/bin/deploy-preview.sh --skip-push`. Confirmed working: today's 5 SEO commits all reached the dev preview successfully via that path.
+
+Fleet-wide check: global-hope-india's CF Pages auto-build IS firing correctly (verified same day). So this is a project-specific GitHub App permission issue, not an org-wide outage.
+
+### Completed — Phase 9 (SEO Implementation, Wave 2) — 2026-05-01
+One score-neutral CSS-visibility commit on `dev`. Live site untouched (no merge to main yet).
+- `d7b00bc` Phase 2.1 — un-hid the hero text block on desktop (single-line CSS flip: `.hero-mobile { display: none }` → `display: block` in the desktop default rule). Visible-content change on viewports ≥ 768px only; mobile path byte-for-byte preserved. Single H1 in source preserved (no duplicate).
+
+Verified on dev preview (manual deploy via `deploy-preview.sh --skip-push` — same workaround used in Wave 1 since the CF Pages webhook fix is still pending):
+- Mobile rendering byte-for-byte identical (image preload still gated `min-width: 768px`, `content-visibility` rules untouched, mobile LCP rescue pattern intact)
+- Desktop now shows eyebrow + H1 + sub + CTA stacked above the existing full-bleed photo hero
+
+#### Heads-up for future contributors
+- **Desktop hero text now uses mobile-sized styling.** 30px H1, 560px max-width, centered. On wide canvases this reads "slightly small but intentional." Visual polish (desktop-specific font scaling, padding, max-width overrides) is a deliberate deferral — it's a design call, Kevin's. Roughly a 6–10-line CSS block when ready.
+- **The deliberate hero split is load-bearing for the 100 Club score.** The mobile LCP rescue pattern is text-on-mobile / photo-on-desktop ≥ 768px — see the `## 100 CLUB — FROZEN` section at the top of this file. Future contributors touching `.hero-mobile` or `.hero-desktop` should preserve that split. Collapsing them, or moving the photo above the text on mobile, would regress mobile LCP. The hero image preload is still gated `min-width: 768px` for the same reason.
+
+#### Findings surfaced during this wave
+- **The audit's SEO framing was wrong on this commit.** The audit claimed desktop had no H1; in reality the H1 was already in the rendered DOM (Google, Lighthouse, AI crawlers all see it regardless of CSS visibility). The actual gap was UX — desktop visitors couldn't see a value prop above the fold — not SEO. We shipped the fix anyway because (a) the audit prescribed it, (b) the visual-UX gap is real even if the SEO claim was wrong, and (c) un-hiding existing markup is the smallest possible change to satisfy the audit's intent. Recording transparently so the next audit pass doesn't re-flag this as an SEO issue, and so a future reader of `d7b00bc` understands why the commit body opens with "the audit's SEO framing here is slightly off."
+
+#### Phase 2 status
+Source-side audit-actionable work for this audit cycle is complete. Remaining items still blocked on Kevin:
+- The 4 Wave 1 blocked items (1.4 OG image meta tags, 1.6 Adventure CTA fix, 1.8 TripAdvisor live link, 1.9 newsletter signup form) — unchanged from 2026-04-28
+- **New:** desktop hero visual polish — size, padding, max-width adjustments to make the un-hidden text block read as designed-for-desktop rather than mobile copy stretched across the canvas
+
 ### Notes
 - **Domain is `10btravelers.com`** (NOT 10billiontravelers.com — that domain expired in 2023)
 - Old site is WordPress + Astra + Elementor on Cloudways (IP: 161.35.131.217)
